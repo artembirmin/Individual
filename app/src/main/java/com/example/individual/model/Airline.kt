@@ -10,6 +10,6 @@ data class Airline(
     @PrimaryKey val id: UUID = UUID.randomUUID()
 ) {
     companion object {
-        const val TABLE_NAME = "model"
+        const val TABLE_NAME = "airline"
     }
 }

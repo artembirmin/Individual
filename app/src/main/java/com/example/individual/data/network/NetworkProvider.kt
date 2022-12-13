@@ -5,7 +5,6 @@ import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -16,7 +15,6 @@ class NetworkProvider(context: Context) {
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
 
     private val loggingInterceptor: HttpLoggingInterceptor =
         HttpLoggingInterceptor(ApiLogger()).apply { level = HttpLoggingInterceptor.Level.BODY }
@@ -32,8 +30,10 @@ class NetworkProvider(context: Context) {
         .build()
         .create(IndividualApi::class.java)
 
+    val individualApiMock = IndividualApiMock()
+
     companion object {
-        private val BASE_URL = ""
+        private val BASE_URL = "http://gorozhanin.space/api/"
         private var INSTANCE: NetworkProvider? = null
         fun init(context: Context) {
             if (INSTANCE == null) {

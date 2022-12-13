@@ -17,11 +17,14 @@ interface AirlineDao {
     @Update
     suspend fun updateAirline(airline: Airline)
 
-    @Insert
-    suspend fun addAirline(airline: Airline)
-
     @Delete
     suspend fun deleteAirline(airline: Airline)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(airline: Airline)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(list: List<Airline>)
 
     companion object {
         private const val TABLE_NAME = Airline.TABLE_NAME
