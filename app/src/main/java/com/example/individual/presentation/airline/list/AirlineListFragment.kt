@@ -30,6 +30,7 @@ class AirlineListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvAirlines.adapter = adapter
         viewModel = ViewModelProvider(this).get(AirlineListViewModel::class.java)
+        viewModel.getAirlines()
         viewModel.airlinesLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }

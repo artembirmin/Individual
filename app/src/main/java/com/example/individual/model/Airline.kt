@@ -7,7 +7,7 @@ import java.util.*
 @Entity
 data class Airline(
     val name: String,
-    @PrimaryKey val id: UUID = UUID.randomUUID()
+    @PrimaryKey val id: String = UUID.randomUUID().toString()
 ) {
     companion object {
         const val TABLE_NAME = "airline"

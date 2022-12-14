@@ -11,11 +11,12 @@ class AirlineListViewModel : ViewModel() {
     val airlinesLiveData = MutableLiveData<List<Airline>>()
     private val airlineRepository = AirlineRepository.getInstance()
 
-    fun observeAirlines() {
+    fun getAirlines() {
         viewModelScope.launch {
             airlineRepository.observeAirlines().collect {
                 airlinesLiveData.postValue(it)
             }
         }
+        viewModelScope.launch { airlineRepository.refreshAirlines() }
     }
 }

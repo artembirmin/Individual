@@ -10,10 +10,23 @@ class AirlineRepository {
     private val individualApi = IndividualApiMock()
     private val airlineDao = DatabaseProvider.get().getAirlineDao()
 
-    suspend fun observeAirlines(): Flow<List<Airline>> {
+    fun observeAirlines(): Flow<List<Airline>> {
+        return airlineDao.getAirlines()
+    }
+
+    suspend fun refreshAirlines() {
         val airlines = individualApi.getAirlines()
         airlineDao.insertAll(airlines)
-        return airlineDao.getAirlines()
+    }
+
+    suspend fun add(airline: Airline) {
+        val airlineFromServer = individualApi.addAirline(airline)
+        airlineDao.insert(airlineFromServer)
+    }
+
+    suspend fun update(airline: Airline) {
+        val airlineFromServer = individualApi.updateAirline(airline)
+        airlineDao.insert(airlineFromServer)
     }
 
     companion object {
