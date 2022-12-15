@@ -1,7 +1,8 @@
 package com.example.individual.data.network
 
 import android.content.Context
-import com.google.gson.Gson
+import com.example.individual.model.PlaneFull
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,7 +11,10 @@ import java.util.concurrent.TimeUnit
 
 class NetworkProvider(context: Context) {
 
-    private val gson = Gson()
+    private val gson =
+        GsonBuilder()
+            .registerTypeAdapter(PlaneFull::class.java, PlaneJsonDeserializer())
+            .create()
 
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
         .baseUrl(BASE_URL)

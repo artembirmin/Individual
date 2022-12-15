@@ -12,10 +12,13 @@ class DatabaseProvider(context: Context) {
             context.applicationContext,
             AppDatabase::class.java,
             AppDatabase.DB_NAME
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
     }
 
     fun getAirlineDao(): AirlineDao = database.airlineDao()
+
+    fun getPlaneDao(): PlaneDao = database.planeDao()
 
     companion object {
         private var INSTANCE: DatabaseProvider? = null

@@ -8,20 +8,72 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="1px"
         android:background="@color/white"
-        android:clickable="true"
         android:elevation="2dp"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
         android:padding="16dp">
 
         <TextView
-            style="@style/BaseText.Big"
+            android:id="@+id/tvOnboardNumberTitle"
+            style="@style/ClickableView"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
+            android:text="Бортовой номер"
+            android:textAppearance="@style/BaseText"
             app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="1234" />
 
-            tools:text="Победа" />
+        <TextView
+            android:id="@+id/tvOnboardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintTop_toBottomOf="@+id/tvOnboardNumberTitle"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="1234" />
+
+        <TextView
+            android:id="@+id/tvFlightNumberTitle"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Номер рейса"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintTop_toBottomOf="@+id/tvOnboardNumber"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="34543" />
+
+        <TextView
+            android:id="@+id/tvFlightNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintTop_toBottomOf="@+id/tvFlightNumberTitle"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="12345" />
+
+        <TextView
+
+            android:id="@+id/tvAdditionalInfo"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Дополнительно"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFlightNumber" />
+
+        <TextView
+            android:id="@+id/tvFullInfo"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Полная информация"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFlightNumber" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

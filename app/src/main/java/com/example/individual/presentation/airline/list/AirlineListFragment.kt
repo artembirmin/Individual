@@ -14,7 +14,12 @@ import com.example.individual.presentation.BaseFragment
 class AirlineListFragment : BaseFragment() {
     private lateinit var binding: FragmentAirlinesListBinding
     private lateinit var viewModel: AirlineListViewModel
-    private val adapter by lazy { AirlinesAdapter(::onItemClick) }
+
+    private val adapter by lazy {
+        AirlinesAdapter(onAirlineClick = { airline ->
+            navigator?.navigateToPlanes(airline.id)
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,10 +43,6 @@ class AirlineListFragment : BaseFragment() {
 
     private fun updateUI(airlines: List<Airline>) {
         adapter.items = airlines
-    }
-
-    private fun onItemClick(item: Airline) {
-
     }
 
     companion object {
