@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.individual.R
 import com.example.individual.model.Airline
 
-class AirlinesAdapter(private val onAirlineClick: (Airline) -> Unit) :
-    RecyclerView.Adapter<AirlinesAdapter.ViewHolder>() {
+class AirlinesAdapter(
+    private val onAirlineClick: (Airline) -> Unit,
+    private val onAirlineLongClick: (Airline) -> Unit
+) : RecyclerView.Adapter<AirlinesAdapter.ViewHolder>() {
 
     var items: List<Airline> = emptyList()
         set(value) {
@@ -45,6 +47,10 @@ class AirlinesAdapter(private val onAirlineClick: (Airline) -> Unit) :
             tvName.text = airline.name
             itemView.setOnClickListener {
                 onAirlineClick(airline)
+            }
+            itemView.setOnLongClickListener {
+                onAirlineLongClick(airline)
+                true
             }
         }
     }

@@ -3,7 +3,6 @@ package com.example.individual.data.database
 import androidx.room.*
 import com.example.individual.model.Airline
 import kotlinx.coroutines.flow.Flow
-import java.util.*
 
 @Dao
 interface AirlineDao {
@@ -12,7 +11,7 @@ interface AirlineDao {
     fun getAirlines(): Flow<List<Airline>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = (:id)")
-    fun getAirlineById(id: UUID): Flow<Airline>
+    suspend fun getAirlineById(id: String): Airline
 
     @Update
     suspend fun updateAirline(airline: Airline)

@@ -5,6 +5,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.individual.R
+import com.example.individual.presentation.airline.createedit.AirlineCreateEditFragment
+import com.example.individual.presentation.airline.createedit.AirlineCreateEditFragmentInitParams
 import com.example.individual.presentation.airline.list.AirlineListFragment
 import com.example.individual.presentation.plane.list.PlaneListFragment
 import com.example.individual.presentation.plane.list.PlaneListFragmentInitParams
@@ -51,6 +53,10 @@ class MainActivity : AppCompatActivity(), Navigator {
 
     override fun navigateToPlanes(airlineId: String) {
         addFragment(PlaneListFragment.newInstance(PlaneListFragmentInitParams(airlineId)))
+    }
+
+    override fun navigateToAirlineCreateEdit(id: String?) {
+        addFragment(AirlineCreateEditFragment.newInstance(AirlineCreateEditFragmentInitParams(id)))
     }
 
     override fun exit(fragment: Fragment) {

@@ -16,9 +16,14 @@ class AirlineListFragment : BaseFragment() {
     private lateinit var viewModel: AirlineListViewModel
 
     private val adapter by lazy {
-        AirlinesAdapter(onAirlineClick = { airline ->
-            navigator?.navigateToPlanes(airline.id)
-        })
+        AirlinesAdapter(
+            onAirlineClick = { airline ->
+                navigator?.navigateToPlanes(airline.id)
+            },
+            onAirlineLongClick = { airline ->
+                navigator?.navigateToAirlineCreateEdit(airline.id)
+            }
+        )
     }
 
     override fun onCreateView(
@@ -33,7 +38,10 @@ class AirlineListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.rvAirlines.adapter = adapter
+        binding.btnAdd.setOnClickListener { navigator?.navigateToAirlineCreateEdit() }
+
         viewModel = ViewModelProvider(this).get(AirlineListViewModel::class.java)
         viewModel.getAirlines()
         viewModel.airlinesLiveData.observe(viewLifecycleOwner) {
@@ -42,7 +50,7 @@ class AirlineListFragment : BaseFragment() {
     }
 
     private fun updateUI(airlines: List<Airline>) {
-        adapter.items = airlines
+        adapter.items = airlines.sortedBy { it.name }
     }
 
     companion object {

@@ -1,9 +1,3 @@
-/*
- * Ruvpro
- *
- * Created by artembirmin on 29/4/2022.
- */
-
 package com.example.individual.common
 
 import android.os.Bundle

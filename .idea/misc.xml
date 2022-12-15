@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/petra/UNIVER/Individual/app/src/main/res/drawable-v24/ic_back_arrow.xml" value="0.2565" />
+        <entry key="..\:/Users/petra/UNIVER/Individual/app/src/main/res/drawable/btn_rounded.xml" value="0.2565" />
+        <entry key="..\:/Users/petra/UNIVER/Individual/app/src/main/res/layout/fragment_airline_create_edit.xml" value="0.33" />
+        <entry key="..\:/Users/petra/UNIVER/Individual/app/src/main/res/layout/fragment_airlines_list.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/petra/UNIVER/Individual/app/src/main/res/layout/fragment_planes_list.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/petra/UNIVER/Individual/app/src/main/res/layout/item_airline.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/petra/UNIVER/Individual/app/src/main/res/layout/item_plane.xml" value="0.25" />

@@ -14,6 +14,10 @@ class AirlineRepository {
         return airlineDao.getAirlines()
     }
 
+    suspend fun getAirlineById(id: String): Airline {
+        return airlineDao.getAirlineById(id)
+    }
+
     suspend fun refreshAirlines() {
         val airlines = individualApi.getAirlines()
         airlineDao.insertAll(airlines)

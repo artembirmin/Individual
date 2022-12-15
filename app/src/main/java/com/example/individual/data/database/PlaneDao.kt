@@ -4,7 +4,6 @@ import androidx.room.*
 import com.example.individual.model.PlaneFull
 import com.example.individual.model.PlaneShort
 import kotlinx.coroutines.flow.Flow
-import java.util.*
 
 @Dao
 interface PlaneDao {
@@ -13,7 +12,7 @@ interface PlaneDao {
     fun getPlanes(airlineId: String): Flow<List<PlaneShort>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = (:id)")
-    fun getPlaneById(id: UUID): Flow<PlaneFull>
+    suspend fun getPlaneById(id: String): PlaneFull
 
     @Update
     suspend fun updatePlane(planeFull: PlaneFull)
