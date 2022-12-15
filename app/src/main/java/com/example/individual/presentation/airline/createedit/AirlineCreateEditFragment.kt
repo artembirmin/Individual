@@ -36,6 +36,7 @@ class AirlineCreateEditFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener { closeFragment() }
         binding.btnSave.setOnClickListener {
             binding.etName.clearFocus()
             val name = binding.etName.text.toString()
@@ -44,6 +45,10 @@ class AirlineCreateEditFragment : BaseFragment() {
                 return@setOnClickListener
             }
             viewModel.saveAirline(name = name)
+            closeFragment()
+        }
+        binding.btnDelete.setOnClickListener {
+            viewModel.deleteAirline()
             closeFragment()
         }
 

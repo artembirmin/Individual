@@ -24,4 +24,12 @@ class AirlineCreateEditViewModel : ViewModel() {
             airlineRepository.add(airline)
         }
     }
+
+    fun deleteAirline() {
+        airlineLiveData.value?.let { airline ->
+            viewModelScope.launch {
+                airlineRepository.delete(airline)
+            }
+        }
+    }
 }

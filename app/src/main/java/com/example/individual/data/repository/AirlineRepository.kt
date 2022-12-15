@@ -33,6 +33,11 @@ class AirlineRepository {
         airlineDao.insert(airlineFromServer)
     }
 
+    suspend fun delete(airline: Airline) {
+        individualApi.deleteAirline(airline)
+        airlineDao.deleteAirline(airline)
+    }
+
     companion object {
         private var INSTANCE: AirlineRepository? = null
         fun getInstance(): AirlineRepository {

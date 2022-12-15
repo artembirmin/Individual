@@ -94,4 +94,8 @@ class IndividualApiMock {
     fun updatePlane(airline: PlaneFull): PlaneFull {
         return airline
     }
+
+    suspend fun deleteAirline(airline: Airline) {
+        delay(1000)
+    }
 }

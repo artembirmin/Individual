@@ -59,5 +59,16 @@
             android:text="Сохранить"
             app:layout_constraintTop_toBottomOf="@+id/etName" />
 
+        <Button
+            android:id="@+id/btnDelete"
+            style="@style/BaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/red"
+            android:text="Удалить"
+            app:layout_constraintStart_toStartOf="@+id/btnSave"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
