@@ -46,7 +46,8 @@ class PlanesAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvOnboardNumber = itemView.findViewById<TextView>(R.id.tvOnboardNumber)
         private val tvFlightNumber = itemView.findViewById<TextView>(R.id.tvFlightNumber)
-        private val tvOnboardNumberTitle = itemView.findViewById<TextView>(R.id.tvFlightNumberTitle)
+        private val tvOnboardNumberTitle =
+            itemView.findViewById<TextView>(R.id.tvOnboardNumberTitle)
         private val tvFlightNumberTitle = itemView.findViewById<TextView>(R.id.tvFlightNumberTitle)
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
         private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
@@ -65,8 +66,14 @@ class PlanesAdapter(
                 )
             }
 
-            tvOnboardNumberTitle.setOnClickListener { onBoardNumberClick(plane) }
-            tvFlightNumberTitle.setOnClickListener { onFlightNumberClick(plane) }
+            tvOnboardNumberTitle.setOnLongClickListener {
+                onBoardNumberClick(plane)
+                true
+            }
+            tvFlightNumberTitle.setOnLongClickListener {
+                onFlightNumberClick(plane)
+                true
+            }
             tvFullInfo.setOnClickListener { onFullInfoClick(plane) }
         }
     }

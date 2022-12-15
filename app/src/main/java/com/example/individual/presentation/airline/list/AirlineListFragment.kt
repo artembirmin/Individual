@@ -18,7 +18,7 @@ class AirlineListFragment : BaseFragment() {
     private val adapter by lazy {
         AirlinesAdapter(
             onAirlineClick = { airline ->
-                navigator?.navigateToPlanes(airline.id)
+                navigator?.navigateToPlanes(airline)
             },
             onAirlineLongClick = { airline ->
                 navigator?.navigateToAirlineCreateEdit(airline.id)

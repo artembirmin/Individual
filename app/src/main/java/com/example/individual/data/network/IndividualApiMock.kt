@@ -7,9 +7,9 @@ import org.joda.time.DateTime
 
 class IndividualApiMock {
     suspend fun getAirlines(): List<Airline> {
-        delay(2000)
+        delay(1000)
         return listOf(
-            Airline("5", "1"),
+            Airline("1", "1"),
             Airline("2", "2"),
             Airline("3", "3"),
         )
@@ -25,13 +25,14 @@ class IndividualApiMock {
         return airline
     }
 
-    fun getPlanes(): List<PlaneFull> {
+    suspend fun getPlanes(): List<PlaneFull> {
+        delay(1000)
         return listOf(
             PlaneFull(
                 id = "1",
                 airlineId = "1",
-                onboardNumber = "111",
-                flightNumber = "12345",
+                onboardNumber = "2",
+                flightNumber = "322",
                 flightFrom = "we",
                 flightTo = "sdf",
                 boardingTime = DateTime.now(),
@@ -44,8 +45,8 @@ class IndividualApiMock {
             PlaneFull(
                 id = "2",
                 airlineId = "1",
-                onboardNumber = "112",
-                flightNumber = "12345",
+                onboardNumber = "3",
+                flightNumber = "133",
                 flightFrom = "we",
                 flightTo = "sdf",
                 boardingTime = DateTime.now(),
@@ -57,6 +58,20 @@ class IndividualApiMock {
             ),
             PlaneFull(
                 id = "3",
+                airlineId = "1",
+                onboardNumber = "1",
+                flightNumber = "211",
+                flightFrom = "we",
+                flightTo = "sdf",
+                boardingTime = DateTime.now(),
+                gate = "123",
+                firstPilotName = "Bdfy tyt",
+                secondPilotName = "ddwd wewe",
+                seatsCount = 1234.0,
+                maxSpeedKmh = 123.0
+            ),
+            PlaneFull(
+                id = "4",
                 airlineId = "2",
                 onboardNumber = "2221",
                 flightNumber = "12345",

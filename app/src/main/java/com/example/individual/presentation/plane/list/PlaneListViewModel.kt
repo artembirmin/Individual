@@ -17,6 +17,8 @@ class PlaneListViewModel : ViewModel() {
                 planesLiveData.postValue(it)
             }
         }
-        viewModelScope.launch { planeRepository.refreshPlanes() }
+        viewModelScope.launch {
+            planeRepository.refreshPlanes()
+        }
     }
 }

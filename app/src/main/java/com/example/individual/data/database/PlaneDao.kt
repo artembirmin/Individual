@@ -15,10 +15,13 @@ interface PlaneDao {
     suspend fun getPlaneById(id: String): PlaneFull
 
     @Update
-    suspend fun updatePlane(planeFull: PlaneFull)
+    suspend fun update(planeFull: PlaneFull)
+
+    @Update
+    suspend fun updateAll(ist: List<PlaneFull>)
 
     @Delete
-    suspend fun deletePlane(planeFull: PlaneFull)
+    suspend fun delete(planeFull: PlaneFull)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(planeFull: PlaneFull)

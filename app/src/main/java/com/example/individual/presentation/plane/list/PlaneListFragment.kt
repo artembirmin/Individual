@@ -21,11 +21,21 @@ class PlaneListFragment : BaseFragment() {
         PlanesAdapter(
             onFullInfoClick = { planeShort -> navigator },
             onBoardNumberClick = {
-
+                sortByBoardNumber()
+                showMessageByToast("Сортировка по бортовому номеру")
             },
             onFlightNumberClick = {
-
+                sortByFlightNumber()
+                showMessageByToast("Сортировка по номеру рейса")
             })
+    }
+
+    private fun sortByBoardNumber() {
+        adapter.items = adapter.items.sortedBy { it.onboardNumber }
+    }
+
+    private fun sortByFlightNumber() {
+        adapter.items = adapter.items.sortedBy { it.flightNumber }
     }
 
     private val initParams: PlaneListFragmentInitParams by lazy { getInitParams() }
@@ -42,8 +52,11 @@ class PlaneListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.rvPlanes.adapter = adapter
         binding.toolbar.setNavigationOnClickListener { super.closeFragment() }
+        binding.tvTitle.text = initParams.airlineName
+
         viewModel = ViewModelProvider(this).get(PlaneListViewModel::class.java)
         viewModel.getPlanes(initParams.airlineId)
         viewModel.planesLiveData.observe(viewLifecycleOwner) {

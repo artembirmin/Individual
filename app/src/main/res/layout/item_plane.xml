@@ -19,7 +19,6 @@
             android:text="Бортовой номер"
             android:textAppearance="@style/BaseText"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="16dp"
             tools:text="1234" />
 
         <TextView
@@ -28,7 +27,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/BaseText.Big"
             app:layout_constraintTop_toBottomOf="@+id/tvOnboardNumberTitle"
-            tools:layout_editor_absoluteX="16dp"
             tools:text="1234" />
 
         <TextView
@@ -40,7 +38,6 @@
             android:text="Номер рейса"
             android:textAppearance="@style/BaseText"
             app:layout_constraintTop_toBottomOf="@+id/tvOnboardNumber"
-            tools:layout_editor_absoluteX="16dp"
             tools:text="34543" />
 
         <TextView
@@ -49,7 +46,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/BaseText.Big"
             app:layout_constraintTop_toBottomOf="@+id/tvFlightNumberTitle"
-            tools:layout_editor_absoluteX="16dp"
             tools:text="12345" />
 
         <TextView
