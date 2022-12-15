@@ -9,6 +9,8 @@ import com.example.individual.model.Airline
 import com.example.individual.presentation.airline.createedit.AirlineCreateEditFragment
 import com.example.individual.presentation.airline.createedit.AirlineCreateEditFragmentInitParams
 import com.example.individual.presentation.airline.list.AirlineListFragment
+import com.example.individual.presentation.plane.createedit.PlaneCreateEditFragment
+import com.example.individual.presentation.plane.createedit.PlaneCreateEditFragmentInitParams
 import com.example.individual.presentation.plane.list.PlaneListFragment
 import com.example.individual.presentation.plane.list.PlaneListFragmentInitParams
 
@@ -58,6 +60,17 @@ class MainActivity : AppCompatActivity(), Navigator {
                 PlaneListFragmentInitParams(
                     airline.id,
                     airline.name
+                )
+            )
+        )
+    }
+
+    override fun navigateToPlaneCreateEdit(airlineId: String, planeId: String?) {
+        addFragment(
+            PlaneCreateEditFragment.newInstance(
+                PlaneCreateEditFragmentInitParams(
+                    airlineId,
+                    planeId
                 )
             )
         )

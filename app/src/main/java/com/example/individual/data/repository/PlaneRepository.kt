@@ -9,25 +9,34 @@ import kotlinx.coroutines.flow.Flow
 class PlaneRepository {
 
     private val individualApi = IndividualApiMock()
-    private val airlineDao = DatabaseProvider.get().getPlaneDao()
+    private val planeDao = DatabaseProvider.get().getPlaneDao()
 
     fun observePlanes(airlineId: String): Flow<List<PlaneShort>> {
-        return airlineDao.getPlanes(airlineId)
+        return planeDao.getPlanes(airlineId)
     }
 
     suspend fun refreshPlanes() {
         val airlines = individualApi.getPlanes()
-        airlineDao.insertAll(airlines)
+        planeDao.insertAll(airlines)
     }
 
     suspend fun add(airline: PlaneFull) {
         val airlineFromServer = individualApi.addPlane(airline)
-        airlineDao.insert(airlineFromServer)
+        planeDao.insert(airlineFromServer)
     }
 
     suspend fun update(airline: PlaneFull) {
         val airlineFromServer = individualApi.updatePlane(airline)
-        airlineDao.insert(airlineFromServer)
+        planeDao.insert(airlineFromServer)
+    }
+
+    suspend fun delete(plane: PlaneFull) {
+        individualApi.deletePlane(plane)
+        planeDao.delete(plane)
+    }
+
+    suspend fun getPlaneById(id: String): PlaneFull {
+        return planeDao.getById(id)
     }
 
     companion object {

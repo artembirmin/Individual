@@ -19,7 +19,12 @@ class PlaneListFragment : BaseFragment() {
 
     private val adapter by lazy {
         PlanesAdapter(
-            onFullInfoClick = { planeShort -> navigator },
+            onFullInfoClick = { planeShort ->
+                navigator?.navigateToPlaneCreateEdit(
+                    planeShort.airlineId,
+                    planeShort.id
+                )
+            },
             onBoardNumberClick = {
                 sortByBoardNumber()
                 showMessageByToast("Сортировка по бортовому номеру")
@@ -56,6 +61,9 @@ class PlaneListFragment : BaseFragment() {
         binding.rvPlanes.adapter = adapter
         binding.toolbar.setNavigationOnClickListener { super.closeFragment() }
         binding.tvTitle.text = initParams.airlineName
+        binding.btnAdd.setOnClickListener {
+            navigator?.navigateToPlaneCreateEdit(initParams.airlineId)
+        }
 
         viewModel = ViewModelProvider(this).get(PlaneListViewModel::class.java)
         viewModel.getPlanes(initParams.airlineId)
@@ -65,7 +73,7 @@ class PlaneListFragment : BaseFragment() {
     }
 
     private fun updateUI(planeFulls: List<PlaneShort>) {
-        adapter.items = planeFulls
+        adapter.items = planeFulls.sortedByDescending { it.boardingDateTime }
     }
 
     companion object {

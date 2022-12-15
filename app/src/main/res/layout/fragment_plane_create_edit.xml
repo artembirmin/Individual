@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:navigationIcon="@drawable/ic_back_arrow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Самолет"
+                    android:textAppearance="@style/ToolbarTitle" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Бортовой номер"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/etBoardNumber"
+                    app:layout_constraintStart_toStartOf="@+id/etBoardNumber" />
+
+                <EditText
+                    android:id="@+id/etBoardNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="40dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+
+                    android:text="Номер рейса"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/etFlightNumber"
+                    app:layout_constraintStart_toStartOf="@+id/etFlightNumber" />
+
+                <EditText
+                    android:id="@+id/etFlightNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/etBoardNumber"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+
+                    android:text="Откуда"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/etFlightFrom"
+                    app:layout_constraintStart_toStartOf="@+id/etFlightFrom" />
+
+                <EditText
+                    android:id="@+id/etFlightFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/etFlightNumber"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Куда"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/etFlightTo"
+                    app:layout_constraintStart_toStartOf="@+id/etFlightTo" />
+
+                <EditText
+                    android:id="@+id/etFlightTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/etFlightFrom" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дата вылета"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/dpBoardingDate"
+                    app:layout_constraintStart_toStartOf="@+id/dpBoardingDate" />
+
+                <DatePicker
+                    android:id="@+id/dpBoardingDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    app:layout_constraintTop_toBottomOf="@+id/etFlightTo"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Время вылета"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/tpBoardingTime"
+                    app:layout_constraintStart_toEndOf="@+id/tpBoardingTime"
+                    app:layout_constraintStart_toStartOf="@+id/dpBoardingDate" />
+
+                <TimePicker
+                    android:id="@+id/tpBoardingTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:timePickerMode="spinner"
+                    app:layout_constraintTop_toBottomOf="@+id/dpBoardingDate"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Гейт"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/etGate"
+                    app:layout_constraintStart_toStartOf="@+id/etGate" />
+
+                <EditText
+                    android:id="@+id/etGate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tpBoardingTime" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Первый пилот"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/etFirstPilotName"
+                    app:layout_constraintStart_toStartOf="@+id/etFirstPilotName" />
+
+                <EditText
+                    android:id="@+id/etFirstPilotName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/etGate" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Второй пилот"
+                    android:textAppearance="@style/BaseText"
+                    app:layout_constraintBottom_toTopOf="@+id/etSecondPilotName"
+                    app:layout_constraintStart_toStartOf="@+id/etSecondPilotName" />
+
+                <EditText
+                    android:id="@+id/etSecondPilotName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/etFirstPilotName" />
+
+                <Button
+                    android:id="@+id/btnSave"
+                    style="@style/BaseButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Сохранить"
+                    app:layout_constraintTop_toBottomOf="@id/etSecondPilotName"
+                    tools:layout_editor_absoluteX="40dp"
+                    tools:layout_editor_absoluteY="1062dp" />
+
+                <Button
+                    android:id="@+id/btnDelete"
+                    style="@style/BaseButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/red"
+                    android:text="Удалить"
+                    app:layout_constraintStart_toStartOf="@+id/btnSave"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

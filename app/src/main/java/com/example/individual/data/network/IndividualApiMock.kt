@@ -35,12 +35,10 @@ class IndividualApiMock {
                 flightNumber = "322",
                 flightFrom = "we",
                 flightTo = "sdf",
-                boardingTime = DateTime.now(),
+                boardingDateTime = DateTime.now(),
                 gate = "123",
                 firstPilotName = "Bdfy tyt",
                 secondPilotName = "ddwd wewe",
-                seatsCount = 1234.0,
-                maxSpeedKmh = 123.0
             ),
             PlaneFull(
                 id = "2",
@@ -49,12 +47,10 @@ class IndividualApiMock {
                 flightNumber = "133",
                 flightFrom = "we",
                 flightTo = "sdf",
-                boardingTime = DateTime.now(),
+                boardingDateTime = DateTime.now(),
                 gate = "123",
                 firstPilotName = "Bdfy tyt",
                 secondPilotName = "ddwd wewe",
-                seatsCount = 1234.0,
-                maxSpeedKmh = 123.0
             ),
             PlaneFull(
                 id = "3",
@@ -63,12 +59,10 @@ class IndividualApiMock {
                 flightNumber = "211",
                 flightFrom = "we",
                 flightTo = "sdf",
-                boardingTime = DateTime.now(),
+                boardingDateTime = DateTime.now(),
                 gate = "123",
                 firstPilotName = "Bdfy tyt",
                 secondPilotName = "ddwd wewe",
-                seatsCount = 1234.0,
-                maxSpeedKmh = 123.0
             ),
             PlaneFull(
                 id = "4",
@@ -77,12 +71,10 @@ class IndividualApiMock {
                 flightNumber = "12345",
                 flightFrom = "we",
                 flightTo = "sdf",
-                boardingTime = DateTime.now(),
+                boardingDateTime = DateTime.now(),
                 gate = "123",
                 firstPilotName = "Bdfy tyt",
                 secondPilotName = "ddwd wewe",
-                seatsCount = 1234.0,
-                maxSpeedKmh = 123.0
             ),
         )
     }
@@ -96,6 +88,10 @@ class IndividualApiMock {
     }
 
     suspend fun deleteAirline(airline: Airline) {
+        delay(1000)
+    }
+
+    suspend fun deletePlane(plane: PlaneFull) {
         delay(1000)
     }
 }

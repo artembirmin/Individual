@@ -83,4 +83,6 @@ dependencies {
     def preference_version = "1.2.0"
     // Kotlin
     implementation "androidx.preference:preference-ktx:$preference_version"
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
 }

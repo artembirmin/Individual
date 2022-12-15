@@ -60,7 +60,7 @@ class PlanesAdapter(
                 DialogUtils.showMessageByAlertDialog(
                     itemView.context,
                     title = "Дополнительная информация",
-                    message = "Время вылета: ${plane.boardingTime.toReadableDateTime()}" +
+                    message = "Время вылета: ${plane.boardingDateTime.toReadableDateTime()}" +
                             "\n Откуда: ${plane.flightFrom}" +
                             "\n Куда: ${plane.flightTo}"
                 )

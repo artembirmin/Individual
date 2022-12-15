@@ -12,7 +12,7 @@ interface PlaneDao {
     fun getPlanes(airlineId: String): Flow<List<PlaneShort>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = (:id)")
-    suspend fun getPlaneById(id: String): PlaneFull
+    suspend fun getById(id: String): PlaneFull
 
     @Update
     suspend fun update(planeFull: PlaneFull)

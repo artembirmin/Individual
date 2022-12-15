@@ -24,12 +24,10 @@ data class PlaneFull(
     val flightNumber: String,
     val flightFrom: String,
     val flightTo: String,
-    val boardingTime: DateTime,
+    val boardingDateTime: DateTime,
     val gate: String,
     val firstPilotName: String,
     val secondPilotName: String,
-    val seatsCount: Double,
-    val maxSpeedKmh: Double
 ) {
     companion object {
         const val TABLE_NAME = "plane"

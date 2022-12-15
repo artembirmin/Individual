@@ -22,12 +22,10 @@ class PlaneJsonDeserializer : JsonDeserializer<PlaneFull> {
             flightNumber = jsonObject["flightNumber"].asString,
             flightFrom = jsonObject["flightFrom"].asString,
             flightTo = jsonObject["flightTo"].asString,
-            boardingTime = jsonObject["boardingTime"].asDouble.fromServerTimestamp(),
+            boardingDateTime = jsonObject["boardingDateTime"].asDouble.fromServerTimestamp(),
             gate = jsonObject["gate"].asString,
             firstPilotName = jsonObject["gate"].asString,
             secondPilotName = jsonObject["pilotName"].asString,
-            seatsCount = jsonObject["seatsCount"].asDouble,
-            maxSpeedKmh = jsonObject["maxSpeedKmh"].asDouble
         )
     }
 }

@@ -9,5 +9,5 @@ data class PlaneShort(
     val flightNumber: String,
     val flightFrom: String,
     val flightTo: String,
-    val boardingTime: DateTime,
+    val boardingDateTime: DateTime,
 )
