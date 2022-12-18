@@ -4,4 +4,4 @@ import com.example.individual.common.InitParams
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class AirlineCreateEditFragmentInitParams(val id: String?) : InitParams
+data class AirlineCreateEditFragmentInitParams(val id: Long?) : InitParams

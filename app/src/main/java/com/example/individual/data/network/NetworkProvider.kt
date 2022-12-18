@@ -1,7 +1,6 @@
 package com.example.individual.data.network
 
 import android.content.Context
-import com.example.individual.model.PlaneFull
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +12,6 @@ class NetworkProvider(context: Context) {
 
     private val gson =
         GsonBuilder()
-            .registerTypeAdapter(PlaneFull::class.java, PlaneJsonDeserializer())
             .create()
 
     private val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
@@ -37,7 +35,7 @@ class NetworkProvider(context: Context) {
     val individualApiMock = IndividualApiMock()
 
     companion object {
-        private val BASE_URL = "http://gorozhanin.space/api/"
+        private val BASE_URL = "http://algor.pythonanywhere.com/api/"
         private var INSTANCE: NetworkProvider? = null
         fun init(context: Context) {
             if (INSTANCE == null) {

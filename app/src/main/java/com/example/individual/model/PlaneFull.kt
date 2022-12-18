@@ -3,8 +3,8 @@ package com.example.individual.model
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.example.individual.utils.toServerTimestamp
 import org.joda.time.DateTime
-import java.util.*
 
 @Entity(
     tableName = PlaneFull.TABLE_NAME,
@@ -18,8 +18,8 @@ import java.util.*
     )]
 )
 data class PlaneFull(
-    @PrimaryKey val id: String = UUID.randomUUID().toString(),
-    val airlineId: String,
+    @PrimaryKey val id: Long,
+    val airlineId: Long,
     val onboardNumber: String,
     val flightNumber: String,
     val flightFrom: String,
@@ -32,4 +32,18 @@ data class PlaneFull(
     companion object {
         const val TABLE_NAME = "plane"
     }
+
+    fun toServerModel(): PlaneServerModel =
+        PlaneServerModel(
+            id,
+            airlineId,
+            onboardNumber,
+            flightNumber,
+            flightFrom,
+            flightTo,
+            boardingDateTime.toServerTimestamp(),
+            gate,
+            firstPilotName,
+            secondPilotName
+        )
 }

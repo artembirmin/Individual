@@ -61,8 +61,8 @@ class PlanesAdapter(
                     itemView.context,
                     title = "Дополнительная информация",
                     message = "Время вылета: ${plane.boardingDateTime.toReadableDateTime()}" +
-                            "\n Откуда: ${plane.flightFrom}" +
-                            "\n Куда: ${plane.flightTo}"
+                            "\nОткуда: ${plane.flightFrom}" +
+                            "\nКуда: ${plane.flightTo}"
                 )
             }
 

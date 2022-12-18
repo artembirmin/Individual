@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PlaneListFragmentInitParams(
-    val airlineId: String,
+    val airlineId: Long,
     val airlineName: String
 ) : InitParams

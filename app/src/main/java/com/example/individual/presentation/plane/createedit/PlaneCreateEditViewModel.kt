@@ -12,24 +12,23 @@ class PlaneCreateEditViewModel : ViewModel() {
     val planeLiveData = MutableLiveData<PlaneFull?>()
     private val planeRepository = PlaneRepository.getInstance()
 
-    fun getPlane(id: String) {
+    fun getPlane(id: Long) {
         viewModelScope.launch(defaultErrorHandler) {
             planeLiveData.postValue(planeRepository.getPlaneById(id))
         }
     }
 
     fun savePlane(newPlane: PlaneFull) {
-        val plane = planeLiveData.value?.let {
-            newPlane.copy(id = it.id)
-        } ?: newPlane
-        viewModelScope.launch {
-            planeRepository.add(plane)
+        viewModelScope.launch(defaultErrorHandler) {
+            planeLiveData.value?.let {
+                planeRepository.update(newPlane.copy(id = it.id))
+            } ?: planeRepository.add(newPlane)
         }
     }
 
     fun deletePlane() {
         planeLiveData.value?.let { plane ->
-            viewModelScope.launch {
+            viewModelScope.launch(defaultErrorHandler) {
                 planeRepository.delete(plane)
             }
         }

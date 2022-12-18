@@ -1,41 +1,42 @@
 package com.example.individual.data.repository
 
 import com.example.individual.data.database.DatabaseProvider
-import com.example.individual.data.network.IndividualApiMock
+import com.example.individual.data.network.NetworkProvider
 import com.example.individual.model.PlaneFull
 import com.example.individual.model.PlaneShort
 import kotlinx.coroutines.flow.Flow
 
 class PlaneRepository {
 
-    private val individualApi = IndividualApiMock()
+    private val individualApi = NetworkProvider.get().individualApi
     private val planeDao = DatabaseProvider.get().getPlaneDao()
 
-    fun observePlanes(airlineId: String): Flow<List<PlaneShort>> {
+    fun observePlanes(airlineId: Long): Flow<List<PlaneShort>> {
         return planeDao.getPlanes(airlineId)
     }
 
     suspend fun refreshPlanes() {
-        val airlines = individualApi.getPlanes()
+        val airlines = individualApi.getPlanes().map { it.toPlaneFull() }
         planeDao.insertAll(airlines)
     }
 
-    suspend fun add(airline: PlaneFull) {
-        val airlineFromServer = individualApi.addPlane(airline)
+    suspend fun add(plane: PlaneFull) {
+        val airlineFromServer = individualApi.addPlane(plane.toServerModel()).toPlaneFull()
         planeDao.insert(airlineFromServer)
     }
 
-    suspend fun update(airline: PlaneFull) {
-        val airlineFromServer = individualApi.updatePlane(airline)
+    suspend fun update(plane: PlaneFull) {
+        val airlineFromServer =
+            individualApi.updatePlane(plane.id, plane.toServerModel()).toPlaneFull()
         planeDao.insert(airlineFromServer)
     }
 
     suspend fun delete(plane: PlaneFull) {
-        individualApi.deletePlane(plane)
+        individualApi.deletePlane(plane.id)
         planeDao.delete(plane)
     }
 
-    suspend fun getPlaneById(id: String): PlaneFull {
+    suspend fun getPlaneById(id: Long): PlaneFull {
         return planeDao.getById(id)
     }
 

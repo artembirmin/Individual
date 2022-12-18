@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 interface PlaneDao {
 
     @Query("SELECT * FROM $TABLE_NAME WHERE  airlineId = (:airlineId)")
-    fun getPlanes(airlineId: String): Flow<List<PlaneShort>>
+    fun getPlanes(airlineId: Long): Flow<List<PlaneShort>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = (:id)")
-    suspend fun getById(id: String): PlaneFull
+    suspend fun getById(id: Long): PlaneFull
 
     @Update
     suspend fun update(planeFull: PlaneFull)

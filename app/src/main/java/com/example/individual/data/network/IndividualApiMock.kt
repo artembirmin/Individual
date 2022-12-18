@@ -9,9 +9,9 @@ class IndividualApiMock {
     suspend fun getAirlines(): List<Airline> {
         delay(1000)
         return listOf(
-            Airline("1", "1"),
-            Airline("2", "2"),
-            Airline("3", "3"),
+            Airline("1", 1),
+            Airline("2", 2),
+            Airline("3", 3),
         )
     }
 
@@ -29,8 +29,8 @@ class IndividualApiMock {
         delay(1000)
         return listOf(
             PlaneFull(
-                id = "1",
-                airlineId = "1",
+                id = 1,
+                airlineId = 1,
                 onboardNumber = "2",
                 flightNumber = "322",
                 flightFrom = "we",
@@ -41,8 +41,8 @@ class IndividualApiMock {
                 secondPilotName = "ddwd wewe",
             ),
             PlaneFull(
-                id = "2",
-                airlineId = "1",
+                id = 2,
+                airlineId = 1,
                 onboardNumber = "3",
                 flightNumber = "133",
                 flightFrom = "we",
@@ -53,8 +53,8 @@ class IndividualApiMock {
                 secondPilotName = "ddwd wewe",
             ),
             PlaneFull(
-                id = "3",
-                airlineId = "1",
+                id = 3,
+                airlineId = 1,
                 onboardNumber = "1",
                 flightNumber = "211",
                 flightFrom = "we",
@@ -65,8 +65,8 @@ class IndividualApiMock {
                 secondPilotName = "ddwd wewe",
             ),
             PlaneFull(
-                id = "4",
-                airlineId = "2",
+                id = 4,
+                airlineId = 2,
                 onboardNumber = "2221",
                 flightNumber = "12345",
                 flightFrom = "we",

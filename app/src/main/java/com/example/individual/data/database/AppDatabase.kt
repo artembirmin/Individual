@@ -12,7 +12,7 @@ import com.example.individual.model.PlaneFull
         Airline::class,
         PlaneFull::class,
     ],
-    version = 3
+    version = 4
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

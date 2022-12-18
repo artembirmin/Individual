@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.individual.data.repository.AirlineRepository
 import com.example.individual.model.Airline
+import com.example.individual.utils.defaultErrorHandler
 import kotlinx.coroutines.launch
 
 class AirlineListViewModel : ViewModel() {
@@ -12,11 +13,11 @@ class AirlineListViewModel : ViewModel() {
     private val airlineRepository = AirlineRepository.getInstance()
 
     fun getAirlines() {
-        viewModelScope.launch {
+        viewModelScope.launch(defaultErrorHandler) {
             airlineRepository.observeAirlines().collect {
                 airlinesLiveData.postValue(it)
             }
         }
-        viewModelScope.launch { airlineRepository.refreshAirlines() }
+        viewModelScope.launch(defaultErrorHandler) { airlineRepository.refreshAirlines() }
     }
 }

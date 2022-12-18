@@ -69,6 +69,7 @@ class PlaneCreateEditFragment : BaseFragment() {
 
 
             val plane = PlaneFull(
+                id = 0,
                 airlineId = initParams.airlineId,
                 onboardNumber = etBoardNumber.text.toString(),
                 flightNumber = etFlightNumber.text.toString(),

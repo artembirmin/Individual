@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), Navigator {
         )
     }
 
-    override fun navigateToPlaneCreateEdit(airlineId: String, planeId: String?) {
+    override fun navigateToPlaneCreateEdit(airlineId: Long, planeId: Long?) {
         addFragment(
             PlaneCreateEditFragment.newInstance(
                 PlaneCreateEditFragmentInitParams(
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity(), Navigator {
         )
     }
 
-    override fun navigateToAirlineCreateEdit(id: String?) {
+    override fun navigateToAirlineCreateEdit(id: Long?) {
         addFragment(AirlineCreateEditFragment.newInstance(AirlineCreateEditFragmentInitParams(id)))
     }
 

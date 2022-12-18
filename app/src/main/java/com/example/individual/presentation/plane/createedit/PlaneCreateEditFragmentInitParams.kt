@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PlaneCreateEditFragmentInitParams(
-    val airlineId: String,
-    val id: String? = null
+    val airlineId: Long,
+    val id: Long? = null
 ) : InitParams

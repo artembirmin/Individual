@@ -12,22 +12,22 @@ class AirlineCreateEditViewModel : ViewModel() {
     val airlineLiveData = MutableLiveData<Airline?>()
     private val airlineRepository = AirlineRepository.getInstance()
 
-    fun getAirline(id: String) {
+    fun getAirline(id: Long) {
         viewModelScope.launch(defaultErrorHandler) {
             airlineLiveData.postValue(airlineRepository.getAirlineById(id))
         }
     }
 
     fun saveAirline(name: String) {
-        val airline = airlineLiveData.value?.copy(name = name) ?: Airline(name = name)
-        viewModelScope.launch {
-            airlineRepository.add(airline)
+        viewModelScope.launch(defaultErrorHandler) {
+            airlineLiveData.value?.let { airlineRepository.update(Airline(id = 0, name = name)) }
+                ?: airlineRepository.add(Airline(id = 0, name = name))
         }
     }
 
     fun deleteAirline() {
         airlineLiveData.value?.let { airline ->
-            viewModelScope.launch {
+            viewModelScope.launch(defaultErrorHandler) {
                 airlineRepository.delete(airline)
             }
         }

@@ -11,7 +11,7 @@ interface AirlineDao {
     fun getAirlines(): Flow<List<Airline>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = (:id)")
-    suspend fun getAirlineById(id: String): Airline
+    suspend fun getAirlineById(id: Long): Airline
 
     @Update
     suspend fun updateAirline(airline: Airline)
