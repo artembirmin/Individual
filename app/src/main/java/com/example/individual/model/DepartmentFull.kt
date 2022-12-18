@@ -7,19 +7,19 @@ import com.example.individual.utils.toServerTimestamp
 import org.joda.time.DateTime
 
 @Entity(
-    tableName = PlaneFull.TABLE_NAME,
+    tableName = DepartmentFull.TABLE_NAME,
     foreignKeys =
     [ForeignKey(
-        entity = Airline::class,
+        entity = Faculty::class,
         parentColumns = ["id"],
-        childColumns = ["airlineId"],
+        childColumns = ["facultyId"],
         onDelete = ForeignKey.CASCADE,
         onUpdate = ForeignKey.NO_ACTION
     )]
 )
-data class PlaneFull(
+data class DepartmentFull(
     @PrimaryKey val id: Long,
-    val airlineId: Long,
+    val facultyId: Long,
     val onboardNumber: String,
     val flightNumber: String,
     val flightFrom: String,
@@ -30,13 +30,13 @@ data class PlaneFull(
     val secondPilotName: String,
 ) {
     companion object {
-        const val TABLE_NAME = "plane"
+        const val TABLE_NAME = "department"
     }
 
-    fun toServerModel(): PlaneServerModel =
-        PlaneServerModel(
+    fun toServerModel(): DepartmentServerModel =
+        DepartmentServerModel(
             id,
-            airlineId,
+            facultyId,
             onboardNumber,
             flightNumber,
             flightFrom,

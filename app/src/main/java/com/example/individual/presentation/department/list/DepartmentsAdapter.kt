@@ -4,7 +4,7 @@
  * Created by artembirmin on 30/11/2022.
  */
 
-package com.example.individual.presentation.plane.list
+package com.example.individual.presentation.department.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,17 +12,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.individual.R
-import com.example.individual.model.PlaneShort
+import com.example.individual.model.DepartmentShort
 import com.example.individual.utils.DialogUtils
 import com.example.individual.utils.toReadableDateTime
 
-class PlanesAdapter(
-    private val onFullInfoClick: (PlaneShort) -> Unit,
-    private val onBoardNumberClick: (PlaneShort) -> Unit,
-    private val onFlightNumberClick: (PlaneShort) -> Unit,
-) : RecyclerView.Adapter<PlanesAdapter.ViewHolder>() {
+class DepartmentsAdapter(
+    private val onFullInfoClick: (DepartmentShort) -> Unit,
+    private val onBoardNumberClick: (DepartmentShort) -> Unit,
+    private val onFlightNumberClick: (DepartmentShort) -> Unit,
+) : RecyclerView.Adapter<DepartmentsAdapter.ViewHolder>() {
 
-    var items: List<PlaneShort> = emptyList()
+    var items: List<DepartmentShort> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -31,7 +31,7 @@ class PlanesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val contactView = inflater.inflate(R.layout.item_plane, parent, false)
+        val contactView = inflater.inflate(R.layout.item_department, parent, false)
         return ViewHolder(contactView)
     }
 
@@ -52,29 +52,29 @@ class PlanesAdapter(
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
         private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
 
-        fun bind(plane: PlaneShort) {
-            tvOnboardNumber.text = plane.onboardNumber
-            tvFlightNumber.text = plane.flightNumber
+        fun bind(department: DepartmentShort) {
+            tvOnboardNumber.text = department.onboardNumber
+            tvFlightNumber.text = department.flightNumber
 
             tvAdditionalInfo.setOnClickListener {
                 DialogUtils.showMessageByAlertDialog(
                     itemView.context,
                     title = "Дополнительная информация",
-                    message = "Время вылета: ${plane.boardingDateTime.toReadableDateTime()}" +
-                            "\nОткуда: ${plane.flightFrom}" +
-                            "\nКуда: ${plane.flightTo}"
+                    message = "Время вылета: ${department.boardingDateTime.toReadableDateTime()}" +
+                            "\nОткуда: ${department.flightFrom}" +
+                            "\nКуда: ${department.flightTo}"
                 )
             }
 
             tvOnboardNumberTitle.setOnLongClickListener {
-                onBoardNumberClick(plane)
+                onBoardNumberClick(department)
                 true
             }
             tvFlightNumberTitle.setOnLongClickListener {
-                onFlightNumberClick(plane)
+                onFlightNumberClick(department)
                 true
             }
-            tvFullInfo.setOnClickListener { onFullInfoClick(plane) }
+            tvFullInfo.setOnClickListener { onFullInfoClick(department) }
         }
     }
 }

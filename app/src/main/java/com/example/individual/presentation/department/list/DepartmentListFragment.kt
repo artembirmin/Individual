@@ -1,4 +1,4 @@
-package com.example.individual.presentation.plane.list
+package com.example.individual.presentation.department.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,20 +9,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.individual.R
 import com.example.individual.common.getInitParams
 import com.example.individual.common.provideInitParams
-import com.example.individual.databinding.FragmentPlanesListBinding
-import com.example.individual.model.PlaneShort
+import com.example.individual.databinding.FragmentDepartmentsListBinding
+import com.example.individual.model.DepartmentShort
 import com.example.individual.presentation.BaseFragment
 
-class PlaneListFragment : BaseFragment() {
-    private lateinit var binding: FragmentPlanesListBinding
-    private lateinit var viewModel: PlaneListViewModel
+class DepartmentListFragment : BaseFragment() {
+    private lateinit var binding: FragmentDepartmentsListBinding
+    private lateinit var viewModel: DepartmentListViewModel
 
     private val adapter by lazy {
-        PlanesAdapter(
-            onFullInfoClick = { planeShort ->
-                navigator?.navigateToPlaneCreateEdit(
-                    planeShort.airlineId,
-                    planeShort.id
+        DepartmentsAdapter(
+            onFullInfoClick = { departmentShort ->
+                navigator?.navigateToDepartmentCreateEdit(
+                    departmentShort.facultyId,
+                    departmentShort.id
                 )
             },
             onBoardNumberClick = {
@@ -43,7 +43,7 @@ class PlaneListFragment : BaseFragment() {
         adapter.items = adapter.items.sortedBy { it.flightNumber }
     }
 
-    private val initParams: PlaneListFragmentInitParams by lazy { getInitParams() }
+    private val initParams: DepartmentListFragmentInitParams by lazy { getInitParams() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,33 +51,33 @@ class PlaneListFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_planes_list, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_departments_list, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvPlanes.adapter = adapter
+        binding.rvDepartments.adapter = adapter
         binding.toolbar.setNavigationOnClickListener { super.closeFragment() }
-        binding.tvTitle.text = initParams.airlineName
+        binding.tvTitle.text = initParams.facultyName
         binding.btnAdd.setOnClickListener {
-            navigator?.navigateToPlaneCreateEdit(initParams.airlineId)
+            navigator?.navigateToDepartmentCreateEdit(initParams.facultyId)
         }
 
-        viewModel = ViewModelProvider(this).get(PlaneListViewModel::class.java)
-        viewModel.getPlanes(initParams.airlineId)
-        viewModel.planesLiveData.observe(viewLifecycleOwner) {
+        viewModel = ViewModelProvider(this).get(DepartmentListViewModel::class.java)
+        viewModel.getDepartments(initParams.facultyId)
+        viewModel.departmentsLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
     }
 
-    private fun updateUI(planeFulls: List<PlaneShort>) {
-        adapter.items = planeFulls.sortedByDescending { it.boardingDateTime }
+    private fun updateUI(departmentFulls: List<DepartmentShort>) {
+        adapter.items = departmentFulls.sortedByDescending { it.boardingDateTime }
     }
 
     companion object {
-        fun newInstance(planeListFragmentInitParams: PlaneListFragmentInitParams): PlaneListFragment =
-            PlaneListFragment().provideInitParams(planeListFragmentInitParams) as PlaneListFragment
+        fun newInstance(departmentListFragmentInitParams: DepartmentListFragmentInitParams): DepartmentListFragment =
+            DepartmentListFragment().provideInitParams(departmentListFragmentInitParams) as DepartmentListFragment
     }
 }

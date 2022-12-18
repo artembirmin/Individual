@@ -1,36 +1,36 @@
 package com.example.individual.data.network
 
-import com.example.individual.model.Airline
-import com.example.individual.model.PlaneFull
+import com.example.individual.model.DepartmentFull
+import com.example.individual.model.Faculty
 import kotlinx.coroutines.delay
 import org.joda.time.DateTime
 
 class IndividualApiMock {
-    suspend fun getAirlines(): List<Airline> {
+    suspend fun getFaculties(): List<Faculty> {
         delay(1000)
         return listOf(
-            Airline("1", 1),
-            Airline("2", 2),
-            Airline("3", 3),
+            Faculty("1", 1),
+            Faculty("2", 2),
+            Faculty("3", 3),
         )
     }
 
-    suspend fun addAirline(airline: Airline): Airline {
+    suspend fun addFaculty(faculty: Faculty): Faculty {
         delay(1000)
-        return airline
+        return faculty
     }
 
-    suspend fun updateAirline(airline: Airline): Airline {
+    suspend fun updateFaculty(faculty: Faculty): Faculty {
         delay(1000)
-        return airline
+        return faculty
     }
 
-    suspend fun getPlanes(): List<PlaneFull> {
+    suspend fun getDepartments(): List<DepartmentFull> {
         delay(1000)
         return listOf(
-            PlaneFull(
+            DepartmentFull(
                 id = 1,
-                airlineId = 1,
+                facultyId = 1,
                 onboardNumber = "2",
                 flightNumber = "322",
                 flightFrom = "we",
@@ -40,9 +40,9 @@ class IndividualApiMock {
                 firstPilotName = "Bdfy tyt",
                 secondPilotName = "ddwd wewe",
             ),
-            PlaneFull(
+            DepartmentFull(
                 id = 2,
-                airlineId = 1,
+                facultyId = 1,
                 onboardNumber = "3",
                 flightNumber = "133",
                 flightFrom = "we",
@@ -52,9 +52,9 @@ class IndividualApiMock {
                 firstPilotName = "Bdfy tyt",
                 secondPilotName = "ddwd wewe",
             ),
-            PlaneFull(
+            DepartmentFull(
                 id = 3,
-                airlineId = 1,
+                facultyId = 1,
                 onboardNumber = "1",
                 flightNumber = "211",
                 flightFrom = "we",
@@ -64,9 +64,9 @@ class IndividualApiMock {
                 firstPilotName = "Bdfy tyt",
                 secondPilotName = "ddwd wewe",
             ),
-            PlaneFull(
+            DepartmentFull(
                 id = 4,
-                airlineId = 2,
+                facultyId = 2,
                 onboardNumber = "2221",
                 flightNumber = "12345",
                 flightFrom = "we",
@@ -79,19 +79,19 @@ class IndividualApiMock {
         )
     }
 
-    fun addPlane(airline: PlaneFull): PlaneFull {
-        return airline
+    fun addDepartment(faculty: DepartmentFull): DepartmentFull {
+        return faculty
     }
 
-    fun updatePlane(airline: PlaneFull): PlaneFull {
-        return airline
+    fun updateDepartment(faculty: DepartmentFull): DepartmentFull {
+        return faculty
     }
 
-    suspend fun deleteAirline(airline: Airline) {
+    suspend fun deleteFaculty(faculty: Faculty) {
         delay(1000)
     }
 
-    suspend fun deletePlane(plane: PlaneFull) {
+    suspend fun deleteDepartment(department: DepartmentFull) {
         delay(1000)
     }
 }

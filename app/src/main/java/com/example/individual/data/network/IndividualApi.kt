@@ -1,34 +1,37 @@
 package com.example.individual.data.network
 
-import com.example.individual.model.Airline
-import com.example.individual.model.PlaneServerModel
+import com.example.individual.model.DepartmentServerModel
+import com.example.individual.model.Faculty
 import retrofit2.Response
 import retrofit2.http.*
 
 
 interface IndividualApi {
 
-    @GET("airlines")
-    suspend fun getAirlines(): List<Airline>
+    @GET("faculties1")
+    suspend fun getFaculties(): List<Faculty>
 
-    @POST("airline")
-    suspend fun addAirline(@Body airline: Airline): Airline
+    @POST("faculty1")
+    suspend fun addFaculty(@Body faculty: Faculty): Faculty
 
-    @PATCH("airlines/{id}")
-    suspend fun updateAirline(@Path("id") id: Long, @Body airline: Airline): Airline
+    @PATCH("faculties1/{id}")
+    suspend fun updateFaculty(@Path("id") id: Long, @Body faculty: Faculty): Faculty
 
-    @DELETE("airlines/{id}")
-    suspend fun deleteAirline(@Path("id") id: Long): Response<Unit>
+    @DELETE("faculties1/{id}")
+    suspend fun deleteFaculty(@Path("id") id: Long): Response<Unit>
 
-    @GET("planes")
-    suspend fun getPlanes(): List<PlaneServerModel>
+    @GET("departments")
+    suspend fun getDepartments(): List<DepartmentServerModel>
 
-    @POST("plane")
-    suspend fun addPlane(@Body plane: PlaneServerModel): PlaneServerModel
+    @POST("department")
+    suspend fun addDepartment(@Body department: DepartmentServerModel): DepartmentServerModel
 
-    @PATCH("planes/{id}")
-    suspend fun updatePlane(@Path("id") id: Long, @Body plane: PlaneServerModel): PlaneServerModel
+    @PATCH("departments/{id}")
+    suspend fun updateDepartment(
+        @Path("id") id: Long,
+        @Body department: DepartmentServerModel
+    ): DepartmentServerModel
 
-    @DELETE("planes/{id}")
-    suspend fun deletePlane(@Path("id") id: Long): Response<Unit>
+    @DELETE("departments/{id}")
+    suspend fun deleteDepartment(@Path("id") id: Long): Response<Unit>
 }

@@ -2,9 +2,9 @@ package com.example.individual.model
 
 import org.joda.time.DateTime
 
-data class PlaneShort(
+data class DepartmentShort(
     val id: Long,
-    val airlineId: Long,
+    val facultyId: Long,
     val onboardNumber: String,
     val flightNumber: String,
     val flightFrom: String,

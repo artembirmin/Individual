@@ -1,4 +1,4 @@
-package com.example.individual.presentation.airline.createedit
+package com.example.individual.presentation.faculty.createedit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,14 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.individual.R
 import com.example.individual.common.getInitParams
 import com.example.individual.common.provideInitParams
-import com.example.individual.databinding.FragmentAirlineCreateEditBinding
-import com.example.individual.model.Airline
+import com.example.individual.databinding.FragmentFacultyCreateEditBinding
+import com.example.individual.model.Faculty
 import com.example.individual.presentation.BaseFragment
 
-class AirlineCreateEditFragment : BaseFragment() {
-    private lateinit var binding: FragmentAirlineCreateEditBinding
-    private lateinit var viewModel: AirlineCreateEditViewModel
-    private val initParams: AirlineCreateEditFragmentInitParams by lazy { getInitParams() }
+class FacultyCreateEditFragment : BaseFragment() {
+    private lateinit var binding: FragmentFacultyCreateEditBinding
+    private lateinit var viewModel: FacultyCreateEditViewModel
+    private val initParams: FacultyCreateEditFragmentInitParams by lazy { getInitParams() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +26,7 @@ class AirlineCreateEditFragment : BaseFragment() {
         binding =
             DataBindingUtil.inflate(
                 inflater,
-                R.layout.fragment_airline_create_edit,
+                R.layout.fragment_faculty_create_edit,
                 container,
                 false
             )
@@ -44,31 +44,31 @@ class AirlineCreateEditFragment : BaseFragment() {
                 showMessageByToast("Введите название")
                 return@setOnClickListener
             }
-            viewModel.saveAirline(name = name)
+            viewModel.saveFaculty(name = name)
             closeFragment()
         }
         binding.btnDelete.setOnClickListener {
-            viewModel.deleteAirline()
+            viewModel.deleteFaculty()
             closeFragment()
         }
 
-        viewModel = ViewModelProvider(this).get(AirlineCreateEditViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FacultyCreateEditViewModel::class.java)
         initParams.id?.let {
-            viewModel.getAirline(it)
+            viewModel.getFaculty(it)
         }
-        viewModel.airlineLiveData.observe(viewLifecycleOwner) {
+        viewModel.facultyLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
     }
 
-    private fun updateUI(airline: Airline?) {
-        airline?.let {
-            binding.etName.setText(airline.name)
+    private fun updateUI(faculty: Faculty?) {
+        faculty?.let {
+            binding.etName.setText(faculty.name)
         }
     }
 
     companion object {
-        fun newInstance(initParams: AirlineCreateEditFragmentInitParams) =
-            AirlineCreateEditFragment().provideInitParams(initParams) as AirlineCreateEditFragment
+        fun newInstance(initParams: FacultyCreateEditFragmentInitParams) =
+            FacultyCreateEditFragment().provideInitParams(initParams) as FacultyCreateEditFragment
     }
 }

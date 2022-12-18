@@ -3,9 +3,9 @@ package com.example.individual.model
 import androidx.room.PrimaryKey
 import com.example.individual.utils.fromServerTimestamp
 
-data class PlaneServerModel(
+data class DepartmentServerModel(
     @PrimaryKey val id: Long,
-    val airline: Long,
+    val faculty: Long,
     val onboardNumber: String,
     val flightNumber: String,
     val flightFrom: String,
@@ -15,9 +15,9 @@ data class PlaneServerModel(
     val firstPilotName: String,
     val secondPilotName: String,
 ) {
-    fun toPlaneFull(): PlaneFull = PlaneFull(
+    fun toDepartmentFull(): DepartmentFull = DepartmentFull(
         id,
-        airline,
+        faculty,
         onboardNumber,
         flightNumber,
         flightFrom,

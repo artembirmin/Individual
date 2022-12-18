@@ -1,4 +1,4 @@
-package com.example.individual.presentation.plane.createedit
+package com.example.individual.presentation.department.createedit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,16 +9,16 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.individual.R
 import com.example.individual.common.getInitParams
 import com.example.individual.common.provideInitParams
-import com.example.individual.databinding.FragmentPlaneCreateEditBinding
-import com.example.individual.model.PlaneFull
+import com.example.individual.databinding.FragmentDepartmentCreateEditBinding
+import com.example.individual.model.DepartmentFull
 import com.example.individual.presentation.BaseFragment
 import org.joda.time.DateTime
 import kotlin.reflect.full.memberProperties
 
-class PlaneCreateEditFragment : BaseFragment() {
-    private lateinit var binding: FragmentPlaneCreateEditBinding
-    private lateinit var viewModel: PlaneCreateEditViewModel
-    private val initParams: PlaneCreateEditFragmentInitParams by lazy { getInitParams() }
+class DepartmentCreateEditFragment : BaseFragment() {
+    private lateinit var binding: FragmentDepartmentCreateEditBinding
+    private lateinit var viewModel: DepartmentCreateEditViewModel
+    private val initParams: DepartmentCreateEditFragmentInitParams by lazy { getInitParams() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ class PlaneCreateEditFragment : BaseFragment() {
         binding =
             DataBindingUtil.inflate(
                 inflater,
-                R.layout.fragment_plane_create_edit,
+                R.layout.fragment_department_create_edit,
                 container,
                 false
             )
@@ -45,21 +45,21 @@ class PlaneCreateEditFragment : BaseFragment() {
                 onSaveClick()
             }
             btnDelete.setOnClickListener {
-                viewModel.deletePlane()
+                viewModel.deleteDepartment()
                 closeFragment()
             }
 
             btnDelete.setOnClickListener {
-                viewModel.deletePlane()
+                viewModel.deleteDepartment()
                 closeFragment()
             }
         }
 
-        viewModel = ViewModelProvider(this).get(PlaneCreateEditViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DepartmentCreateEditViewModel::class.java)
         initParams.id?.let {
-            viewModel.getPlane(it)
+            viewModel.getDepartment(it)
         }
-        viewModel.planeLiveData.observe(viewLifecycleOwner) {
+        viewModel.departmentLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
     }
@@ -68,9 +68,9 @@ class PlaneCreateEditFragment : BaseFragment() {
         with(binding) {
 
 
-            val plane = PlaneFull(
+            val department = DepartmentFull(
                 id = 0,
-                airlineId = initParams.airlineId,
+                facultyId = initParams.facultyId,
                 onboardNumber = etBoardNumber.text.toString(),
                 flightNumber = etFlightNumber.text.toString(),
                 flightFrom = etFlightFrom.text.toString(),
@@ -86,8 +86,8 @@ class PlaneCreateEditFragment : BaseFragment() {
                 firstPilotName = etFirstPilotName.text.toString(),
                 secondPilotName = etSecondPilotName.text.toString()
             )
-            plane::class.memberProperties.forEach {
-                val value = it.getter.call(plane)
+            department::class.memberProperties.forEach {
+                val value = it.getter.call(department)
                 if (value is String) {
                     if (value.isBlank()) {
                         showMessageByToast("Заполните ${it.name}")
@@ -96,35 +96,35 @@ class PlaneCreateEditFragment : BaseFragment() {
                 }
             }
 
-            viewModel.savePlane(plane)
+            viewModel.saveDepartment(department)
             closeFragment()
         }
     }
 
-    private fun updateUI(plane: PlaneFull?) {
-        plane?.let {
+    private fun updateUI(department: DepartmentFull?) {
+        department?.let {
             with(binding) {
-                etBoardNumber.setText(plane.onboardNumber)
-                etFlightNumber.setText(plane.flightNumber)
-                etFlightFrom.setText(plane.flightFrom)
-                etBoardNumber.setText(plane.onboardNumber)
-                etFlightTo.setText(plane.flightTo)
+                etBoardNumber.setText(department.onboardNumber)
+                etFlightNumber.setText(department.flightNumber)
+                etFlightFrom.setText(department.flightFrom)
+                etBoardNumber.setText(department.onboardNumber)
+                etFlightTo.setText(department.flightTo)
                 dpBoardingDate.updateDate(
-                    plane.boardingDateTime.year,
-                    plane.boardingDateTime.monthOfYear - 1,
-                    plane.boardingDateTime.dayOfMonth
+                    department.boardingDateTime.year,
+                    department.boardingDateTime.monthOfYear - 1,
+                    department.boardingDateTime.dayOfMonth
                 )
-                tpBoardingTime.hour = plane.boardingDateTime.hourOfDay
-                tpBoardingTime.minute = plane.boardingDateTime.minuteOfHour
-                etGate.setText(plane.gate)
-                etFirstPilotName.setText(plane.firstPilotName)
-                etSecondPilotName.setText(plane.secondPilotName)
+                tpBoardingTime.hour = department.boardingDateTime.hourOfDay
+                tpBoardingTime.minute = department.boardingDateTime.minuteOfHour
+                etGate.setText(department.gate)
+                etFirstPilotName.setText(department.firstPilotName)
+                etSecondPilotName.setText(department.secondPilotName)
             }
         }
     }
 
     companion object {
-        fun newInstance(initParams: PlaneCreateEditFragmentInitParams) =
-            PlaneCreateEditFragment().provideInitParams(initParams) as PlaneCreateEditFragment
+        fun newInstance(initParams: DepartmentCreateEditFragmentInitParams) =
+            DepartmentCreateEditFragment().provideInitParams(initParams) as DepartmentCreateEditFragment
     }
 }

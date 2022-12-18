@@ -16,9 +16,9 @@ class DatabaseProvider(context: Context) {
             .build()
     }
 
-    fun getAirlineDao(): AirlineDao = database.airlineDao()
+    fun getFacultyDao(): FacultyDao = database.facultyDao()
 
-    fun getPlaneDao(): PlaneDao = database.planeDao()
+    fun getDepartmentDao(): DepartmentDao = database.departmentDao()
 
     companion object {
         private var INSTANCE: DatabaseProvider? = null
