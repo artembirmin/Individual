@@ -41,8 +41,6 @@ class DepartmentsAdapter(
         private val tvNameTitle =
             itemView.findViewById<TextView>(R.id.tvNameTitle)
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
-        private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
-        private val tvEmployees = itemView.findViewById<TextView>(R.id.tvEmployees)
 
         fun bind(department: Department) {
             tvName.text = department.name
@@ -59,8 +57,11 @@ class DepartmentsAdapter(
                 onNameClick(department)
                 true
             }
-            tvFullInfo.setOnClickListener { onFullInfoClick(department) }
-            tvEmployees.setOnClickListener { onEmployeesClick(department) }
+            itemView.setOnLongClickListener {
+                onFullInfoClick(department)
+                true
+            }
+            itemView.setOnClickListener { onEmployeesClick(department) }
         }
     }
 }
