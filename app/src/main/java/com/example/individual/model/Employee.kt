@@ -37,7 +37,7 @@ data class Employee(
         get() = Years.yearsBetween(dateOfEmployment, DateTime.now()).years
 
     fun getShortFullName(): String {
-        return "$lastName. + ${firstName.first()}. + ${middleName.first()}"
+        return "$lastName ${firstName.first()}.${middleName.first()}."
     }
 
     fun toEmployeeServerModel(): EmployeeServerModel =

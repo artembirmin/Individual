@@ -7,7 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#F2F2F6</color>
-    <color name="main">#393939</color>
-    <color name="red">#D32F2F</color>
+    <color name="background_items">#B3E5FC</color>
+    <color name="background_screen">#BBDEFB</color>
+    <color name="background_toolbar">#90CAF9</color>
+    <color name="btn_main">#1976D2</color>
+    <color name="btn_delete">#D32F2F</color>
 </resources>

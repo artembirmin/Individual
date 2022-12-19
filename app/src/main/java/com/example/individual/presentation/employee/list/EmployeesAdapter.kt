@@ -42,7 +42,13 @@ class EmployeesAdapter(
         fun bind(employee: Employee) {
             val resources = itemView.resources
             tvName.text = employee.getShortFullName()
-            tvBio.text = employee.bio
+            val bio = employee.bio
+            if (bio == null || bio.isBlank()) {
+                tvBio.visibility = View.GONE
+            } else {
+                tvBio.visibility = View.VISIBLE
+                tvBio.text = bio
+            }
             tvPost.text = resources.getString(R.string.employee_post, employee.post)
             tvExperience.text =
                 resources.getString(R.string.employee_experience, employee.experienceInYears)
