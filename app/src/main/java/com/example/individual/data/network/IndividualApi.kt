@@ -1,53 +1,53 @@
 package com.example.individual.data.network
 
-import com.example.individual.model.Department
-import com.example.individual.model.EmployeeServerModel
 import com.example.individual.model.Faculty
+import com.example.individual.model.Group
+import com.example.individual.model.Student
 import retrofit2.Response
 import retrofit2.http.*
 
 
 interface IndividualApi {
 
-    @GET("faculties1")
+    @GET("faculties2")
     suspend fun getFaculties(): List<Faculty>
 
-    @POST("faculty1")
+    @POST("faculty2")
     suspend fun addFaculty(@Body faculty: Faculty): Faculty
 
-    @PATCH("faculties1/{id}")
+    @PATCH("faculties2/{id}")
     suspend fun updateFaculty(@Path("id") id: Long, @Body faculty: Faculty): Faculty
 
-    @DELETE("faculties1/{id}")
+    @DELETE("faculties2/{id}")
     suspend fun deleteFaculty(@Path("id") id: Long): Response<Unit>
 
-    @GET("departments")
-    suspend fun getDepartments(): List<Department>
+    @GET("groups")
+    suspend fun getGroups(): List<Group>
 
-    @POST("department")
-    suspend fun addDepartment(@Body department: Department): Department
+    @POST("group")
+    suspend fun addGroup(@Body group: Group): Group
 
-    @PATCH("departments/{id}")
-    suspend fun updateDepartment(
+    @PATCH("groups/{id}")
+    suspend fun updateGroup(
         @Path("id") id: Long,
-        @Body department: Department
-    ): Department
+        @Body group: Group
+    ): Group
 
-    @DELETE("departments/{id}")
-    suspend fun deleteDepartment(@Path("id") id: Long): Response<Unit>
+    @DELETE("groups/{id}")
+    suspend fun deleteGroup(@Path("id") id: Long): Response<Unit>
 
-    @GET("employees")
-    suspend fun getEmployees(): List<EmployeeServerModel>
+    @GET("students")
+    suspend fun getStudents(): List<Student>
 
-    @POST("employee")
-    suspend fun addEmployee(@Body employee: EmployeeServerModel): EmployeeServerModel
+    @POST("student")
+    suspend fun addStudent(@Body student: Student): Student
 
-    @PATCH("employees/{id}")
-    suspend fun updateEmployee(
+    @PATCH("students/{id}")
+    suspend fun updateStudent(
         @Path("id") id: Long,
-        @Body employee: EmployeeServerModel
-    ): EmployeeServerModel
+        @Body student: Student
+    ): Student
 
-    @DELETE("employees/{id}")
-    suspend fun deleteEmployee(@Path("id") id: Long): Response<Unit>
+    @DELETE("students/{id}")
+    suspend fun deleteStudent(@Path("id") id: Long): Response<Unit>
 }

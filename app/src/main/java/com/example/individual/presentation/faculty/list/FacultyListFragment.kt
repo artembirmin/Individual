@@ -18,7 +18,7 @@ class FacultyListFragment : BaseFragment() {
     private val adapter by lazy {
         FacultiesAdapter(
             onFacultyClick = { faculty ->
-                navigator?.navigateToDepartments(faculty)
+                navigator?.navigateToGroups(faculty)
             },
             onFacultyLongClick = { faculty ->
                 navigator?.navigateToFacultyCreateEdit(faculty.id)

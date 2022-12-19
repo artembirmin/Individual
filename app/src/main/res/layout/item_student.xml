@@ -18,7 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="ФКТиПМ" />
+            tools:text="Победа" />
+
+        <TextView
+            android:id="@+id/tvFormOfEducation"
+            style="@style/BaseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Форма обучения: бюджет"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

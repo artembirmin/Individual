@@ -18,9 +18,9 @@ class DatabaseProvider(context: Context) {
 
     fun getFacultyDao(): FacultyDao = database.facultyDao()
 
-    fun getDepartmentDao(): DepartmentDao = database.departmentDao()
+    fun getGroupDao(): GroupDao = database.groupDao()
 
-    fun getEmployeeDao(): EmployeeDao = database.employeeDao()
+    fun getStudentDao(): StudentDao = database.studentDao()
 
     companion object {
         private var INSTANCE: DatabaseProvider? = null

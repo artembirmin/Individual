@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_screen">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/background_toolbar"
+                app:navigationIcon="@drawable/ic_back_arrow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Группа"
+                    android:textAppearance="@style/ToolbarTitle" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/tvGroupNumberTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="Номер группы"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintBottom_toTopOf="@+id/etGroupNumber"
+            app:layout_constraintStart_toStartOf="@+id/etGroupNumber" />
+
+
+        <EditText
+            android:id="@+id/etGroupNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/tvSpecialsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="Специальность"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintBottom_toTopOf="@+id/etSpecial"
+            app:layout_constraintStart_toStartOf="@+id/etSpecial" />
+
+        <EditText
+            android:id="@+id/etSpecial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/etGroupNumber"
+            tools:layout_editor_absoluteX="45dp" />
+
+        <TextView
+            android:id="@+id/tvSpecialCodeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="Код специальности"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintBottom_toTopOf="@+id/etSpecialCode"
+            app:layout_constraintStart_toStartOf="@+id/etSpecialCode" />
+
+        <EditText
+            android:id="@+id/etSpecialCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/etSpecial" />
+
+        <TextView
+            android:id="@+id/tvProfileTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="Профиль"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintBottom_toTopOf="@+id/etProfile"
+            app:layout_constraintStart_toStartOf="@+id/etProfile" />
+
+        <EditText
+            android:id="@+id/etProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/etSpecialCode" />
+
+        <Button
+            android:id="@+id/btnSave"
+            style="@style/BaseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Сохранить"
+            app:layout_constraintTop_toBottomOf="@+id/etProfile"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            style="@style/BaseButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/btn_delete"
+            android:text="Удалить"
+            app:layout_constraintEnd_toEndOf="@+id/btnSave"
+            app:layout_constraintStart_toStartOf="@+id/btnSave"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

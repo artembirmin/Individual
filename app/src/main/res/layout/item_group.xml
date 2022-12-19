@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1px"
+        android:background="@color/background_items"
+        android:elevation="2dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvNameTitle"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="Номер группы"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvNameTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvNameTitle"
+            tools:text="1234" />
+
+        <TextView
+            android:id="@+id/tvSpecialCodeTitle"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="4dp"
+            android:text="Код"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+        <TextView
+            android:id="@+id/tvSpecialCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvSpecialCodeTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSpecialCodeTitle"
+            tools:text="1234" />
+
+        <TextView
+            android:id="@+id/tvSpecialTitle"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="4dp"
+            android:text="Специальность"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecialCode" />
+
+        <TextView
+            android:id="@+id/tvSpecial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvSpecialTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSpecialTitle"
+            tools:text="1234" />
+
+        <TextView
+            android:id="@+id/tvProfileTitle"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="4dp"
+            android:text="Профиль"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpecial" />
+
+        <TextView
+            android:id="@+id/tvProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvProfileTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvProfileTitle"
+            tools:text="1234" />
+
+        <TextView
+            android:id="@+id/tvStudents"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="4dp"
+            android:text="Студенты"
+            android:textAppearance="@style/BaseText.18"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfile"
+            tools:layout_editor_absoluteX="17dp" />
+
+        <TextView
+            android:id="@+id/tvFullInfo"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            android:text="Полная информация"
+            android:textAppearance="@style/BaseText.18"
+            app:layout_constraintTop_toBottomOf="@+id/tvStudents"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/tvAdditionalInfo"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            android:text="Доп. информация"
+            android:textAppearance="@style/BaseText.18"
+            app:layout_constraintTop_toBottomOf="@+id/tvFullInfo"
+            tools:layout_editor_absoluteX="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

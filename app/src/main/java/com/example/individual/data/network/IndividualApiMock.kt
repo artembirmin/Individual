@@ -1,7 +1,7 @@
 package com.example.individual.data.network
 
-import com.example.individual.model.Department
 import com.example.individual.model.Faculty
+import com.example.individual.model.Group
 import kotlinx.coroutines.delay
 
 class IndividualApiMock {
@@ -20,16 +20,16 @@ class IndividualApiMock {
         return faculty
     }
 
-    suspend fun getDepartments(): List<Department> {
+    suspend fun getGroups(): List<Group> {
         delay(1000)
         return listOf()
     }
 
-    fun addDepartment(faculty: Department): Department {
+    fun addGroup(faculty: Group): Group {
         return faculty
     }
 
-    fun updateDepartment(faculty: Department): Department {
+    fun updateGroup(faculty: Group): Group {
         return faculty
     }
 
@@ -37,7 +37,7 @@ class IndividualApiMock {
         delay(1000)
     }
 
-    suspend fun deleteDepartment(department: Department) {
+    suspend fun deleteGroup(group: Group) {
         delay(1000)
     }
 }

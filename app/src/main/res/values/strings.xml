@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Individual</string>
-    <string name="employee_post">"Должность: %s"</string>
-    <string name="employee_experience">"Стаж: %d лет"</string>
+    <string name="student_budget_form">Форма обучения: бюджет</string>
+    <string name="student_commerce_form">Форма обучения: договор</string>
 </resources>

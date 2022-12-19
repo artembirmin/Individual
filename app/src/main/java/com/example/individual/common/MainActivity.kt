@@ -5,19 +5,19 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.individual.R
-import com.example.individual.model.Department
 import com.example.individual.model.Faculty
-import com.example.individual.presentation.department.createedit.DepartmentCreateEditFragment
-import com.example.individual.presentation.department.createedit.DepartmentCreateEditFragmentInitParams
-import com.example.individual.presentation.department.list.DepartmentListFragment
-import com.example.individual.presentation.department.list.DepartmentListFragmentInitParams
-import com.example.individual.presentation.employee.createedit.EmployeeCreateEditFragment
-import com.example.individual.presentation.employee.createedit.EmployeeCreateEditFragmentInitParams
-import com.example.individual.presentation.employee.list.EmployeeListFragment
-import com.example.individual.presentation.employee.list.EmployeeListFragmentInitParams
+import com.example.individual.model.Group
 import com.example.individual.presentation.faculty.createedit.FacultyCreateEditFragment
 import com.example.individual.presentation.faculty.createedit.FacultyCreateEditFragmentInitParams
 import com.example.individual.presentation.faculty.list.FacultyListFragment
+import com.example.individual.presentation.group.createedit.GroupCreateEditFragment
+import com.example.individual.presentation.group.createedit.GroupCreateEditFragmentInitParams
+import com.example.individual.presentation.group.list.GroupListFragment
+import com.example.individual.presentation.group.list.GroupListFragmentInitParams
+import com.example.individual.presentation.student.createedit.StudentCreateEditFragment
+import com.example.individual.presentation.student.createedit.StudentCreateEditFragmentInitParams
+import com.example.individual.presentation.student.list.StudentListFragment
+import com.example.individual.presentation.student.list.StudentListFragmentInitParams
 
 class MainActivity : AppCompatActivity(), Navigator {
 
@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity(), Navigator {
         }
     }
 
-    override fun navigateToDepartments(faculty: Faculty) {
+    override fun navigateToGroups(faculty: Faculty) {
         addFragment(
-            DepartmentListFragment.newInstance(
-                DepartmentListFragmentInitParams(
+            GroupListFragment.newInstance(
+                GroupListFragmentInitParams(
                     faculty.id,
                     faculty.name
                 )
@@ -70,12 +70,12 @@ class MainActivity : AppCompatActivity(), Navigator {
         )
     }
 
-    override fun navigateToDepartmentCreateEdit(facultyId: Long, departmentId: Long?) {
+    override fun navigateToGroupCreateEdit(facultyId: Long, groupId: Long?) {
         addFragment(
-            DepartmentCreateEditFragment.newInstance(
-                DepartmentCreateEditFragmentInitParams(
+            GroupCreateEditFragment.newInstance(
+                GroupCreateEditFragmentInitParams(
                     facultyId,
-                    departmentId
+                    groupId
                 )
             )
         )
@@ -85,21 +85,21 @@ class MainActivity : AppCompatActivity(), Navigator {
         addFragment(FacultyCreateEditFragment.newInstance(FacultyCreateEditFragmentInitParams(id)))
     }
 
-    override fun navigateToEmployeeCreateEdit(departmentId: Long, id: Long?) {
+    override fun navigateToStudentCreateEdit(groupId: Long, id: Long?) {
         addFragment(
-            EmployeeCreateEditFragment.newInstance(
-                EmployeeCreateEditFragmentInitParams(
-                    departmentId, id
+            StudentCreateEditFragment.newInstance(
+                StudentCreateEditFragmentInitParams(
+                    groupId, id
                 )
             )
         )
     }
 
-    override fun navigateToEmployees(department: Department) {
+    override fun navigateToStudents(group: Group) {
         addFragment(
-            EmployeeListFragment.newInstance(
-                EmployeeListFragmentInitParams(
-                    department.id, department.name
+            StudentListFragment.newInstance(
+                StudentListFragmentInitParams(
+                    group.id, group.numberGroup
                 )
             )
         )
