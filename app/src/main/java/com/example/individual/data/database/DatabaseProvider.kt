@@ -20,6 +20,8 @@ class DatabaseProvider(context: Context) {
 
     fun getDepartmentDao(): DepartmentDao = database.departmentDao()
 
+    fun getEmployeeDao(): EmployeeDao = database.employeeDao()
+
     companion object {
         private var INSTANCE: DatabaseProvider? = null
         fun init(context: Context) {

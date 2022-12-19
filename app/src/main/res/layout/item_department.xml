@@ -12,64 +12,58 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvOnboardNumberTitle"
+            android:id="@+id/tvNameTitle"
             style="@style/ClickableView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Бортовой номер"
+            android:text="Название"
             android:textAppearance="@style/BaseText"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="1234" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvOnboardNumber"
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/BaseText.Big"
-            app:layout_constraintTop_toBottomOf="@+id/tvOnboardNumberTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameTitle"
             tools:text="1234" />
 
-        <TextView
-            android:id="@+id/tvFlightNumberTitle"
-            style="@style/ClickableView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Номер рейса"
-            android:textAppearance="@style/BaseText"
-            app:layout_constraintTop_toBottomOf="@+id/tvOnboardNumber"
-            tools:text="34543" />
-
-        <TextView
-            android:id="@+id/tvFlightNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/BaseText.Big"
-            app:layout_constraintTop_toBottomOf="@+id/tvFlightNumberTitle"
-            tools:text="12345" />
 
         <TextView
 
-            android:id="@+id/tvAdditionalInfo"
-            style="@style/ClickableView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Дополнительно"
-            android:textAppearance="@style/BaseText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFlightNumber" />
-
-        <TextView
             android:id="@+id/tvFullInfo"
             style="@style/ClickableView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Полная информация"
-            android:textAppearance="@style/BaseText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFlightNumber" />
+            android:gravity="center"
+            android:text="Посмотреть полную информацию"
+            android:textAppearance="@style/BaseText.18"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:layout_editor_absoluteX="16dp" />
 
+        <TextView
+            android:id="@+id/tvEmployees"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="Посмотреть список струдников"
+            android:textAppearance="@style/BaseText.18"
+            app:layout_constraintTop_toBottomOf="@+id/tvFullInfo"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/tvAdditionalInfo"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="Посмотреть дополнительную информацию"
+            android:textAppearance="@style/BaseText.18"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmployees"
+            tools:layout_editor_absoluteX="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

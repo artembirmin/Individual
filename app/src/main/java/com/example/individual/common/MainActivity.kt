@@ -5,11 +5,16 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.individual.R
+import com.example.individual.model.Department
 import com.example.individual.model.Faculty
 import com.example.individual.presentation.department.createedit.DepartmentCreateEditFragment
 import com.example.individual.presentation.department.createedit.DepartmentCreateEditFragmentInitParams
 import com.example.individual.presentation.department.list.DepartmentListFragment
 import com.example.individual.presentation.department.list.DepartmentListFragmentInitParams
+import com.example.individual.presentation.employee.createedit.EmployeeCreateEditFragment
+import com.example.individual.presentation.employee.createedit.EmployeeCreateEditFragmentInitParams
+import com.example.individual.presentation.employee.list.EmployeeListFragment
+import com.example.individual.presentation.employee.list.EmployeeListFragmentInitParams
 import com.example.individual.presentation.faculty.createedit.FacultyCreateEditFragment
 import com.example.individual.presentation.faculty.createedit.FacultyCreateEditFragmentInitParams
 import com.example.individual.presentation.faculty.list.FacultyListFragment
@@ -78,6 +83,26 @@ class MainActivity : AppCompatActivity(), Navigator {
 
     override fun navigateToFacultyCreateEdit(id: Long?) {
         addFragment(FacultyCreateEditFragment.newInstance(FacultyCreateEditFragmentInitParams(id)))
+    }
+
+    override fun navigateToEmployeeCreateEdit(departmentId: Long, id: Long?) {
+        addFragment(
+            EmployeeCreateEditFragment.newInstance(
+                EmployeeCreateEditFragmentInitParams(
+                    departmentId, id
+                )
+            )
+        )
+    }
+
+    override fun navigateToEmployees(department: Department) {
+        addFragment(
+            EmployeeListFragment.newInstance(
+                EmployeeListFragmentInitParams(
+                    department.id, department.name
+                )
+            )
+        )
     }
 
     override fun exit(fragment: Fragment) {

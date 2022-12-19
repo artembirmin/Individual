@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Individual</string>
+    <string name="employee_post">"Должность: %s"</string>
+    <string name="employee_experience">"Стаж: %d лет"</string>
 </resources>

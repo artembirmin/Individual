@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.individual.data.repository.DepartmentRepository
-import com.example.individual.model.DepartmentFull
+import com.example.individual.model.Department
 import com.example.individual.utils.defaultErrorHandler
 import kotlinx.coroutines.launch
 
 class DepartmentCreateEditViewModel : ViewModel() {
-    val departmentLiveData = MutableLiveData<DepartmentFull?>()
+    val departmentLiveData = MutableLiveData<Department?>()
     private val departmentRepository = DepartmentRepository.getInstance()
 
     fun getDepartment(id: Long) {
@@ -18,10 +18,15 @@ class DepartmentCreateEditViewModel : ViewModel() {
         }
     }
 
-    fun saveDepartment(newDepartment: DepartmentFull) {
+    fun saveDepartment(newDepartment: Department) {
         viewModelScope.launch(defaultErrorHandler) {
             departmentLiveData.value?.let {
-                departmentRepository.update(newDepartment.copy(id = it.id))
+                departmentRepository.update(
+                    newDepartment.copy(
+                        id = it.id,
+                        employeesCount = it.employeesCount
+                    )
+                )
             } ?: departmentRepository.add(newDepartment)
         }
     }

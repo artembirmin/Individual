@@ -1,9 +1,3 @@
-/*
- * Attendance
- *
- * Created by artembirmin on 30/11/2022.
- */
-
 package com.example.individual.presentation.faculty.list
 
 import android.view.LayoutInflater

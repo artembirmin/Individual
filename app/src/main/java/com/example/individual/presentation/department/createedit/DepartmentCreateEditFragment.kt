@@ -10,10 +10,8 @@ import com.example.individual.R
 import com.example.individual.common.getInitParams
 import com.example.individual.common.provideInitParams
 import com.example.individual.databinding.FragmentDepartmentCreateEditBinding
-import com.example.individual.model.DepartmentFull
+import com.example.individual.model.Department
 import com.example.individual.presentation.BaseFragment
-import org.joda.time.DateTime
-import kotlin.reflect.full.memberProperties
 
 class DepartmentCreateEditFragment : BaseFragment() {
     private lateinit var binding: FragmentDepartmentCreateEditBinding
@@ -39,7 +37,6 @@ class DepartmentCreateEditFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            tpBoardingTime.setIs24HourView(true)
             toolbar.setNavigationOnClickListener { closeFragment() }
             btnSave.setOnClickListener {
                 onSaveClick()
@@ -66,59 +63,28 @@ class DepartmentCreateEditFragment : BaseFragment() {
 
     private fun onSaveClick() {
         with(binding) {
-
-
-            val department = DepartmentFull(
+            etName.clearFocus()
+            val name = etName.text.toString()
+            if (name.isBlank()) {
+                showMessageByToast("Введите название")
+                return
+            }
+            val department = Department(
                 id = 0,
                 facultyId = initParams.facultyId,
-                onboardNumber = etBoardNumber.text.toString(),
-                flightNumber = etFlightNumber.text.toString(),
-                flightFrom = etFlightFrom.text.toString(),
-                flightTo = etFlightTo.text.toString(),
-                boardingDateTime = DateTime(
-                    dpBoardingDate.year,
-                    dpBoardingDate.month + 1,
-                    dpBoardingDate.dayOfMonth,
-                    tpBoardingTime.hour,
-                    tpBoardingTime.minute
-                ),
-                gate = etGate.text.toString(),
-                firstPilotName = etFirstPilotName.text.toString(),
-                secondPilotName = etSecondPilotName.text.toString()
+                name = etName.text.toString(),
+                employeesCount = 0
             )
-            department::class.memberProperties.forEach {
-                val value = it.getter.call(department)
-                if (value is String) {
-                    if (value.isBlank()) {
-                        showMessageByToast("Заполните ${it.name}")
-                        return
-                    }
-                }
-            }
 
             viewModel.saveDepartment(department)
             closeFragment()
         }
     }
 
-    private fun updateUI(department: DepartmentFull?) {
+    private fun updateUI(department: Department?) {
         department?.let {
             with(binding) {
-                etBoardNumber.setText(department.onboardNumber)
-                etFlightNumber.setText(department.flightNumber)
-                etFlightFrom.setText(department.flightFrom)
-                etBoardNumber.setText(department.onboardNumber)
-                etFlightTo.setText(department.flightTo)
-                dpBoardingDate.updateDate(
-                    department.boardingDateTime.year,
-                    department.boardingDateTime.monthOfYear - 1,
-                    department.boardingDateTime.dayOfMonth
-                )
-                tpBoardingTime.hour = department.boardingDateTime.hourOfDay
-                tpBoardingTime.minute = department.boardingDateTime.minuteOfHour
-                etGate.setText(department.gate)
-                etFirstPilotName.setText(department.firstPilotName)
-                etSecondPilotName.setText(department.secondPilotName)
+                etName.setText(department.name)
             }
         }
     }

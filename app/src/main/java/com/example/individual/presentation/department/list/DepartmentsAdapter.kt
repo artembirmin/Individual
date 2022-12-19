@@ -1,9 +1,3 @@
-/*
- * Attendance
- *
- * Created by artembirmin on 30/11/2022.
- */
-
 package com.example.individual.presentation.department.list
 
 import android.view.LayoutInflater
@@ -12,17 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.individual.R
-import com.example.individual.model.DepartmentShort
+import com.example.individual.model.Department
 import com.example.individual.utils.DialogUtils
-import com.example.individual.utils.toReadableDateTime
 
 class DepartmentsAdapter(
-    private val onFullInfoClick: (DepartmentShort) -> Unit,
-    private val onBoardNumberClick: (DepartmentShort) -> Unit,
-    private val onFlightNumberClick: (DepartmentShort) -> Unit,
+    private val onFullInfoClick: (Department) -> Unit,
+    private val onNameClick: (Department) -> Unit,
+    private val onEmployeesClick: (Department) -> Unit,
 ) : RecyclerView.Adapter<DepartmentsAdapter.ViewHolder>() {
 
-    var items: List<DepartmentShort> = emptyList()
+    var items: List<Department> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -44,37 +37,30 @@ class DepartmentsAdapter(
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvOnboardNumber = itemView.findViewById<TextView>(R.id.tvOnboardNumber)
-        private val tvFlightNumber = itemView.findViewById<TextView>(R.id.tvFlightNumber)
-        private val tvOnboardNumberTitle =
-            itemView.findViewById<TextView>(R.id.tvOnboardNumberTitle)
-        private val tvFlightNumberTitle = itemView.findViewById<TextView>(R.id.tvFlightNumberTitle)
+        private val tvName = itemView.findViewById<TextView>(R.id.tvName)
+        private val tvNameTitle =
+            itemView.findViewById<TextView>(R.id.tvNameTitle)
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
         private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
+        private val tvEmployees = itemView.findViewById<TextView>(R.id.tvEmployees)
 
-        fun bind(department: DepartmentShort) {
-            tvOnboardNumber.text = department.onboardNumber
-            tvFlightNumber.text = department.flightNumber
+        fun bind(department: Department) {
+            tvName.text = department.name
 
             tvAdditionalInfo.setOnClickListener {
                 DialogUtils.showMessageByAlertDialog(
                     itemView.context,
                     title = "Дополнительная информация",
-                    message = "Время вылета: ${department.boardingDateTime.toReadableDateTime()}" +
-                            "\nОткуда: ${department.flightFrom}" +
-                            "\nКуда: ${department.flightTo}"
+                    message = "Количество сотрудников: ${department.name}"
                 )
             }
 
-            tvOnboardNumberTitle.setOnLongClickListener {
-                onBoardNumberClick(department)
-                true
-            }
-            tvFlightNumberTitle.setOnLongClickListener {
-                onFlightNumberClick(department)
+            tvNameTitle.setOnLongClickListener {
+                onNameClick(department)
                 true
             }
             tvFullInfo.setOnClickListener { onFullInfoClick(department) }
+            tvEmployees.setOnClickListener { onEmployeesClick(department) }
         }
     }
 }

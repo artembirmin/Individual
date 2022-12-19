@@ -10,12 +10,13 @@ import com.example.individual.R
 import com.example.individual.common.getInitParams
 import com.example.individual.common.provideInitParams
 import com.example.individual.databinding.FragmentDepartmentsListBinding
-import com.example.individual.model.DepartmentShort
+import com.example.individual.model.Department
 import com.example.individual.presentation.BaseFragment
 
 class DepartmentListFragment : BaseFragment() {
     private lateinit var binding: FragmentDepartmentsListBinding
     private lateinit var viewModel: DepartmentListViewModel
+    private var isDescendingSort = false
 
     private val adapter by lazy {
         DepartmentsAdapter(
@@ -25,22 +26,23 @@ class DepartmentListFragment : BaseFragment() {
                     departmentShort.id
                 )
             },
-            onBoardNumberClick = {
-                sortByBoardNumber()
-                showMessageByToast("Сортировка по бортовому номеру")
+            onNameClick = {
+                sortByName()
+                showMessageByToast("Сортировка по названию")
             },
-            onFlightNumberClick = {
-                sortByFlightNumber()
-                showMessageByToast("Сортировка по номеру рейса")
-            })
+            onEmployeesClick = { department ->
+                navigator?.navigateToEmployees(department)
+            }
+        )
     }
 
-    private fun sortByBoardNumber() {
-        adapter.items = adapter.items.sortedBy { it.onboardNumber }
-    }
-
-    private fun sortByFlightNumber() {
-        adapter.items = adapter.items.sortedBy { it.flightNumber }
+    private fun sortByName() {
+        if (isDescendingSort) {
+            adapter.items = adapter.items.sortedByDescending { it.name }
+        } else {
+            adapter.items = adapter.items.sortedBy { it.name }
+        }
+        isDescendingSort = isDescendingSort.not()
     }
 
     private val initParams: DepartmentListFragmentInitParams by lazy { getInitParams() }
@@ -72,8 +74,8 @@ class DepartmentListFragment : BaseFragment() {
         }
     }
 
-    private fun updateUI(departmentFulls: List<DepartmentShort>) {
-        adapter.items = departmentFulls.sortedByDescending { it.boardingDateTime }
+    private fun updateUI(departmentFulls: List<Department>) {
+        adapter.items = departmentFulls.sortedByDescending { it.employeesCount }
     }
 
     companion object {

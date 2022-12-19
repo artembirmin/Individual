@@ -6,6 +6,11 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+
+    <style name="BaseText.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="BaseText.Big">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/black</item>

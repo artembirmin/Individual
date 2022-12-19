@@ -38,14 +38,7 @@ class FacultyCreateEditFragment : BaseFragment() {
 
         binding.toolbar.setNavigationOnClickListener { closeFragment() }
         binding.btnSave.setOnClickListener {
-            binding.etName.clearFocus()
-            val name = binding.etName.text.toString()
-            if (name.isBlank()) {
-                showMessageByToast("Введите название")
-                return@setOnClickListener
-            }
-            viewModel.saveFaculty(name = name)
-            closeFragment()
+            onSaveClick()
         }
         binding.btnDelete.setOnClickListener {
             viewModel.deleteFaculty()
@@ -59,6 +52,17 @@ class FacultyCreateEditFragment : BaseFragment() {
         viewModel.facultyLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
+    }
+
+    private fun onSaveClick() {
+        binding.etName.clearFocus()
+        val name = binding.etName.text.toString()
+        if (name.isBlank()) {
+            showMessageByToast("Введите название")
+            return
+        }
+        viewModel.saveFaculty(name = name)
+        closeFragment()
     }
 
     private fun updateUI(faculty: Faculty?) {

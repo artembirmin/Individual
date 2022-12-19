@@ -1,18 +1,13 @@
 package com.example.individual.data.network
 
-import com.example.individual.model.DepartmentFull
+import com.example.individual.model.Department
 import com.example.individual.model.Faculty
 import kotlinx.coroutines.delay
-import org.joda.time.DateTime
 
 class IndividualApiMock {
     suspend fun getFaculties(): List<Faculty> {
         delay(1000)
-        return listOf(
-            Faculty("1", 1),
-            Faculty("2", 2),
-            Faculty("3", 3),
-        )
+        return listOf()
     }
 
     suspend fun addFaculty(faculty: Faculty): Faculty {
@@ -25,65 +20,16 @@ class IndividualApiMock {
         return faculty
     }
 
-    suspend fun getDepartments(): List<DepartmentFull> {
+    suspend fun getDepartments(): List<Department> {
         delay(1000)
-        return listOf(
-            DepartmentFull(
-                id = 1,
-                facultyId = 1,
-                onboardNumber = "2",
-                flightNumber = "322",
-                flightFrom = "we",
-                flightTo = "sdf",
-                boardingDateTime = DateTime.now(),
-                gate = "123",
-                firstPilotName = "Bdfy tyt",
-                secondPilotName = "ddwd wewe",
-            ),
-            DepartmentFull(
-                id = 2,
-                facultyId = 1,
-                onboardNumber = "3",
-                flightNumber = "133",
-                flightFrom = "we",
-                flightTo = "sdf",
-                boardingDateTime = DateTime.now(),
-                gate = "123",
-                firstPilotName = "Bdfy tyt",
-                secondPilotName = "ddwd wewe",
-            ),
-            DepartmentFull(
-                id = 3,
-                facultyId = 1,
-                onboardNumber = "1",
-                flightNumber = "211",
-                flightFrom = "we",
-                flightTo = "sdf",
-                boardingDateTime = DateTime.now(),
-                gate = "123",
-                firstPilotName = "Bdfy tyt",
-                secondPilotName = "ddwd wewe",
-            ),
-            DepartmentFull(
-                id = 4,
-                facultyId = 2,
-                onboardNumber = "2221",
-                flightNumber = "12345",
-                flightFrom = "we",
-                flightTo = "sdf",
-                boardingDateTime = DateTime.now(),
-                gate = "123",
-                firstPilotName = "Bdfy tyt",
-                secondPilotName = "ddwd wewe",
-            ),
-        )
+        return listOf()
     }
 
-    fun addDepartment(faculty: DepartmentFull): DepartmentFull {
+    fun addDepartment(faculty: Department): Department {
         return faculty
     }
 
-    fun updateDepartment(faculty: DepartmentFull): DepartmentFull {
+    fun updateDepartment(faculty: Department): Department {
         return faculty
     }
 
@@ -91,7 +37,7 @@ class IndividualApiMock {
         delay(1000)
     }
 
-    suspend fun deleteDepartment(department: DepartmentFull) {
+    suspend fun deleteDepartment(department: Department) {
         delay(1000)
     }
 }
