@@ -3,6 +3,7 @@ package com.example.individual.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.individual.utils.fromServerTimestamp
+import com.google.gson.annotations.SerializedName
 
 @Entity(
     tableName = EmployeeServerModel.TABLE_NAME
@@ -10,7 +11,7 @@ import com.example.individual.utils.fromServerTimestamp
 data class EmployeeServerModel(
     @PrimaryKey
     val id: Long,
-    val departmentId: Long,
+    @SerializedName("department") val departmentId: Long,
     val firstName: String,
     val middleName: String,
     val lastName: String,

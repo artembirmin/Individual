@@ -17,7 +17,7 @@ interface DepartmentDao {
     suspend fun update(department: Department)
 
     @Update
-    suspend fun updateAll(ist: List<Department>)
+    suspend fun updateAll(list: List<Department>)
 
     @Delete
     suspend fun delete(department: Department)

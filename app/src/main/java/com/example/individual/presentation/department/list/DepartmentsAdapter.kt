@@ -51,7 +51,7 @@ class DepartmentsAdapter(
                 DialogUtils.showMessageByAlertDialog(
                     itemView.context,
                     title = "Дополнительная информация",
-                    message = "Количество сотрудников: ${department.name}"
+                    message = "Количество сотрудников: ${department.employeesCount}"
                 )
             }
 

@@ -9,6 +9,7 @@ class EmployeeRepository {
 
     private val individualApi = NetworkProvider.get().individualApi
     private val employeeDao = DatabaseProvider.get().getEmployeeDao()
+    private val departmentRepository = DepartmentRepository.getInstance()
 
     fun observeEmployees(employeeId: Long): Flow<List<Employee>> {
         return employeeDao.getAll(employeeId)
@@ -23,6 +24,7 @@ class EmployeeRepository {
         val employee =
             individualApi.addEmployee(newEmployee.toEmployeeServerModel()).toEmployee()
         employeeDao.insert(employee)
+        departmentRepository.updateDepartments()
     }
 
     suspend fun update(updatedEmployee: Employee) {
@@ -38,6 +40,7 @@ class EmployeeRepository {
     suspend fun delete(employee: Employee) {
         individualApi.deleteEmployee(employee.id)
         employeeDao.delete(employee)
+        departmentRepository.updateDepartments()
     }
 
     suspend fun getEmployeeById(id: Long): Employee {

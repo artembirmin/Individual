@@ -19,6 +19,11 @@ class DepartmentRepository {
         departmentDao.insertAll(faculties)
     }
 
+    suspend fun updateDepartments() {
+        val faculties = individualApi.getDepartments().map { it }
+        departmentDao.updateAll(faculties)
+    }
+
     suspend fun add(department: Department) {
         val facultyFromServer =
             individualApi.addDepartment(department)
