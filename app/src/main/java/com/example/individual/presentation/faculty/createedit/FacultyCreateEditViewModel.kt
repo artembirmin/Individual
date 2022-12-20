@@ -20,7 +20,14 @@ class FacultyCreateEditViewModel : ViewModel() {
 
     fun saveFaculty(name: String) {
         viewModelScope.launch(defaultErrorHandler) {
-            facultyLiveData.value?.let { facultyRepository.update(Faculty(id = 0, name = name)) }
+            facultyLiveData.value?.let {
+                facultyRepository.update(
+                    Faculty(
+                        id = it.id,
+                        name = it.name
+                    )
+                )
+            }
                 ?: facultyRepository.add(Faculty(id = 0, name = name))
         }
     }
