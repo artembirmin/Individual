@@ -10,6 +10,6 @@
     <color name="background_items">#B3E5FC</color>
     <color name="background_screen">#BBDEFB</color>
     <color name="background_toolbar">#90CAF9</color>
-    <color name="btn_main">#1976D2</color>
+    <color name="btn_main">#43A047</color>
     <color name="btn_delete">#D32F2F</color>
 </resources>

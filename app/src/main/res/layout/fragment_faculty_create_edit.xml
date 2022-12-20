@@ -36,7 +36,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center"
                     android:layout_marginEnd="12dp"
-                    android:foreground="@null"
                     android:padding="10dp"
                     android:src="@drawable/ic_delete_24" />
 
@@ -47,14 +46,15 @@
             android:id="@+id/tvNameTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
             android:text="Название"
             android:textAppearance="@style/BaseText"
             app:layout_constraintBottom_toTopOf="@+id/etName"
+            app:layout_constraintEnd_toEndOf="@+id/etName"
             app:layout_constraintStart_toStartOf="@+id/etName" />
 
         <EditText
+            android:hint="Введите название факультета"
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,11 +65,12 @@
         <Button
             android:id="@+id/btnSave"
             style="@style/BaseButton"
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="172dp"
+            android:layout_marginTop="24dp"
             android:text="Сохранить"
+            app:layout_constraintEnd_toEndOf="@+id/etName"
+            app:layout_constraintStart_toStartOf="@+id/etName"
             app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
