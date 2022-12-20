@@ -18,10 +18,11 @@ class AirlineCreateEditViewModel : ViewModel() {
         }
     }
 
-    fun saveAirline(name: String) {
+    fun saveAirline(newAirline: Airline) {
         viewModelScope.launch(defaultErrorHandler) {
-            airlineLiveData.value?.let { airlineRepository.update(Airline(id = 0, name = name)) }
-                ?: airlineRepository.add(Airline(id = 0, name = name))
+            airlineLiveData.value?.let { oldAirline ->
+                airlineRepository.update(newAirline.copy(id = oldAirline.id))
+            } ?: airlineRepository.add(newAirline)
         }
     }
 
