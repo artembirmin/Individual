@@ -6,7 +6,6 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-
     <style name="BaseText.18">
         <item name="android:textSize">18sp</item>
     </style>

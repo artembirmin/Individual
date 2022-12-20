@@ -27,20 +27,16 @@ class FacultyCreateEditViewModel : ViewModel() {
         }
     }
 
-    fun saveFaculty(name: String) {
+    fun saveFaculty(newFaculty: Faculty) {
         viewModelScope.launch(defaultErrorHandler) {
             // Т.к. у нас сохранение и изменение на одном экране, то проверяем, есть ли что-то в live data
             // если там не null, значит это было изменение и нужно
             // Аналогично происходит со студентами и группами
-            facultyLiveData.value?.let {
+            facultyLiveData.value?.let { oldFaculty ->
                 facultyRepository.update(
-                    Faculty(
-                        id = it.id,
-                        name = it.name
-                    )
+                    newFaculty.copy(id = oldFaculty.id)
                 )
-            }
-                ?: facultyRepository.add(Faculty(id = 0, name = name))
+            } ?: facultyRepository.add(newFaculty)
         }
     }
 

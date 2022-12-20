@@ -20,8 +20,8 @@ class StudentCreateEditViewModel : ViewModel() {
 
     fun saveStudent(newStudent: Student) {
         viewModelScope.launch(defaultErrorHandler) {
-            studentLiveData.value?.let {
-                studentRepository.update(newStudent.copy(id = it.id))
+            studentLiveData.value?.let { oldStudent ->
+                studentRepository.update(newStudent.copy(id = oldStudent.id))
             } ?: studentRepository.add(newStudent)
         }
     }

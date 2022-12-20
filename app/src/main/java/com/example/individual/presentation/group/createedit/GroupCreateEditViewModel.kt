@@ -20,12 +20,12 @@ class GroupCreateEditViewModel : ViewModel() {
 
     fun saveGroup(newGroup: Group) {
         viewModelScope.launch(defaultErrorHandler) {
-            groupLiveData.value?.let {
+            groupLiveData.value?.let { oldGroup ->
                 groupRepository.update(
                     newGroup.copy(
-                        id = it.id,
-                        budgetStudentsCount = it.budgetStudentsCount,
-                        commerceStudentsCount = it.commerceStudentsCount,
+                        id = oldGroup.id,
+                        budgetStudentsCount = oldGroup.budgetStudentsCount,
+                        commerceStudentsCount = oldGroup.commerceStudentsCount,
                     )
                 )
             } ?: groupRepository.add(newGroup)
