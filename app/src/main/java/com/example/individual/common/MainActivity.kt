@@ -19,13 +19,19 @@ import com.example.individual.presentation.student.createedit.StudentCreateEditF
 import com.example.individual.presentation.student.list.StudentListFragment
 import com.example.individual.presentation.student.list.StudentListFragmentInitParams
 
+/**
+ * https://developer.android.com/reference/android/app/Activity
+ * Используемый подхоид - Single Activity. https://habr.com/ru/company/redmadrobot/blog/426617/
+ */
 class MainActivity : AppCompatActivity(), Navigator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         replaceFragment(FacultyListFragment.newInstance())
 
+        // Поставили лисенер нажатий кнопки Назад
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 finish()

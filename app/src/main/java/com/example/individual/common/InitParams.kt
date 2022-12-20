@@ -31,6 +31,8 @@ inline fun <reified T : InitParams> Fragment.getInitParams(): T {
  */
 fun <T : InitParams> Fragment.provideInitParams(initParams: T?): Fragment {
     return this.apply {
+        // Bundle - по сути Map, которая хранит сериализуемые объекты
+        // https://ru.stackoverflow.com/questions/623829/%D0%9A%D0%BB%D0%B0%D1%81%D1%81-bundle-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD
         arguments = Bundle().apply {
             initParams?.saveToBundle(this)
         }

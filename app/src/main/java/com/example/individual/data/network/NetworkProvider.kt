@@ -1,6 +1,5 @@
 package com.example.individual.data.network
 
-import android.content.Context
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,8 +7,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class NetworkProvider(context: Context) {
+/**
+ * Предоставляет ходилку в сеть. Создает и держит у себя ссылки. Инициализируется в App
+ * https://startandroid.ru/ru/blog/506-retrofit.html
+ */
+class NetworkProvider() {
 
+    // JSON парсить
     private val gson =
         GsonBuilder()
             .create()
@@ -18,9 +22,11 @@ class NetworkProvider(context: Context) {
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
 
+    // Для логов. Интрсептор - перехватчик. Перехватывает запросы и пишет их в логи
     private val loggingInterceptor: HttpLoggingInterceptor =
         HttpLoggingInterceptor(ApiLogger()).apply { level = HttpLoggingInterceptor.Level.BODY }
 
+    // https://square.github.io/okhttp/
     private val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
         .addNetworkInterceptor(loggingInterceptor)
         .connectTimeout(45, TimeUnit.SECONDS)
@@ -32,14 +38,12 @@ class NetworkProvider(context: Context) {
         .build()
         .create(IndividualApi::class.java)
 
-    val individualApiMock = IndividualApiMock()
-
     companion object {
-        private val BASE_URL = "http://algor.pythonanywhere.com/api/"
+        private const val BASE_URL = "http://algor.pythonanywhere.com/api/"
         private var INSTANCE: NetworkProvider? = null
-        fun init(context: Context) {
+        fun init() {
             if (INSTANCE == null) {
-                INSTANCE = NetworkProvider(context)
+                INSTANCE = NetworkProvider()
             }
         }
 

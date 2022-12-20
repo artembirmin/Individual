@@ -15,9 +15,12 @@ class FacultyListFragment : BaseFragment() {
     private lateinit var binding: FragmentFacultiesListBinding
     private lateinit var viewModel: FacultyListViewModel
 
+    // Инстанс адаптера
     private val adapter by lazy {
         FacultiesAdapter(
+            // Передаем листенеры
             onFacultyClick = { faculty ->
+                // Навигируемся на список групп факультета
                 navigator?.navigateToGroups(faculty)
             },
             onFacultyLongClick = { faculty ->

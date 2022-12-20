@@ -3,11 +3,15 @@ package com.example.individual.data.database
 import android.content.Context
 import androidx.room.Room
 
+/**
+ * Предоставляет базу и DAO. Создает и держит у себя ссылки. Инициализируется в App
+ */
 class DatabaseProvider(context: Context) {
 
     private val database: AppDatabase
 
     init {
+        // Инициализация базы
         database = Room.databaseBuilder(
             context.applicationContext,
             AppDatabase::class.java,
@@ -16,6 +20,7 @@ class DatabaseProvider(context: Context) {
             .build()
     }
 
+    // Методы получения DAO
     fun getFacultyDao(): FacultyDao = database.facultyDao()
 
     fun getGroupDao(): GroupDao = database.groupDao()

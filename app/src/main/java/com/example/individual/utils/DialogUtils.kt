@@ -3,6 +3,9 @@ package com.example.individual.utils
 import android.app.AlertDialog
 import android.content.Context
 
+/**
+ * Показывет диалог
+ */
 object DialogUtils {
     fun showMessageByAlertDialog(
         context: Context,

@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName
 data class Student(
     @PrimaryKey
     val id: Long,
+    // При конвертации в Json и обратно, ключем будет имя в скобках
     @SerializedName("group") val groupId: Long,
     val fio: String,
     val isOnBudget: Boolean,

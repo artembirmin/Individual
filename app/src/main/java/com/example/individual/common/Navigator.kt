@@ -4,6 +4,9 @@ import androidx.fragment.app.Fragment
 import com.example.individual.model.Faculty
 import com.example.individual.model.Group
 
+/**
+ * Предоставляет интерфейс навигации по приложению. Реализуется MainActivity
+ */
 interface Navigator {
     fun navigateToGroups(faculty: Faculty)
     fun navigateToGroupCreateEdit(facultyId: Long, groupId: Long? = null)

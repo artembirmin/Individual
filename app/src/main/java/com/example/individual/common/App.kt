@@ -5,6 +5,9 @@ import android.content.Context
 import com.example.individual.data.database.DatabaseProvider
 import com.example.individual.data.network.NetworkProvider
 
+/**
+ * https://developer.android.com/reference/android/app/Application
+ */
 class App : Application() {
 
     init {
@@ -14,7 +17,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         DatabaseProvider.init(this)
-        NetworkProvider.init(this)
+        NetworkProvider.init()
     }
 
     companion object {

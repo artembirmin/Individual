@@ -6,6 +6,9 @@ import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
 import okhttp3.logging.HttpLoggingInterceptor
 
+/**
+ * Пишет красивые логи запросов на бэк. Смотреть в Run или Logcat
+ */
 class ApiLogger : HttpLoggingInterceptor.Logger {
     override fun log(message: String) {
         val logName = "ApiLogger"

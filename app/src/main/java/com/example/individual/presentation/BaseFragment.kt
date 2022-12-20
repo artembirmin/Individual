@@ -7,12 +7,20 @@ import androidx.fragment.app.Fragment
 import com.example.individual.common.Navigator
 import com.example.individual.utils.DialogUtils
 
+/**
+ * Родительский класс фрагмента с небольшими улучшениями.
+ * 1. Инстанс навигатора
+ * 2. Метод закрытия фрагмента
+ * 3. Методы показываия сообщений
+ */
 open class BaseFragment : Fragment() {
     protected open var navigator: Navigator? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         navigator = context as Navigator
+
+        // Листенер нажатия кнопки Назад
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 closeFragment()

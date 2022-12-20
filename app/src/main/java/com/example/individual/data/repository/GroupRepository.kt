@@ -19,6 +19,9 @@ class GroupRepository {
         groupDao.insertAll(groups)
     }
 
+    // Обновляет группы без замены. Используется при добавлении и изменении, т.к. в группах есть вычислимые поля
+    // Нельзя делать insert, т.к. он заменяет через удаление, из-за чего по внешнему ключу удаляются и студенты.
+    // В итоге получаем пустой список
     suspend fun updateGroups() {
         val groups = individualApi.getGroups().map { it }
         groupDao.updateAll(groups)

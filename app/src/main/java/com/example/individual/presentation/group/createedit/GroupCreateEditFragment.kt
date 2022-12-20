@@ -36,6 +36,8 @@ class GroupCreateEditFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(GroupCreateEditViewModel::class.java)
+
         with(binding) {
             toolbar.setNavigationOnClickListener { closeFragment() }
             btnSave.setOnClickListener {
@@ -52,7 +54,6 @@ class GroupCreateEditFragment : BaseFragment() {
             }
         }
 
-        viewModel = ViewModelProvider(this).get(GroupCreateEditViewModel::class.java)
         initParams.id?.let {
             viewModel.getGroup(it)
         }
@@ -87,6 +88,8 @@ class GroupCreateEditFragment : BaseFragment() {
     }
 
     private fun Group.validate(): String? {
+        // Валидирует и возвращает сообщение, если есть ошибка
+        // when - switch
         return when {
             numberGroup.isBlank() -> "Заполните номер группы"
             special.isBlank() -> "Заполните специальность"

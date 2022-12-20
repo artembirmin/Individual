@@ -5,14 +5,21 @@ import com.example.individual.data.network.NetworkProvider
 import com.example.individual.model.Faculty
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Репозиторий для работы с факультетами. Ходит в базу. Ходит на бэк.
+ */
 class FacultyRepository {
     private val individualApi = NetworkProvider.get().individualApi
     private val facultyDao = DatabaseProvider.get().getFacultyDao()
 
+    // Делается подписка на изменения в базе. Ручками каждый раз запрашивать не надо
+    // https://medium.com/androiddevelopers/room-flow-273acffe5b57
     fun observeFaculties(): Flow<List<Faculty>> {
         return facultyDao.getFaculties()
     }
 
+    // suspend - приостанавливаемая функция. Деает возможность асинхронной работы
+    // https://startandroid.ru/ru/courses/kotlin/29-course/kotlin/596-urok-3-korutiny-suspend-function.html
     suspend fun getFacultyById(id: Long): Faculty {
         return facultyDao.getFacultyById(id)
     }

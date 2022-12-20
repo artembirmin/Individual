@@ -13,11 +13,13 @@ class FacultyListViewModel : ViewModel() {
     private val facultyRepository = FacultyRepository.getInstance()
 
     fun getFaculties() {
+        // Подписались на изменения базы
         viewModelScope.launch(defaultErrorHandler) {
             facultyRepository.observeFaculties().collect {
                 facultiesLiveData.postValue(it)
             }
         }
+        // Обновили базу с бэка
         viewModelScope.launch(defaultErrorHandler) { facultyRepository.refreshFaculties() }
     }
 }
