@@ -18,17 +18,13 @@ class FacultyCreateEditViewModel : ViewModel() {
         }
     }
 
-    fun saveFaculty(name: String) {
+    fun saveFaculty(newFaculty: Faculty) {
         viewModelScope.launch(defaultErrorHandler) {
-            facultyLiveData.value?.let {
+            facultyLiveData.value?.let { oldFaculty ->
                 facultyRepository.update(
-                    Faculty(
-                        id = it.id,
-                        name = it.name
-                    )
+                    newFaculty.copy(id = oldFaculty.id)
                 )
-            }
-                ?: facultyRepository.add(Faculty(id = 0, name = name))
+            } ?: facultyRepository.add(newFaculty)
         }
     }
 

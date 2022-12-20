@@ -61,7 +61,7 @@ class FacultyCreateEditFragment : BaseFragment() {
             showMessageByToast("Введите название")
             return
         }
-        viewModel.saveFaculty(name = name)
+        viewModel.saveFaculty(newFaculty = Faculty(name = name, id = 0))
         closeFragment()
     }
 
