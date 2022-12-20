@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F2F2F6</color>
+    <color name="bg_screen">#C1C1C1</color>
+    <color name="bg_toolbar">#A5A5A5</color>
     <color name="main">#393939</color>
     <color name="red">#D32F2F</color>
 </resources>

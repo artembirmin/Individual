@@ -6,6 +6,8 @@
 
 package com.example.individual.presentation.airline.list
 
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +18,8 @@ import com.example.individual.model.Airline
 
 class AirlinesAdapter(
     private val onAirlineClick: (Airline) -> Unit,
-    private val onAirlineLongClick: (Airline) -> Unit
+    private val onEditAirlineClick: (Airline) -> Unit,
+    private val onDeleteAirlineClick: (Airline) -> Unit
 ) : RecyclerView.Adapter<AirlinesAdapter.ViewHolder>() {
 
     var items: List<Airline> = emptyList()
@@ -49,9 +52,30 @@ class AirlinesAdapter(
                 onAirlineClick(airline)
             }
             itemView.setOnLongClickListener {
-                onAirlineLongClick(airline)
+                showDialog(itemView.context, airline)
                 true
             }
+        }
+
+        private fun showDialog(context: Context, airline: Airline) {
+            val items =
+                arrayOf(
+                    "Изменить",
+                    "Удалить"
+                )
+            AlertDialog.Builder(context)
+                .setItems(items) { _, item ->
+                    when (item) {
+                        0 -> {
+                            onEditAirlineClick(airline)
+                        }
+                        1 -> {
+                            onDeleteAirlineClick(airline)
+                        }
+                    }
+                }
+                .create()
+                .show()
         }
     }
 }

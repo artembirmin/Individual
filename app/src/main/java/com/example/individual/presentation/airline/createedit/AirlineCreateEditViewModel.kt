@@ -25,12 +25,4 @@ class AirlineCreateEditViewModel : ViewModel() {
             } ?: airlineRepository.add(newAirline)
         }
     }
-
-    fun deleteAirline() {
-        airlineLiveData.value?.let { airline ->
-            viewModelScope.launch(defaultErrorHandler) {
-                airlineRepository.delete(airline)
-            }
-        }
-    }
 }

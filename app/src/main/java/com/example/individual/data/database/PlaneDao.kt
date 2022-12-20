@@ -23,6 +23,9 @@ interface PlaneDao {
     @Delete
     suspend fun delete(planeFull: PlaneFull)
 
+    @Query("DELETE FROM $TABLE_NAME WHERE  id = (:planeId)")
+    suspend fun deleteById(planeId: Long)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(planeFull: PlaneFull)
 

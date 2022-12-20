@@ -44,15 +44,6 @@ class PlaneCreateEditFragment : BaseFragment() {
             btnSave.setOnClickListener {
                 onSaveClick()
             }
-            btnDelete.setOnClickListener {
-                viewModel.deletePlane()
-                closeFragment()
-            }
-
-            btnDelete.setOnClickListener {
-                viewModel.deletePlane()
-                closeFragment()
-            }
         }
 
         viewModel = ViewModelProvider(this).get(PlaneCreateEditViewModel::class.java)

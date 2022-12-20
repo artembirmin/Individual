@@ -20,8 +20,11 @@ class AirlineListFragment : BaseFragment() {
             onAirlineClick = { airline ->
                 navigator?.navigateToPlanes(airline)
             },
-            onAirlineLongClick = { airline ->
+            onEditAirlineClick = { airline ->
                 navigator?.navigateToAirlineCreateEdit(airline.id)
+            },
+            onDeleteAirlineClick = { airline ->
+                viewModel.onDeleteAirlineClick(airline)
             }
         )
     }

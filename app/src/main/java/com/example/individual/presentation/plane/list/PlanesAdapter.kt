@@ -6,6 +6,7 @@
 
 package com.example.individual.presentation.plane.list
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,8 @@ import com.example.individual.utils.DialogUtils
 import com.example.individual.utils.toReadableDateTime
 
 class PlanesAdapter(
-    private val onFullInfoClick: (PlaneShort) -> Unit,
+    private val onEditClick: (PlaneShort) -> Unit,
+    private val onDeleteClick: (PlaneShort) -> Unit,
     private val onBoardNumberClick: (PlaneShort) -> Unit,
     private val onFlightNumberClick: (PlaneShort) -> Unit,
 ) : RecyclerView.Adapter<PlanesAdapter.ViewHolder>() {
@@ -50,7 +52,6 @@ class PlanesAdapter(
             itemView.findViewById<TextView>(R.id.tvOnboardNumberTitle)
         private val tvFlightNumberTitle = itemView.findViewById<TextView>(R.id.tvFlightNumberTitle)
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
-        private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
 
         fun bind(plane: PlaneShort) {
             tvOnboardNumber.text = plane.onboardNumber
@@ -74,7 +75,25 @@ class PlanesAdapter(
                 onFlightNumberClick(plane)
                 true
             }
-            tvFullInfo.setOnClickListener { onFullInfoClick(plane) }
+
+            itemView.setOnClickListener {
+                onEditClick(plane)
+            }
+
+            itemView.setOnLongClickListener {
+                showDialog(itemView.context, plane)
+                true
+            }
+        }
+
+        private fun showDialog(context: Context, plane: PlaneShort) {
+            DialogUtils.showMessageByAlertDialog(
+                context,
+                message = "Вы действительно хотите удалить самолет?",
+                negativeText = "Отмена",
+                positiveText = "Да",
+                onPositiveButtonClick = { onDeleteClick(plane) }
+            )
         }
     }
 }

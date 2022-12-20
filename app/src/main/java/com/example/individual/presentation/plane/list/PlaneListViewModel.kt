@@ -22,4 +22,10 @@ class PlaneListViewModel : ViewModel() {
             planeRepository.refreshPlanes()
         }
     }
+
+    fun onDeleteClick(planeShort: PlaneShort) {
+        viewModelScope.launch(defaultErrorHandler) {
+            planeRepository.deleteById(planeShort.id)
+        }
+    }
 }
