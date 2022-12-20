@@ -15,7 +15,7 @@ import com.example.individual.presentation.BaseFragment
 
 class PlaneListFragment : BaseFragment() {
     private lateinit var binding: FragmentPlanesListBinding
-    private lateinit var viewModel: PlaneListViewModel
+    override lateinit var viewModel: PlaneListViewModel
 
     private val adapter by lazy {
         PlanesAdapter(
@@ -59,6 +59,7 @@ class PlaneListFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel = ViewModelProvider(this).get(PlaneListViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvPlanes.adapter = adapter
@@ -68,7 +69,6 @@ class PlaneListFragment : BaseFragment() {
             navigator?.navigateToPlaneCreateEdit(initParams.airlineId)
         }
 
-        viewModel = ViewModelProvider(this).get(PlaneListViewModel::class.java)
         viewModel.getPlanes(initParams.airlineId)
         viewModel.planesLiveData.observe(viewLifecycleOwner) {
             updateUI(it)

@@ -1,14 +1,36 @@
 package com.example.individual.presentation
 
 import android.content.Context
+import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.individual.common.Navigator
 import com.example.individual.utils.DialogUtils
 
-open class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
+
+    abstract val viewModel: BaseViewModel
+    private val loadingIndicator: LoadingIndicator by lazy { LoadingIndicator(requireActivity()) }
+
     protected open var navigator: Navigator? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.messageByToastLiveData.observeForever { message ->
+            showMessageByToast(message = message)
+        }
+
+        viewModel.isLoadingLiveData.observeForever { isLoading ->
+            if (isLoading) {
+                loadingIndicator.show()
+            } else {
+                loadingIndicator.dismiss()
+            }
+        }
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

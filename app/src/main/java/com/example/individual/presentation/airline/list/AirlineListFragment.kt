@@ -13,7 +13,7 @@ import com.example.individual.presentation.BaseFragment
 
 class AirlineListFragment : BaseFragment() {
     private lateinit var binding: FragmentAirlinesListBinding
-    private lateinit var viewModel: AirlineListViewModel
+    override lateinit var viewModel: AirlineListViewModel
 
     private val adapter by lazy {
         AirlinesAdapter(
@@ -40,12 +40,12 @@ class AirlineListFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel = ViewModelProvider(this).get(AirlineListViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvAirlines.adapter = adapter
         binding.btnAdd.setOnClickListener { navigator?.navigateToAirlineCreateEdit() }
 
-        viewModel = ViewModelProvider(this).get(AirlineListViewModel::class.java)
         viewModel.getAirlines()
         viewModel.airlinesLiveData.observe(viewLifecycleOwner) {
             updateUI(it)

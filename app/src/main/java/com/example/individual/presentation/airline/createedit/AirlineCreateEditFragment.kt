@@ -15,7 +15,7 @@ import com.example.individual.presentation.BaseFragment
 
 class AirlineCreateEditFragment : BaseFragment() {
     private lateinit var binding: FragmentAirlineCreateEditBinding
-    private lateinit var viewModel: AirlineCreateEditViewModel
+    override lateinit var viewModel: AirlineCreateEditViewModel
     private val initParams: AirlineCreateEditFragmentInitParams by lazy { getInitParams() }
 
     override fun onCreateView(
@@ -34,6 +34,7 @@ class AirlineCreateEditFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel = ViewModelProvider(this).get(AirlineCreateEditViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
 
         binding.toolbar.setNavigationOnClickListener { closeFragment() }
@@ -48,7 +49,6 @@ class AirlineCreateEditFragment : BaseFragment() {
             closeFragment()
         }
 
-        viewModel = ViewModelProvider(this).get(AirlineCreateEditViewModel::class.java)
         initParams.id?.let {
             viewModel.getAirline(it)
         }

@@ -17,7 +17,7 @@ import kotlin.reflect.full.memberProperties
 
 class PlaneCreateEditFragment : BaseFragment() {
     private lateinit var binding: FragmentPlaneCreateEditBinding
-    private lateinit var viewModel: PlaneCreateEditViewModel
+    override lateinit var viewModel: PlaneCreateEditViewModel
     private val initParams: PlaneCreateEditFragmentInitParams by lazy { getInitParams() }
 
     override fun onCreateView(
@@ -36,6 +36,7 @@ class PlaneCreateEditFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel = ViewModelProvider(this).get(PlaneCreateEditViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
@@ -46,7 +47,6 @@ class PlaneCreateEditFragment : BaseFragment() {
             }
         }
 
-        viewModel = ViewModelProvider(this).get(PlaneCreateEditViewModel::class.java)
         initParams.id?.let {
             viewModel.getPlane(it)
         }
