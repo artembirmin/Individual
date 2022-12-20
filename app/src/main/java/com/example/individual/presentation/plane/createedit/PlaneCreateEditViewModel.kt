@@ -25,4 +25,12 @@ class PlaneCreateEditViewModel : ViewModel() {
             } ?: planeRepository.add(newPlane)
         }
     }
+
+    fun deletePlane() {
+        planeLiveData.value?.let { plane ->
+            viewModelScope.launch(defaultErrorHandler) {
+                planeRepository.delete(plane)
+            }
+        }
+    }
 }

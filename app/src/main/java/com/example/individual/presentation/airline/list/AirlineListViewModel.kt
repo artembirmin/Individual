@@ -20,10 +20,4 @@ class AirlineListViewModel : ViewModel() {
         }
         viewModelScope.launch(defaultErrorHandler) { airlineRepository.refreshAirlines() }
     }
-
-    fun onDeleteAirlineClick(airline: Airline) {
-        viewModelScope.launch(defaultErrorHandler) {
-            airlineRepository.delete(airline)
-        }
-    }
 }

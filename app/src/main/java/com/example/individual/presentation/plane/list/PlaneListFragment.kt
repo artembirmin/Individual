@@ -19,14 +19,11 @@ class PlaneListFragment : BaseFragment() {
 
     private val adapter by lazy {
         PlanesAdapter(
-            onEditClick = { planeShort ->
+            onFullInfoClick = { planeShort ->
                 navigator?.navigateToPlaneCreateEdit(
                     planeShort.airlineId,
                     planeShort.id
                 )
-            },
-            onDeleteClick = { planeShort ->
-                viewModel.onDeleteClick(planeShort)
             },
             onBoardNumberClick = {
                 sortByBoardNumber()

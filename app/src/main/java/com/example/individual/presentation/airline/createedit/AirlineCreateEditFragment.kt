@@ -44,7 +44,11 @@ class AirlineCreateEditFragment : BaseFragment() {
                 showMessageByToast("Введите название")
                 return@setOnClickListener
             }
-            viewModel.saveAirline(Airline(name = name, id = 0))
+            viewModel.saveAirline(name = name)
+            closeFragment()
+        }
+        binding.btnDelete.setOnClickListener {
+            viewModel.deleteAirline()
             closeFragment()
         }
 

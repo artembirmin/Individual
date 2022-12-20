@@ -31,9 +31,9 @@ class PlaneRepository {
         planeDao.insert(airlineFromServer)
     }
 
-    suspend fun deleteById(planeId: Long) {
-        individualApi.deletePlane(planeId)
-        planeDao.deleteById(planeId)
+    suspend fun delete(plane: PlaneFull) {
+        individualApi.deletePlane(plane.id)
+        planeDao.delete(plane)
     }
 
     suspend fun getPlaneById(id: Long): PlaneFull {
