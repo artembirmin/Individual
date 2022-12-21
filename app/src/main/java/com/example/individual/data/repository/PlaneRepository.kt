@@ -1,14 +1,14 @@
 package com.example.individual.data.repository
 
-import com.example.individual.data.database.DatabaseProvider
-import com.example.individual.data.network.NetworkProvider
+import com.example.individual.data.db.DatabaseProvider
+import com.example.individual.data.net.NetworkProvider
 import com.example.individual.model.PlaneFull
 import com.example.individual.model.PlaneShort
 import kotlinx.coroutines.flow.Flow
 
 class PlaneRepository {
 
-    private val individualApi = NetworkProvider.get().individualApi
+    private val individualApi = NetworkProvider.get().api
     private val planeDao = DatabaseProvider.get().getPlaneDao()
 
     fun observePlanes(airlineId: Long): Flow<List<PlaneShort>> {
@@ -17,18 +17,18 @@ class PlaneRepository {
 
     suspend fun refreshPlanes() {
         val airlines = individualApi.getPlanes().map { it.toPlaneFull() }
-        planeDao.insertAll(airlines)
+        planeDao.insertAirlines(airlines)
     }
 
     suspend fun add(plane: PlaneFull) {
         val airlineFromServer = individualApi.addPlane(plane.toServerModel()).toPlaneFull()
-        planeDao.insert(airlineFromServer)
+        planeDao.insertAirline(airlineFromServer)
     }
 
     suspend fun update(plane: PlaneFull) {
         val airlineFromServer =
             individualApi.updatePlane(plane.id, plane.toServerModel()).toPlaneFull()
-        planeDao.insert(airlineFromServer)
+        planeDao.insertAirline(airlineFromServer)
     }
 
     suspend fun deleteById(planeId: Long) {

@@ -1,4 +1,4 @@
-package com.example.individual.data.network
+package com.example.individual.data.net
 
 import android.content.Context
 import com.google.gson.GsonBuilder
@@ -27,10 +27,10 @@ class NetworkProvider(context: Context) {
         .readTimeout(45, TimeUnit.SECONDS)
         .writeTimeout(45, TimeUnit.SECONDS)
 
-    val individualApi: IndividualApi = retrofitBuilder
+    val api: Api = retrofitBuilder
         .client(okHttpClientBuilder.build())
         .build()
-        .create(IndividualApi::class.java)
+        .create(Api::class.java)
 
     val individualApiMock = IndividualApiMock()
 

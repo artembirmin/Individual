@@ -1,4 +1,4 @@
-package com.example.individual.data.database
+package com.example.individual.data.db
 
 import androidx.room.*
 import com.example.individual.model.PlaneFull
@@ -15,10 +15,10 @@ interface PlaneDao {
     suspend fun getById(id: Long): PlaneFull
 
     @Update
-    suspend fun update(planeFull: PlaneFull)
+    suspend fun updatePlane(planeFull: PlaneFull)
 
     @Update
-    suspend fun updateAll(ist: List<PlaneFull>)
+    suspend fun updatePlanes(list: List<PlaneFull>)
 
     @Delete
     suspend fun delete(planeFull: PlaneFull)
@@ -27,10 +27,10 @@ interface PlaneDao {
     suspend fun deleteById(planeId: Long)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(planeFull: PlaneFull)
+    suspend fun insertAirline(planeFull: PlaneFull)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(list: List<PlaneFull>)
+    suspend fun insertAirlines(list: List<PlaneFull>)
 
     companion object {
         private const val TABLE_NAME = PlaneFull.TABLE_NAME

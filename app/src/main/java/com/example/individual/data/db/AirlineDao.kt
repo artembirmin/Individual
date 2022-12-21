@@ -1,4 +1,4 @@
-package com.example.individual.data.database
+package com.example.individual.data.db
 
 import androidx.room.*
 import com.example.individual.model.Airline
@@ -20,10 +20,10 @@ interface AirlineDao {
     suspend fun deleteAirline(airline: Airline)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(airline: Airline)
+    suspend fun insertAirline(airline: Airline)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(list: List<Airline>)
+    suspend fun insertAirlines(list: List<Airline>)
 
     companion object {
         private const val TABLE_NAME = Airline.TABLE_NAME

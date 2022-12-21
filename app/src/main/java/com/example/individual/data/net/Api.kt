@@ -1,4 +1,4 @@
-package com.example.individual.data.network
+package com.example.individual.data.net
 
 import com.example.individual.model.Airline
 import com.example.individual.model.PlaneServerModel
@@ -6,7 +6,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 
-interface IndividualApi {
+interface Api {
 
     @GET("airlines")
     suspend fun getAirlines(): List<Airline>

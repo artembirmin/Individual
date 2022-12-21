@@ -1,4 +1,4 @@
-package com.example.individual.data.network
+package com.example.individual.data.net
 
 import android.util.Log
 import com.google.gson.GsonBuilder

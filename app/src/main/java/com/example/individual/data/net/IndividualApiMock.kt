@@ -1,4 +1,4 @@
-package com.example.individual.data.network
+package com.example.individual.data.net
 
 import com.example.individual.model.Airline
 import com.example.individual.model.PlaneFull

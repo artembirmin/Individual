@@ -2,8 +2,8 @@ package com.example.individual.common
 
 import android.app.Application
 import android.content.Context
-import com.example.individual.data.database.DatabaseProvider
-import com.example.individual.data.network.NetworkProvider
+import com.example.individual.data.db.DatabaseProvider
+import com.example.individual.data.net.NetworkProvider
 
 class App : Application() {
 
