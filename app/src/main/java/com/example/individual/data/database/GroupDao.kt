@@ -22,6 +22,9 @@ interface GroupDao {
     @Delete
     suspend fun delete(group: Group)
 
+    @Query("DELETE FROM $TABLE_NAME")
+    suspend fun deleteAll()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(group: Group)
 

@@ -19,6 +19,7 @@ class FacultyRepository {
 
     suspend fun refreshFaculties() {
         val faculties = individualApi.getFaculties()
+        facultyDao.deleteAll()
         facultyDao.insertAll(faculties)
     }
 

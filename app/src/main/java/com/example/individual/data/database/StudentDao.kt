@@ -23,6 +23,9 @@ StudentDao {
     @Delete
     suspend fun delete(student: Student)
 
+    @Query("DELETE FROM $TABLE_NAME")
+    suspend fun deleteAll()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(student: Student)
 

@@ -19,6 +19,9 @@ interface FacultyDao {
     @Delete
     suspend fun deleteFaculty(faculty: Faculty)
 
+    @Query("DELETE FROM $TABLE_NAME")
+    suspend fun deleteAll()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(faculty: Faculty)
 

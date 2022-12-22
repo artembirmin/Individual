@@ -17,6 +17,7 @@ class StudentRepository {
 
     suspend fun refreshStudents() {
         val students = individualApi.getStudents()
+        studentDao.deleteAll()
         studentDao.insertAll(students)
     }
 

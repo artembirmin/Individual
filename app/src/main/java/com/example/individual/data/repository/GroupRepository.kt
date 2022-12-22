@@ -16,6 +16,7 @@ class GroupRepository {
 
     suspend fun refreshGroups() {
         val groups = individualApi.getGroups().map { it }
+        groupDao.deleteAll()
         groupDao.insertAll(groups)
     }
 
