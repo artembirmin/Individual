@@ -78,9 +78,8 @@ class GroupsAdapter(
             tvStudents.setOnClickListener { onStudentsClick(group) }
             tvFullInfo.setOnClickListener { onFullInfoClick(group) }
             tvAdditionalInfo.setOnClickListener {
-                DialogUtils.showMessageByAlertDialog(
+                DialogUtils.showMessageByToast(
                     itemView.context,
-                    title = "Дополнительная информация",
                     message = "Количество бюджетников: ${group.budgetStudentsCount}" +
                             "\nКоличество договорников: ${group.commerceStudentsCount}"
                 )

@@ -2,6 +2,7 @@ package com.example.individual.utils
 
 import android.app.AlertDialog
 import android.content.Context
+import android.widget.Toast
 
 object DialogUtils {
     fun showMessageByAlertDialog(
@@ -25,4 +26,9 @@ object DialogUtils {
             .create()
             .show()
     }
+
+    fun showMessageByToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
+        Toast.makeText(context, message, duration).show()
+    }
+
 }
