@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/item_rounded"
+        android:elevation="2dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvNumberTitle"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Номер автомобиля"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintTop_toBottomOf="@+id/tvNumberTitle"
+            tools:text="1234" />
+
+        <TextView
+            android:id="@+id/tvFuelTypeTitle"
+            style="@style/ClickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Тип топлива"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintTop_toBottomOf="@+id/tvNumber" />
+
+        <TextView
+            android:id="@+id/tvFuelType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/BaseText.Big"
+            app:layout_constraintTop_toBottomOf="@+id/tvFuelTypeTitle"
+            tools:text="12345" />
+
+        <TextView
+            android:id="@+id/tvAdditionalInfo"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Дополнительно"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFuelType" />
+
+        <TextView
+            android:id="@+id/tvFullInfo"
+            style="@style/ClickableView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Полная информация"
+            android:textAppearance="@style/BaseText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFuelType" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

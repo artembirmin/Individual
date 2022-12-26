@@ -1,34 +1,34 @@
 package com.example.individual.data.network
 
-import com.example.individual.model.Airline
-import com.example.individual.model.PlaneServerModel
+import com.example.individual.model.CarServerModel
+import com.example.individual.model.GasStation
 import retrofit2.Response
 import retrofit2.http.*
 
 
 interface IndividualApi {
 
-    @GET("airlines")
-    suspend fun getAirlines(): List<Airline>
+    @GET("gas_stations")
+    suspend fun getGasStations(): List<GasStation>
 
-    @POST("airline")
-    suspend fun addAirline(@Body airline: Airline): Airline
+    @POST("gas_station")
+    suspend fun addGasStation(@Body gasStation: GasStation): GasStation
 
-    @PATCH("airlines/{id}")
-    suspend fun updateAirline(@Path("id") id: Long, @Body airline: Airline): Airline
+    @PATCH("gas_stations/{id}")
+    suspend fun updateGasStation(@Path("id") id: Long, @Body gasStation: GasStation): GasStation
 
-    @DELETE("airlines/{id}")
-    suspend fun deleteAirline(@Path("id") id: Long): Response<Unit>
+    @DELETE("gas_stations/{id}")
+    suspend fun deleteGasStation(@Path("id") id: Long): Response<Unit>
 
-    @GET("planes")
-    suspend fun getPlanes(): List<PlaneServerModel>
+    @GET("cars")
+    suspend fun getCars(): List<CarServerModel>
 
-    @POST("plane")
-    suspend fun addPlane(@Body plane: PlaneServerModel): PlaneServerModel
+    @POST("car")
+    suspend fun addCar(@Body car: CarServerModel): CarServerModel
 
-    @PATCH("planes/{id}")
-    suspend fun updatePlane(@Path("id") id: Long, @Body plane: PlaneServerModel): PlaneServerModel
+    @PATCH("cars/{id}")
+    suspend fun updateCar(@Path("id") id: Long, @Body car: CarServerModel): CarServerModel
 
-    @DELETE("planes/{id}")
-    suspend fun deletePlane(@Path("id") id: Long): Response<Unit>
+    @DELETE("cars/{id}")
+    suspend fun deleteCar(@Path("id") id: Long): Response<Unit>
 }

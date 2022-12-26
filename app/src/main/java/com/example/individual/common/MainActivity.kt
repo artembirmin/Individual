@@ -5,21 +5,21 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.individual.R
-import com.example.individual.model.Airline
-import com.example.individual.presentation.airline.createedit.AirlineCreateEditFragment
-import com.example.individual.presentation.airline.createedit.AirlineCreateEditFragmentInitParams
-import com.example.individual.presentation.airline.list.AirlineListFragment
-import com.example.individual.presentation.plane.createedit.PlaneCreateEditFragment
-import com.example.individual.presentation.plane.createedit.PlaneCreateEditFragmentInitParams
-import com.example.individual.presentation.plane.list.PlaneListFragment
-import com.example.individual.presentation.plane.list.PlaneListFragmentInitParams
+import com.example.individual.model.GasStation
+import com.example.individual.presentation.car.createedit.CarCreateEditFragment
+import com.example.individual.presentation.car.createedit.CarCreateEditFragmentInitParams
+import com.example.individual.presentation.car.list.CarListFragment
+import com.example.individual.presentation.car.list.CarListFragmentInitParams
+import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragment
+import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragmentInitParams
+import com.example.individual.presentation.gasstation.list.GasStationListFragment
 
 class MainActivity : AppCompatActivity(), Navigator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(AirlineListFragment.newInstance())
+        replaceFragment(GasStationListFragment.newInstance())
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -54,30 +54,36 @@ class MainActivity : AppCompatActivity(), Navigator {
         }
     }
 
-    override fun navigateToPlanes(airline: Airline) {
+    override fun navigateToCars(gasStation: GasStation) {
         addFragment(
-            PlaneListFragment.newInstance(
-                PlaneListFragmentInitParams(
-                    airline.id,
-                    airline.name
+            CarListFragment.newInstance(
+                CarListFragmentInitParams(
+                    gasStation.id,
+                    gasStation.name
                 )
             )
         )
     }
 
-    override fun navigateToPlaneCreateEdit(airlineId: Long, planeId: Long?) {
+    override fun navigateToCarCreateEdit(gasStationId: Long, carId: Long?) {
         addFragment(
-            PlaneCreateEditFragment.newInstance(
-                PlaneCreateEditFragmentInitParams(
-                    airlineId,
-                    planeId
+            CarCreateEditFragment.newInstance(
+                CarCreateEditFragmentInitParams(
+                    gasStationId,
+                    carId
                 )
             )
         )
     }
 
-    override fun navigateToAirlineCreateEdit(id: Long?) {
-        addFragment(AirlineCreateEditFragment.newInstance(AirlineCreateEditFragmentInitParams(id)))
+    override fun navigateToGasStationCreateEdit(id: Long?) {
+        addFragment(
+            GasStationCreateEditFragment.newInstance(
+                GasStationCreateEditFragmentInitParams(
+                    id
+                )
+            )
+        )
     }
 
     override fun exit(fragment: Fragment) {
