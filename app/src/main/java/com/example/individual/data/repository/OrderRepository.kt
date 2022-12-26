@@ -32,9 +32,9 @@ class OrderRepository {
         orderDao.insert(clientFromServer)
     }
 
-    suspend fun delete(plane: OrderFull) {
-        individualApi.deleteOrder(plane.id)
-        orderDao.delete(plane)
+    suspend fun delete(orderFull: OrderFull) {
+        individualApi.deleteOrder(orderFull.id)
+        orderDao.delete(orderFull)
     }
 
     suspend fun getOrderById(id: Long): OrderFull {
