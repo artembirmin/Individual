@@ -1,4 +1,4 @@
-package com.example.individual.presentation.gasstation.createedit
+package com.example.individual.presentation.client.createedit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,14 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.individual.R
 import com.example.individual.common.getInitParams
 import com.example.individual.common.provideInitParams
-import com.example.individual.databinding.FragmentGasStationCreateEditBinding
-import com.example.individual.model.GasStation
+import com.example.individual.databinding.FragmentClientCreateEditBinding
+import com.example.individual.model.Client
 import com.example.individual.presentation.BaseFragment
 
-class GasStationCreateEditFragment : BaseFragment() {
-    private lateinit var binding: FragmentGasStationCreateEditBinding
-    private lateinit var viewModel: GasStationCreateEditViewModel
-    private val initParams: GasStationCreateEditFragmentInitParams by lazy { getInitParams() }
+class ClientCreateEditFragment : BaseFragment() {
+    private lateinit var binding: FragmentClientCreateEditBinding
+    private lateinit var viewModel: ClientCreateEditViewModel
+    private val initParams: ClientCreateEditFragmentInitParams by lazy { getInitParams() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +26,7 @@ class GasStationCreateEditFragment : BaseFragment() {
         binding =
             DataBindingUtil.inflate(
                 inflater,
-                R.layout.fragment_gas_station_create_edit,
+                R.layout.fragment_client_create_edit,
                 container,
                 false
             )
@@ -44,31 +44,31 @@ class GasStationCreateEditFragment : BaseFragment() {
                 showMessageByToast("Введите название")
                 return@setOnClickListener
             }
-            viewModel.saveGasStation(GasStation(name = name, id = 0))
+            viewModel.saveClient(Client(name = name, id = 0))
             closeFragment()
         }
         binding.btnDelete.setOnClickListener {
-            viewModel.deleteGasStation()
+            viewModel.deleteClient()
             closeFragment()
         }
 
-        viewModel = ViewModelProvider(this).get(GasStationCreateEditViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ClientCreateEditViewModel::class.java)
         initParams.id?.let {
-            viewModel.getGasStation(it)
+            viewModel.getClient(it)
         }
-        viewModel.gasStationLiveData.observe(viewLifecycleOwner) {
+        viewModel.clientLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
     }
 
-    private fun updateUI(gasStation: GasStation?) {
-        gasStation?.let {
-            binding.etName.setText(gasStation.name)
+    private fun updateUI(client: Client?) {
+        client?.let {
+            binding.etName.setText(client.name)
         }
     }
 
     companion object {
-        fun newInstance(initParams: GasStationCreateEditFragmentInitParams) =
-            GasStationCreateEditFragment().provideInitParams(initParams) as GasStationCreateEditFragment
+        fun newInstance(initParams: ClientCreateEditFragmentInitParams) =
+            ClientCreateEditFragment().provideInitParams(initParams) as ClientCreateEditFragment
     }
 }

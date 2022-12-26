@@ -4,7 +4,7 @@
  * Created by artembirmin on 30/11/2022.
  */
 
-package com.example.individual.presentation.gasstation.list
+package com.example.individual.presentation.client.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,14 +12,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.individual.R
-import com.example.individual.model.GasStation
+import com.example.individual.model.Client
 
-class GasStationsAdapter(
-    private val onGasStationClick: (GasStation) -> Unit,
-    private val onFullInfoClick: (GasStation) -> Unit
-) : RecyclerView.Adapter<GasStationsAdapter.ViewHolder>() {
+class ClientsAdapter(
+    private val onClientClick: (Client) -> Unit,
+    private val onFullInfoClick: (Client) -> Unit
+) : RecyclerView.Adapter<ClientsAdapter.ViewHolder>() {
 
-    var items: List<GasStation> = emptyList()
+    var items: List<Client> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -43,13 +43,13 @@ class GasStationsAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvName = itemView.findViewById<TextView>(R.id.tvName)
 
-        fun bind(gasStation: GasStation) {
-            tvName.text = gasStation.name
+        fun bind(client: Client) {
+            tvName.text = client.name
             itemView.setOnClickListener {
-                onGasStationClick(gasStation)
+                onClientClick(client)
             }
             itemView.setOnLongClickListener {
-                onFullInfoClick(gasStation)
+                onFullInfoClick(client)
                 true
             }
         }
