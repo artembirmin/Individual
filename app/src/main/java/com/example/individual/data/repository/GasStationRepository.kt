@@ -19,6 +19,7 @@ class GasStationRepository {
 
     suspend fun refreshGasStations() {
         val gasStations = individualApi.getGasStations()
+        gasStationDao.deleteAll()
         gasStationDao.insertAll(gasStations)
     }
 

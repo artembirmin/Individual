@@ -23,6 +23,9 @@ interface CarDao {
     @Delete
     suspend fun delete(carFull: CarFull)
 
+    @Query("DELETE FROM $TABLE_NAME")
+    suspend fun deleteAll()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(carFull: CarFull)
 

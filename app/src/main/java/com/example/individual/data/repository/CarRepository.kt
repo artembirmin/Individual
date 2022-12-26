@@ -17,6 +17,7 @@ class CarRepository {
 
     suspend fun refreshCars() {
         val gasStations = individualApi.getCars().map { it.toCarFull() }
+        carDao.deleteAll()
         carDao.insertAll(gasStations)
     }
 
