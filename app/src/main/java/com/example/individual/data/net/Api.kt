@@ -30,5 +30,5 @@ interface Api {
     suspend fun updatePlane(@Path("id") id: Long, @Body plane: PlaneServerModel): PlaneServerModel
 
     @DELETE("planes/{id}")
-    suspend fun deletePlane(@Path("id") id: Long): Response<Unit>
+    suspend fun deletePlane(@Path("id") id: Long): Unit
 }

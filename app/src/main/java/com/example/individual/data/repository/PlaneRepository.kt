@@ -34,10 +34,9 @@ class PlaneRepository {
     suspend fun deleteById(planeId: Long) {
         // Если запрос возвращается с ошибкой, то корутина не умирает
         // Как выводить сообщение об ошибке
-        val response = individualApi.deletePlane(123456789)
-        if (response.isSuccessful) {
-            planeDao.deleteById(planeId)
-        }
+        individualApi.deletePlane(planeId)
+        planeDao.deleteById(planeId)
+
     }
 
     suspend fun getPlaneById(id: Long): PlaneFull {
