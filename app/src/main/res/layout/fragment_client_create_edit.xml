@@ -26,8 +26,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Заправка"
+                    android:text="Клиент"
                     android:textAppearance="@style/ToolbarTitle" />
+
+                <ImageView
+                    android:id="@+id/btnDelete"
+                    style="@style/ClickableView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginEnd="12dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_delete_24" />
 
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
@@ -60,17 +70,5 @@
             android:layout_marginTop="172dp"
             android:text="Сохранить"
             app:layout_constraintTop_toBottomOf="@+id/etName" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            style="@style/BaseButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/red"
-            android:text="Удалить"
-            app:layout_constraintStart_toStartOf="@+id/btnSave"
-            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

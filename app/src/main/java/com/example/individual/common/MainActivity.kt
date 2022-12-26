@@ -5,21 +5,21 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.individual.R
-import com.example.individual.model.GasStation
-import com.example.individual.presentation.car.createedit.CarCreateEditFragment
-import com.example.individual.presentation.car.createedit.CarCreateEditFragmentInitParams
-import com.example.individual.presentation.car.list.CarListFragment
-import com.example.individual.presentation.car.list.CarListFragmentInitParams
-import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragment
-import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragmentInitParams
-import com.example.individual.presentation.gasstation.list.GasStationListFragment
+import com.example.individual.model.Client
+import com.example.individual.presentation.client.createedit.ClientCreateEditFragment
+import com.example.individual.presentation.client.createedit.ClientCreateEditFragmentInitParams
+import com.example.individual.presentation.client.list.ClientListFragment
+import com.example.individual.presentation.order.createedit.OrderCreateEditFragment
+import com.example.individual.presentation.order.createedit.OrderCreateEditFragmentInitParams
+import com.example.individual.presentation.order.list.OrderListFragment
+import com.example.individual.presentation.order.list.OrderListFragmentInitParams
 
 class MainActivity : AppCompatActivity(), Navigator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(GasStationListFragment.newInstance())
+        replaceFragment(ClientListFragment.newInstance())
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -54,32 +54,32 @@ class MainActivity : AppCompatActivity(), Navigator {
         }
     }
 
-    override fun navigateToCars(gasStation: GasStation) {
+    override fun navigateToOrders(client: Client) {
         addFragment(
-            CarListFragment.newInstance(
-                CarListFragmentInitParams(
-                    gasStation.id,
-                    gasStation.name
+            OrderListFragment.newInstance(
+                OrderListFragmentInitParams(
+                    client.id,
+                    client.name
                 )
             )
         )
     }
 
-    override fun navigateToCarCreateEdit(gasStationId: Long, carId: Long?) {
+    override fun navigateToOrderCreateEdit(clientId: Long, orderId: Long?) {
         addFragment(
-            CarCreateEditFragment.newInstance(
-                CarCreateEditFragmentInitParams(
-                    gasStationId,
-                    carId
+            OrderCreateEditFragment.newInstance(
+                OrderCreateEditFragmentInitParams(
+                    clientId,
+                    orderId
                 )
             )
         )
     }
 
-    override fun navigateToGasStationCreateEdit(id: Long?) {
+    override fun navigateToClientCreateEdit(id: Long?) {
         addFragment(
-            GasStationCreateEditFragment.newInstance(
-                GasStationCreateEditFragmentInitParams(
+            ClientCreateEditFragment.newInstance(
+                ClientCreateEditFragmentInitParams(
                     id
                 )
             )

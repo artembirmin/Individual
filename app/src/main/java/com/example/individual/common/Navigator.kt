@@ -1,11 +1,11 @@
 package com.example.individual.common
 
 import androidx.fragment.app.Fragment
-import com.example.individual.model.GasStation
+import com.example.individual.model.Client
 
 interface Navigator {
-    fun navigateToCars(gasStation: GasStation)
-    fun navigateToCarCreateEdit(gasStationId: Long, carId: Long? = null)
-    fun navigateToGasStationCreateEdit(id: Long? = null)
+    fun navigateToOrders(client: Client)
+    fun navigateToOrderCreateEdit(clientId: Long, orderId: Long? = null)
+    fun navigateToClientCreateEdit(id: Long? = null)
     fun exit(fragment: Fragment)
 }

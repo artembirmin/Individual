@@ -28,7 +28,7 @@ class ClientsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val contactView = inflater.inflate(R.layout.item_gas_station, parent, false)
+        val contactView = inflater.inflate(R.layout.item_client, parent, false)
         return ViewHolder(contactView)
     }
 

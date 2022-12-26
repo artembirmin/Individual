@@ -7,11 +7,10 @@
         style="@style/ClickableView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/item_rounded"
         android:elevation="2dp"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/tvName"

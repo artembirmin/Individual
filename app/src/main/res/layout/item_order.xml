@@ -6,45 +6,47 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/item_rounded"
         android:elevation="2dp"
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvNumberTitle"
+            android:id="@+id/tvDateTitle"
+            android:paddingVertical="4dp"
             style="@style/ClickableView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Номер автомобиля"
+            android:text="Дата"
             android:textAppearance="@style/BaseText"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvNumber"
+            android:id="@+id/tvDate"
+            android:textSize="24sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/BaseText.Big"
-            app:layout_constraintTop_toBottomOf="@+id/tvNumberTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateTitle"
             tools:text="1234" />
 
         <TextView
-            android:id="@+id/tvFuelTypeTitle"
+            android:id="@+id/tvAmountTitle"
+            android:paddingVertical="4dp"
             style="@style/ClickableView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Тип топлива"
+            android:text="Сумма"
             android:textAppearance="@style/BaseText"
-            app:layout_constraintTop_toBottomOf="@+id/tvNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
         <TextView
-            android:id="@+id/tvFuelType"
+            android:id="@+id/tvAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/BaseText.Big"
-            app:layout_constraintTop_toBottomOf="@+id/tvFuelTypeTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmountTitle"
             tools:text="12345" />
 
         <TextView
@@ -52,11 +54,12 @@
             style="@style/ClickableView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Дополнительно"
+            android:layout_marginTop="8dp"
+            android:text="Показать дополнительную информацию"
             android:textAppearance="@style/BaseText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFuelType" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFullInfo" />
 
         <TextView
             android:id="@+id/tvFullInfo"
@@ -64,10 +67,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Полная информация"
+            android:paddingVertical="4dp"
+            android:text="Показать полную информацию"
             android:textAppearance="@style/BaseText"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFuelType" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
