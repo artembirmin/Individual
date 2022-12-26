@@ -32,8 +32,6 @@ class NetworkProvider(context: Context) {
         .build()
         .create(IndividualApi::class.java)
 
-    val individualApiMock = IndividualApiMock()
-
     companion object {
         private val BASE_URL = "http://algor.pythonanywhere.com/api/"
         private var INSTANCE: NetworkProvider? = null
