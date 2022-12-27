@@ -25,21 +25,21 @@ class CarListFragment : BaseFragment() {
                     carShort.id
                 )
             },
-            onBoardNumberClick = {
-                sortByBoardNumber()
-                showMessageByToast("Сортировка по бортовому номеру")
+            onNumberClick = {
+                sortByNumber()
+                showMessageByToast("Сортировка по номеру")
             },
-            onFlightNumberClick = {
-                sortByFlightNumber()
-                showMessageByToast("Сортировка по номеру рейса")
+            onFuelTypeClick = {
+                sortByFuelType()
+                showMessageByToast("Сортировка по типу топлива")
             })
     }
 
-    private fun sortByBoardNumber() {
+    private fun sortByNumber() {
         adapter.items = adapter.items.sortedBy { it.number }
     }
 
-    private fun sortByFlightNumber() {
+    private fun sortByFuelType() {
         adapter.items = adapter.items.sortedBy { it.fuelType }
     }
 

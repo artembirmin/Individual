@@ -32,9 +32,9 @@ class CarRepository {
         carDao.insert(gasStationFromServer)
     }
 
-    suspend fun delete(plane: CarFull) {
-        individualApi.deleteCar(plane.id)
-        carDao.delete(plane)
+    suspend fun delete(carFull: CarFull) {
+        individualApi.deleteCar(carFull.id)
+        carDao.delete(carFull)
     }
 
     suspend fun getCarById(id: Long): CarFull {

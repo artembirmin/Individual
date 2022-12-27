@@ -17,8 +17,8 @@ import com.example.individual.utils.DialogUtils
 
 class CarsAdapter(
     private val onFullInfoClick: (CarShort) -> Unit,
-    private val onBoardNumberClick: (CarShort) -> Unit,
-    private val onFlightNumberClick: (CarShort) -> Unit,
+    private val onNumberClick: (CarShort) -> Unit,
+    private val onFuelTypeClick: (CarShort) -> Unit,
 ) : RecyclerView.Adapter<CarsAdapter.ViewHolder>() {
 
     var items: List<CarShort> = emptyList()
@@ -62,11 +62,11 @@ class CarsAdapter(
             }
 
             tvNumberTitle.setOnLongClickListener {
-                onBoardNumberClick(car)
+                onNumberClick(car)
                 true
             }
             tvFuelTypeTitle.setOnLongClickListener {
-                onFlightNumberClick(car)
+                onFuelTypeClick(car)
                 true
             }
             tvFullInfo.setOnClickListener { onFullInfoClick(car) }
