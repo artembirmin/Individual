@@ -50,9 +50,12 @@ class CarCreateEditFragment : BaseFragment() {
         }
 
         viewModel = ViewModelProvider(this).get(CarCreateEditViewModel::class.java)
-        initParams.id?.let {
-            viewModel.getCar(it)
+
+        val carId = initParams.id
+        if (carId != null) {
+            viewModel.getCar(carId)
         }
+
         viewModel.carLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
@@ -107,7 +110,7 @@ class CarCreateEditFragment : BaseFragment() {
     }
 
     private fun updateUI(car: CarFull?) {
-        car?.let {
+        if (car != null) {
             with(binding) {
                 etNumber.setText(car.number)
                 etColor.setText(car.color)
@@ -125,7 +128,7 @@ class CarCreateEditFragment : BaseFragment() {
                 etFuelType.setText(car.fuelType)
                 etFuelVolume.setText(car.fuelVolume.toString())
             }
-        } ?: run {
+        } else {
             with(binding) {
                 val now = DateTime.now()
                 dpFuelingDate.updateDate(

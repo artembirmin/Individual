@@ -53,8 +53,10 @@ class GasStationCreateEditFragment : BaseFragment() {
         }
 
         viewModel = ViewModelProvider(this).get(GasStationCreateEditViewModel::class.java)
-        initParams.id?.let {
-            viewModel.getGasStation(it)
+
+        val gasStationId = initParams.id
+        if (gasStationId != null) {
+            viewModel.getGasStation(gasStationId)
         }
         viewModel.gasStationLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
@@ -62,7 +64,7 @@ class GasStationCreateEditFragment : BaseFragment() {
     }
 
     private fun updateUI(gasStation: GasStation?) {
-        gasStation?.let {
+        if (gasStation != null) {
             binding.etName.setText(gasStation.name)
         }
     }

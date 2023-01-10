@@ -18,8 +18,12 @@ object DialogUtils {
         AlertDialog.Builder(context)
             .setMessage(message)
             .apply {
-                negativeText?.let { setNegativeButton(it) { _, _ -> onNegativeButtonClick?.invoke() } }
-                title?.let { setTitle(it) }
+                if (negativeText != null) {
+                    setNegativeButton(negativeText) { _, _ -> onNegativeButtonClick?.invoke() }
+                }
+                if (title != null) {
+                    setTitle(title)
+                }
             }
             .setPositiveButton(positiveText) { _, _ -> onPositiveButtonClick?.invoke() }
             .setOnDismissListener { onDismiss?.invoke() }

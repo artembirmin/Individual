@@ -20,10 +20,4 @@ class GasStationListViewModel : ViewModel() {
         }
         viewModelScope.launch(defaultErrorHandler) { gasStationRepository.refreshGasStations() }
     }
-
-    fun onDeleteGasStationClick(gasStation: GasStation) {
-        viewModelScope.launch(defaultErrorHandler) {
-            gasStationRepository.delete(gasStation)
-        }
-    }
 }

@@ -20,17 +20,20 @@ class GasStationCreateEditViewModel : ViewModel() {
 
     fun saveGasStation(newGasStation: GasStation) {
         viewModelScope.launch(defaultErrorHandler) {
-            gasStationLiveData.value?.let { oldGasStation ->
+            val oldGasStation = gasStationLiveData.value
+            if (oldGasStation != null) {
                 gasStationRepository.update(newGasStation.copy(id = oldGasStation.id))
-            } ?: gasStationRepository.add(newGasStation)
+            } else {
+                gasStationRepository.add(newGasStation)
+            }
         }
     }
 
     fun deleteGasStation() {
-        gasStationLiveData.value?.let { gasStation ->
+        val gasStation = gasStationLiveData.value
+        if (gasStation != null)
             viewModelScope.launch(defaultErrorHandler) {
                 gasStationRepository.delete(gasStation)
             }
-        }
     }
 }

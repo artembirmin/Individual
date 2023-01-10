@@ -20,15 +20,18 @@ class CarCreateEditViewModel : ViewModel() {
 
     fun saveCar(newCar: CarFull) {
         viewModelScope.launch(defaultErrorHandler) {
-            // TODO сделать через if
-            carLiveData.value?.let {
-                carRepository.update(newCar.copy(id = it.id))
-            } ?: carRepository.add(newCar)
+            val oldCar = carLiveData.value
+            if (oldCar != null) {
+                carRepository.update(newCar.copy(id = oldCar.id))
+            } else {
+                carRepository.add(newCar)
+            }
         }
     }
 
     fun deleteCar() {
-        carLiveData.value?.let { car ->
+        val car = carLiveData.value
+        if (car != null) {
             viewModelScope.launch(defaultErrorHandler) {
                 carRepository.delete(car)
             }
