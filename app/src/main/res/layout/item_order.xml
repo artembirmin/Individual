@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="4dp"
         android:layout_marginBottom="4dp"
+        style="@style/ClickableView"
         android:background="@drawable/item_rounded"
         android:elevation="2dp"
         android:padding="16dp">
@@ -48,24 +49,16 @@
             tools:text="12345" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
             android:id="@+id/tvAdditionalInfo"
             style="@style/ClickableView"
-            android:layout_width="wrap_content"
+            android:padding="4dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Дополнительно"
             android:textAppearance="@style/BaseText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWorkDate" />
-
-        <TextView
-            android:id="@+id/tvFullInfo"
-            style="@style/ClickableView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Полная информация"
-            android:textAppearance="@style/BaseText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWorkDate" />
 

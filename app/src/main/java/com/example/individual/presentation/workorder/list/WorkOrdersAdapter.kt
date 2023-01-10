@@ -49,7 +49,6 @@ class WorkOrdersAdapter(
         private val tvNumberTitle = itemView.findViewById<TextView>(R.id.tvNumberTitle)
         private val tvWorkDateTitle = itemView.findViewById<TextView>(R.id.tvWorkDateTitle)
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
-        private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
 
         fun bind(workOrder: WorkOrderShort) {
             tvNumber.text = workOrder.number
@@ -70,7 +69,7 @@ class WorkOrdersAdapter(
                 onWorkDateClick(workOrder)
                 true
             }
-            tvFullInfo.setOnClickListener { onFullInfoClick(workOrder) }
+            itemView.setOnClickListener { onFullInfoClick(workOrder) }
         }
     }
 }
