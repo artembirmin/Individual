@@ -7,43 +7,43 @@ import com.example.individual.utils.toServerTimestamp
 import org.joda.time.DateTime
 
 @Entity(
-    tableName = CarFull.TABLE_NAME,
+    tableName = WorkOrderFull.TABLE_NAME,
     foreignKeys =
     [ForeignKey(
-        entity = GasStation::class,
+        entity = ServiceStation::class,
         parentColumns = ["id"],
-        childColumns = ["gasStationId"],
+        childColumns = ["serviceStationId"],
         onDelete = ForeignKey.CASCADE,
         onUpdate = ForeignKey.NO_ACTION
     )]
 )
-data class CarFull(
+data class WorkOrderFull(
     @PrimaryKey val id: Long,
-    val gasStationId: Long,
+    val serviceStationId: Long,
     val number: String,
     val color: String,
     val vehicleType: String,
     val ownerName: String,
-    val passengersCount: Int,
-    val fuelingTime: DateTime,
-    val fuelType: String,
-    val fuelVolume: Int,
+    val detailsCount: Int,
+    val workDate: DateTime,
+    val workerName: String,
+    val workingHours: Double,
 ) {
     companion object {
-        const val TABLE_NAME = "car"
+        const val TABLE_NAME = "work_order"
     }
 
-    fun toServerModel(): CarServerModel =
-        CarServerModel(
+    fun toServerModel(): WorkOrderServerModel =
+        WorkOrderServerModel(
             id = id,
-            gasStation = gasStationId,
+            serviceStation = serviceStationId,
             number = number,
             color = color,
             vehicleType = vehicleType,
             ownerName = ownerName,
-            passengersCount = passengersCount,
-            fuelingTime = fuelingTime.toServerTimestamp(),
-            fuelType = fuelType,
-            fuelVolume = fuelVolume
+            detailsCount = detailsCount,
+            workDate = workDate.toServerTimestamp(),
+            workerName = workerName,
+            workingHours = workingHours
         )
 }

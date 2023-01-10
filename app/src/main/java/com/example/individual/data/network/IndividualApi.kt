@@ -1,7 +1,7 @@
 package com.example.individual.data.network
 
-import com.example.individual.model.CarServerModel
-import com.example.individual.model.GasStation
+import com.example.individual.model.ServiceStation
+import com.example.individual.model.WorkOrderServerModel
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -9,26 +9,32 @@ import retrofit2.http.*
 interface IndividualApi {
 
     @GET("gas_stations")
-    suspend fun getGasStations(): List<GasStation>
+    suspend fun getServiceStations(): List<ServiceStation>
 
     @POST("gas_station")
-    suspend fun addGasStation(@Body gasStation: GasStation): GasStation
+    suspend fun addServiceStation(@Body serviceStation: ServiceStation): ServiceStation
 
     @PATCH("gas_stations/{id}")
-    suspend fun updateGasStation(@Path("id") id: Long, @Body gasStation: GasStation): GasStation
+    suspend fun updateServiceStation(
+        @Path("id") id: Long,
+        @Body serviceStation: ServiceStation
+    ): ServiceStation
 
     @DELETE("gas_stations/{id}")
-    suspend fun deleteGasStation(@Path("id") id: Long): Response<Unit>
+    suspend fun deleteServiceStation(@Path("id") id: Long): Response<Unit>
 
-    @GET("cars")
-    suspend fun getCars(): List<CarServerModel>
+    @GET("workOrders")
+    suspend fun getWorkOrders(): List<WorkOrderServerModel>
 
-    @POST("car")
-    suspend fun addCar(@Body car: CarServerModel): CarServerModel
+    @POST("workOrder")
+    suspend fun addWorkOrder(@Body workOrder: WorkOrderServerModel): WorkOrderServerModel
 
-    @PATCH("cars/{id}")
-    suspend fun updateCar(@Path("id") id: Long, @Body car: CarServerModel): CarServerModel
+    @PATCH("workOrders/{id}")
+    suspend fun updateWorkOrder(
+        @Path("id") id: Long,
+        @Body workOrder: WorkOrderServerModel
+    ): WorkOrderServerModel
 
-    @DELETE("cars/{id}")
-    suspend fun deleteCar(@Path("id") id: Long): Response<Unit>
+    @DELETE("workOrders/{id}")
+    suspend fun deleteWorkOrder(@Path("id") id: Long): Response<Unit>
 }

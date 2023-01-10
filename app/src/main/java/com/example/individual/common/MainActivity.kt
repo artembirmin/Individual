@@ -5,21 +5,21 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.individual.R
-import com.example.individual.model.GasStation
-import com.example.individual.presentation.car.createedit.CarCreateEditFragment
-import com.example.individual.presentation.car.createedit.CarCreateEditFragmentInitParams
-import com.example.individual.presentation.car.list.CarListFragment
-import com.example.individual.presentation.car.list.CarListFragmentInitParams
-import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragment
-import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragmentInitParams
-import com.example.individual.presentation.gasstation.list.GasStationListFragment
+import com.example.individual.model.ServiceStation
+import com.example.individual.presentation.servicestation.createedit.ServiceStationCreateEditFragment
+import com.example.individual.presentation.servicestation.createedit.ServiceStationCreateEditFragmentInitParams
+import com.example.individual.presentation.servicestation.list.ServiceStationListFragment
+import com.example.individual.presentation.workorder.createedit.WorkOrderCreateEditFragment
+import com.example.individual.presentation.workorder.createedit.WorkOrderCreateEditFragmentInitParams
+import com.example.individual.presentation.workorder.list.WorkOrderListFragment
+import com.example.individual.presentation.workorder.list.WorkOrderListFragmentInitParams
 
 class MainActivity : AppCompatActivity(), Navigator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(GasStationListFragment.newInstance())
+        replaceFragment(ServiceStationListFragment.newInstance())
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -54,32 +54,32 @@ class MainActivity : AppCompatActivity(), Navigator {
         }
     }
 
-    override fun navigateToCars(gasStation: GasStation) {
+    override fun navigateToWorkOrders(serviceStation: ServiceStation) {
         addFragment(
-            CarListFragment.newInstance(
-                CarListFragmentInitParams(
-                    gasStation.id,
-                    gasStation.name
+            WorkOrderListFragment.newInstance(
+                WorkOrderListFragmentInitParams(
+                    serviceStation.id,
+                    serviceStation.name
                 )
             )
         )
     }
 
-    override fun navigateToCarCreateEdit(gasStationId: Long, carId: Long?) {
+    override fun navigateToWorkOrderCreateEdit(serviceStationId: Long, workOrderId: Long?) {
         addFragment(
-            CarCreateEditFragment.newInstance(
-                CarCreateEditFragmentInitParams(
-                    gasStationId,
-                    carId
+            WorkOrderCreateEditFragment.newInstance(
+                WorkOrderCreateEditFragmentInitParams(
+                    serviceStationId,
+                    workOrderId
                 )
             )
         )
     }
 
-    override fun navigateToGasStationCreateEdit(id: Long?) {
+    override fun navigateToServiceStationCreateEdit(id: Long?) {
         addFragment(
-            GasStationCreateEditFragment.newInstance(
-                GasStationCreateEditFragmentInitParams(
+            ServiceStationCreateEditFragment.newInstance(
+                ServiceStationCreateEditFragmentInitParams(
                     id
                 )
             )

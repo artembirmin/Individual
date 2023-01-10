@@ -4,7 +4,7 @@
  * Created by artembirmin on 30/11/2022.
  */
 
-package com.example.individual.presentation.car.list
+package com.example.individual.presentation.workorder.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,16 +12,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.individual.R
-import com.example.individual.model.CarShort
+import com.example.individual.model.WorkOrderShort
 import com.example.individual.utils.DialogUtils
 
-class CarsAdapter(
-    private val onFullInfoClick: (CarShort) -> Unit,
-    private val onNumberClick: (CarShort) -> Unit,
-    private val onFuelTypeClick: (CarShort) -> Unit,
-) : RecyclerView.Adapter<CarsAdapter.ViewHolder>() {
+class WorkOrdersAdapter(
+    private val onFullInfoClick: (WorkOrderShort) -> Unit,
+    private val onNumberClick: (WorkOrderShort) -> Unit,
+    private val onFuelTypeClick: (WorkOrderShort) -> Unit,
+) : RecyclerView.Adapter<WorkOrdersAdapter.ViewHolder>() {
 
-    var items: List<CarShort> = emptyList()
+    var items: List<WorkOrderShort> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -30,7 +30,7 @@ class CarsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val contactView = inflater.inflate(R.layout.item_car, parent, false)
+        val contactView = inflater.inflate(R.layout.item_order, parent, false)
         return ViewHolder(contactView)
     }
 
@@ -50,26 +50,26 @@ class CarsAdapter(
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
         private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
 
-        fun bind(car: CarShort) {
-            tvNumber.text = car.number
-            tvFuelType.text = car.fuelType.toString()
+        fun bind(workOrder: WorkOrderShort) {
+            tvNumber.text = workOrder.number
+            tvFuelType.text = workOrder.workerName.toString()
 
             tvAdditionalInfo.setOnClickListener {
                 DialogUtils.showMessageByToast(
                     itemView.context,
-                    message = "Объем залитого топлива: ${car.fuelVolume} литров"
+                    message = "Объем залитого топлива: ${workOrder.workDate} литров"
                 )
             }
 
             tvNumberTitle.setOnLongClickListener {
-                onNumberClick(car)
+                onNumberClick(workOrder)
                 true
             }
             tvFuelTypeTitle.setOnLongClickListener {
-                onFuelTypeClick(car)
+                onFuelTypeClick(workOrder)
                 true
             }
-            tvFullInfo.setOnClickListener { onFullInfoClick(car) }
+            tvFullInfo.setOnClickListener { onFullInfoClick(workOrder) }
         }
     }
 }
