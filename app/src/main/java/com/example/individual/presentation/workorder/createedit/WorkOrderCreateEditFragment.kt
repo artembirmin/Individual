@@ -38,7 +38,6 @@ class WorkOrderCreateEditFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            tpFuelingTime.setIs24HourView(true)
             toolbar.setNavigationOnClickListener { closeFragment() }
             btnSave.setOnClickListener {
                 onSaveClick()
@@ -63,13 +62,13 @@ class WorkOrderCreateEditFragment : BaseFragment() {
 
     private fun onSaveClick() {
         with(binding) {
-            val passengersCount = etPassengersCount.text.toString().toIntOrNull() ?: run {
-                showMessageByToast("Введите пассажиров")
+            val passengersCount = etDetailsCount.text.toString().toIntOrNull() ?: run {
+                showMessageByToast("Введите количество деталей")
                 return
             }
 
-            val fuelVolume = etFuelVolume.text.toString().toDoubleOrNull() ?: run {
-                showMessageByToast("Введите объекм топлива")
+            val workingHours = etWorkingHours.text.toString().toDoubleOrNull() ?: run {
+                showMessageByToast("Введите количество рабочих часов")
                 return
             }
 
@@ -81,23 +80,22 @@ class WorkOrderCreateEditFragment : BaseFragment() {
                 vehicleType = etVehicleType.text.toString(),
                 ownerName = etOwnerName.text.toString(),
                 workDate = DateTime(
-                    dpFuelingDate.year,
-                    dpFuelingDate.month + 1,
-                    dpFuelingDate.dayOfMonth,
-                    tpFuelingTime.hour,
-                    tpFuelingTime.minute
+                    dpWorkDate.year,
+                    dpWorkDate.month + 1,
+                    dpWorkDate.dayOfMonth,
+                    0, 0
                 ),
                 detailsCount = passengersCount,
-                workerName = etFuelType.text.toString(),
-                workingHours = fuelVolume
+                workerName = etWorkerName.text.toString(),
+                workingHours = workingHours
             )
             val message = when {
                 workOrder.number.isBlank() -> "Введите номер автомобиля"
                 workOrder.color.isBlank() -> "Введите цвет автомобиля"
                 workOrder.vehicleType.isBlank() -> "Введите тип автомобиля"
                 workOrder.ownerName.isBlank() -> "Введите ФИО владельца автомобиля"
-                workOrder.workerName.isBlank() -> "Введите тип топлива"
-                workOrder.workDate.isAfterNow -> "Время заправки не может быть больше текущего"
+                workOrder.workerName.isBlank() -> "Введите ФИО исполнителя работ"
+//                workOrder.workDate.isAfterNow -> "Время выполнения работ не может быть больше текущего"
                 else -> null
             }
             if (message == null) {
@@ -117,27 +115,23 @@ class WorkOrderCreateEditFragment : BaseFragment() {
                 etVehicleType.setText(workOrder.vehicleType)
                 etNumber.setText(workOrder.number)
                 etOwnerName.setText(workOrder.ownerName)
-                dpFuelingDate.updateDate(
+                dpWorkDate.updateDate(
                     workOrder.workDate.year,
                     workOrder.workDate.monthOfYear - 1,
                     workOrder.workDate.dayOfMonth
                 )
-                tpFuelingTime.hour = workOrder.workDate.hourOfDay
-                tpFuelingTime.minute = workOrder.workDate.minuteOfHour
-                etPassengersCount.setText(workOrder.detailsCount.toString())
-                etFuelType.setText(workOrder.workerName)
-                etFuelVolume.setText(workOrder.workingHours.toString())
+                etDetailsCount.setText(workOrder.detailsCount.toString())
+                etWorkerName.setText(workOrder.workerName)
+                etWorkingHours.setText(workOrder.workingHours.toString())
             }
         } else {
             with(binding) {
                 val now = DateTime.now()
-                dpFuelingDate.updateDate(
+                dpWorkDate.updateDate(
                     now.year,
                     now.monthOfYear - 1,
                     now.dayOfMonth
                 )
-                tpFuelingTime.hour = now.hourOfDay
-                tpFuelingTime.minute = now.minuteOfHour
             }
         }
     }

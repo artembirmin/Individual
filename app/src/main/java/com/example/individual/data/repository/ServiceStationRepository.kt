@@ -6,7 +6,7 @@ import com.example.individual.model.ServiceStation
 import kotlinx.coroutines.flow.Flow
 
 class ServiceStationRepository {
-    private val individualApi = NetworkProvider.get().individualApi
+    private val individualApi = NetworkProvider.get().api
     private val serviceStationDao = DatabaseProvider.get().getServiceStationDao()
 
     fun observeServiceStations(): Flow<List<ServiceStation>> {

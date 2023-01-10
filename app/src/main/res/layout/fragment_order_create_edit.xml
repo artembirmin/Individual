@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Заправка"
+                    android:text="Наряд"
                     android:textAppearance="@style/ToolbarTitle" />
 
             </com.google.android.material.appbar.MaterialToolbar>
@@ -49,8 +49,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Номер"
+                    android:text="Номер автомобиля"
                     android:textAppearance="@style/BaseText"
                     app:layout_constraintBottom_toTopOf="@+id/et_number"
                     app:layout_constraintStart_toStartOf="@+id/et_number" />
@@ -67,7 +66,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:text="Цвет"
                     android:textAppearance="@style/BaseText"
                     app:layout_constraintBottom_toTopOf="@+id/et_color"
@@ -85,7 +83,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:text="Тип транспортного стредства"
                     android:textAppearance="@style/BaseText"
                     app:layout_constraintBottom_toTopOf="@+id/et_vehicle_type"
@@ -103,7 +100,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:text="ФИО владельца"
                     android:textAppearance="@style/BaseText"
                     app:layout_constraintBottom_toTopOf="@+id/et_owner_name"
@@ -120,13 +116,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Дата заправки"
+                    android:text="Дата выполнения работ"
                     android:textAppearance="@style/BaseText"
-                    app:layout_constraintBottom_toTopOf="@+id/dpFuelingDate"
-                    app:layout_constraintStart_toStartOf="@+id/dpFuelingDate" />
+                    app:layout_constraintBottom_toTopOf="@+id/dpWorkDate"
+                    app:layout_constraintStart_toStartOf="@+id/dpWorkDate" />
 
                 <DatePicker
-                    android:id="@+id/dpFuelingDate"
+                    android:id="@+id/dpWorkDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
@@ -139,76 +135,54 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Время заправки"
+                    android:text="Количество деталей"
                     android:textAppearance="@style/BaseText"
-                    app:layout_constraintBottom_toTopOf="@+id/tpFuelingTime"
-                    app:layout_constraintStart_toEndOf="@+id/tpFuelingTime"
-                    app:layout_constraintStart_toStartOf="@+id/dpFuelingDate" />
-
-                <TimePicker
-                    android:id="@+id/tpFuelingTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="32dp"
-                    android:timePickerMode="spinner"
-                    app:layout_constraintTop_toBottomOf="@+id/dpFuelingDate"
-                    tools:layout_editor_absoluteX="0dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Количество пассажиров"
-                    android:textAppearance="@style/BaseText"
-                    app:layout_constraintBottom_toTopOf="@+id/etPassengersCount"
-                    app:layout_constraintStart_toStartOf="@+id/etPassengersCount" />
+                    app:layout_constraintBottom_toTopOf="@+id/etDetailsCount"
+                    app:layout_constraintStart_toStartOf="@+id/etDetailsCount" />
 
                 <EditText
-                    android:id="@+id/etPassengersCount"
+                    android:id="@+id/etDetailsCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
                     android:digits="0123456789"
                     android:inputType="number"
-                    app:layout_constraintTop_toBottomOf="@+id/tpFuelingTime" />
+                    app:layout_constraintTop_toBottomOf="@+id/dpWorkDate" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Тип топлива"
+                    android:text="Имя работника"
                     android:textAppearance="@style/BaseText"
-                    app:layout_constraintBottom_toTopOf="@+id/etFuelType"
-                    app:layout_constraintStart_toStartOf="@+id/etFuelType" />
+                    app:layout_constraintBottom_toTopOf="@+id/etWorkerName"
+                    app:layout_constraintStart_toStartOf="@+id/etWorkerName" />
 
                 <EditText
-                    android:id="@+id/etFuelType"
+                    android:id="@+id/etWorkerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
-                    app:layout_constraintTop_toBottomOf="@+id/etPassengersCount" />
+                    app:layout_constraintTop_toBottomOf="@+id/etDetailsCount" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Литров залито"
+                    android:text="Количество рабочих часов"
                     android:textAppearance="@style/BaseText"
-                    app:layout_constraintBottom_toTopOf="@+id/etFuelVolume"
-                    app:layout_constraintStart_toStartOf="@+id/etFuelVolume" />
+                    app:layout_constraintBottom_toTopOf="@+id/etWorkingHours"
+                    app:layout_constraintStart_toStartOf="@+id/etWorkingHours" />
 
                 <EditText
-                    android:id="@+id/etFuelVolume"
+                    android:id="@+id/etWorkingHours"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
-                    android:digits="0123456789"
-                    android:inputType="number"
-                    app:layout_constraintTop_toBottomOf="@+id/etFuelType" />
+                    android:digits="0123456789.,"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintTop_toBottomOf="@+id/etWorkerName" />
 
                 <Button
                     android:id="@+id/btnSave"
@@ -218,12 +192,12 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
                     android:text="Сохранить"
-                    app:layout_constraintTop_toBottomOf="@id/etFuelVolume" />
+                    app:layout_constraintTop_toBottomOf="@id/etWorkingHours" />
 
                 <Button
                     android:id="@+id/btnDelete"
                     style="@style/BaseButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:backgroundTint="@color/red"

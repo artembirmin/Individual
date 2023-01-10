@@ -27,11 +27,9 @@ class WorkOrderListFragment : BaseFragment() {
             },
             onNumberClick = {
                 sortByNumber()
-                showMessageByToast("Сортировка по номеру")
             },
-            onFuelTypeClick = {
-                sortByFuelType()
-                showMessageByToast("Сортировка по типу топлива")
+            onWorkDateClick = {
+                sortByWorkDate()
             })
     }
 
@@ -39,8 +37,8 @@ class WorkOrderListFragment : BaseFragment() {
         adapter.items = adapter.items.sortedBy { it.number }
     }
 
-    private fun sortByFuelType() {
-        adapter.items = adapter.items.sortedBy { it.workerName }
+    private fun sortByWorkDate() {
+        adapter.items = adapter.items.sortedBy { it.workDate }
     }
 
     private val initParams: WorkOrderListFragmentInitParams by lazy { getInitParams() }

@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.individual.R
 import com.example.individual.model.WorkOrderShort
 import com.example.individual.utils.DialogUtils
+import com.example.individual.utils.toReadableDate
 
 class WorkOrdersAdapter(
     private val onFullInfoClick: (WorkOrderShort) -> Unit,
     private val onNumberClick: (WorkOrderShort) -> Unit,
-    private val onFuelTypeClick: (WorkOrderShort) -> Unit,
+    private val onWorkDateClick: (WorkOrderShort) -> Unit,
 ) : RecyclerView.Adapter<WorkOrdersAdapter.ViewHolder>() {
 
     var items: List<WorkOrderShort> = emptyList()
@@ -44,20 +45,20 @@ class WorkOrdersAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvNumber = itemView.findViewById<TextView>(R.id.tvNumber)
-        private val tvFuelType = itemView.findViewById<TextView>(R.id.tvFuelType)
+        private val tvWorkDate = itemView.findViewById<TextView>(R.id.tvWorkDate)
         private val tvNumberTitle = itemView.findViewById<TextView>(R.id.tvNumberTitle)
-        private val tvFuelTypeTitle = itemView.findViewById<TextView>(R.id.tvFuelTypeTitle)
+        private val tvWorkDateTitle = itemView.findViewById<TextView>(R.id.tvWorkDateTitle)
         private val tvAdditionalInfo = itemView.findViewById<TextView>(R.id.tvAdditionalInfo)
         private val tvFullInfo = itemView.findViewById<TextView>(R.id.tvFullInfo)
 
         fun bind(workOrder: WorkOrderShort) {
             tvNumber.text = workOrder.number
-            tvFuelType.text = workOrder.workerName.toString()
+            tvWorkDate.text = workOrder.workDate.toReadableDate()
 
             tvAdditionalInfo.setOnClickListener {
                 DialogUtils.showMessageByToast(
                     itemView.context,
-                    message = "Объем залитого топлива: ${workOrder.workDate} литров"
+                    message = "Исполнитель работ: ${workOrder.workerName}"
                 )
             }
 
@@ -65,8 +66,8 @@ class WorkOrdersAdapter(
                 onNumberClick(workOrder)
                 true
             }
-            tvFuelTypeTitle.setOnLongClickListener {
-                onFuelTypeClick(workOrder)
+            tvWorkDateTitle.setOnLongClickListener {
+                onWorkDateClick(workOrder)
                 true
             }
             tvFullInfo.setOnClickListener { onFullInfoClick(workOrder) }

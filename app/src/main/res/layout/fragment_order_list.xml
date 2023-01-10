@@ -31,7 +31,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="2"
-                    android:text="Название заправкм"
+                    android:text="Название станции"
                     android:textAppearance="@style/ToolbarTitle" />
 
             </com.google.android.material.appbar.MaterialToolbar>

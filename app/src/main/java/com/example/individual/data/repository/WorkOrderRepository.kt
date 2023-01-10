@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 class WorkOrderRepository {
 
-    private val individualApi = NetworkProvider.get().individualApi
+    private val individualApi = NetworkProvider.get().api
     private val workOrderDao = DatabaseProvider.get().getWorkOrderDao()
 
     fun observeWorkOrders(serviceStationId: Long): Flow<List<WorkOrderShort>> {
@@ -34,8 +34,10 @@ class WorkOrderRepository {
     }
 
     suspend fun delete(workOrderFull: WorkOrderFull) {
-        individualApi.deleteWorkOrder(workOrderFull.id)
-        workOrderDao.delete(workOrderFull)
+        val response = individualApi.deleteWorkOrder(workOrderFull.id)
+        if (response.isSuccessful) {
+            workOrderDao.delete(workOrderFull)
+        }
     }
 
     suspend fun getWorkOrderById(id: Long): WorkOrderFull {

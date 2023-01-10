@@ -30,21 +30,21 @@
             tools:text="1234" />
 
         <TextView
-            android:id="@+id/tvFuelTypeTitle"
+            android:id="@+id/tvWorkDateTitle"
             style="@style/ClickableView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Тип топлива"
+            android:text="Дата"
             android:textAppearance="@style/BaseText"
             app:layout_constraintTop_toBottomOf="@+id/tvNumber" />
 
         <TextView
-            android:id="@+id/tvFuelType"
+            android:id="@+id/tvWorkDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/BaseText.Big"
-            app:layout_constraintTop_toBottomOf="@+id/tvFuelTypeTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkDateTitle"
             tools:text="12345" />
 
         <TextView
@@ -56,7 +56,7 @@
             android:text="Дополнительно"
             android:textAppearance="@style/BaseText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFuelType" />
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkDate" />
 
         <TextView
             android:id="@+id/tvFullInfo"
@@ -67,7 +67,7 @@
             android:text="Полная информация"
             android:textAppearance="@style/BaseText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFuelType" />
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

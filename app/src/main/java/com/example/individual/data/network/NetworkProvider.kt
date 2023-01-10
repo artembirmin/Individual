@@ -27,10 +27,10 @@ class NetworkProvider(context: Context) {
         .readTimeout(45, TimeUnit.SECONDS)
         .writeTimeout(45, TimeUnit.SECONDS)
 
-    val individualApi: IndividualApi = retrofitBuilder
+    val api: Api = retrofitBuilder
         .client(okHttpClientBuilder.build())
         .build()
-        .create(IndividualApi::class.java)
+        .create(Api::class.java)
 
     companion object {
         private val BASE_URL = "http://algor.pythonanywhere.com/api/"
