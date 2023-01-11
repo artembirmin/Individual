@@ -38,7 +38,7 @@ class WorkOrderListFragment : BaseFragment() {
     }
 
     private fun sortByWorkDate() {
-        adapter.items = adapter.items.sortedBy { it.workDate }
+        adapter.items = adapter.items.sortedByDescending { it.workDate }
     }
 
     private val initParams: WorkOrderListFragmentInitParams by lazy { getInitParams() }

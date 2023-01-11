@@ -8,33 +8,33 @@ import retrofit2.http.*
 
 interface Api {
 
-    @GET("gas_stations")
+    @GET("service_stations")
     suspend fun getServiceStations(): List<ServiceStation>
 
-    @POST("gas_station")
+    @POST("service_station")
     suspend fun addServiceStation(@Body serviceStation: ServiceStation): ServiceStation
 
-    @PATCH("gas_stations/{id}")
+    @PATCH("service_stations/{id}")
     suspend fun updateServiceStation(
         @Path("id") id: Long,
         @Body serviceStation: ServiceStation
     ): ServiceStation
 
-    @DELETE("gas_stations/{id}")
+    @DELETE("service_stations/{id}")
     suspend fun deleteServiceStation(@Path("id") id: Long): Response<Unit>
 
-    @GET("workOrders")
+    @GET("work_orders")
     suspend fun getWorkOrders(): List<WorkOrderServerModel>
 
-    @POST("workOrder")
+    @POST("work_order")
     suspend fun addWorkOrder(@Body workOrder: WorkOrderServerModel): WorkOrderServerModel
 
-    @PATCH("workOrders/{id}")
+    @PATCH("work_orders/{id}")
     suspend fun updateWorkOrder(
         @Path("id") id: Long,
-        @Body workOrder: WorkOrderServerModel
+        @Body work_order: WorkOrderServerModel
     ): WorkOrderServerModel
 
-    @DELETE("workOrders/{id}")
+    @DELETE("work_orders/{id}")
     suspend fun deleteWorkOrder(@Path("id") id: Long): Response<Unit>
 }
