@@ -6,12 +6,12 @@ import com.example.individual.utils.fromServerTimestamp
 data class OrderServerModel(
     @PrimaryKey val id: Long,
     val client: Long,
-    val amount: Long,
+    val amount: Double,
     val currency: String,
-    val unpaidAmount: Long,
+    val unpaidAmount: Double,
     val deliveryTimeInWorkDays: String,
     val date: Long,
-    val weight: Long,
+    val weight: Double,
     val deliveryTo: String,
     val deliveryFrom: String,
 ) {

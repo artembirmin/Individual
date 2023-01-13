@@ -63,20 +63,26 @@ class OrderCreateEditFragment : BaseFragment() {
 
     private fun onSaveClick() {
         with(binding) {
-            val deliveryTimeInWorkDays =
-                etDeliveryTimeInWorkDays.text.toString().toLongOrNull() ?: run {
-                    showMessageByToast("Введите пассажиров")
-                    return
-                }
-            val weight = etWeight.text.toString().toLongOrNull() ?: run {
-                showMessageByToast("Введите объекм топлива")
+            val deliveryTimeInWorkDays = etDeliveryTimeInWorkDays.text.toString().toLongOrNull()
+            if (deliveryTimeInWorkDays == null) {
+                showMessageByToast("Введите время доставки в днях")
                 return
             }
-            val amount = etAmount.text.toString().toLongOrNull() ?: run {
+
+            val weight = etWeight.text.toString().toDoubleOrNull()
+            if (weight == null) {
+                showMessageByToast("Введите вес")
+                return
+            }
+
+            val amount = etAmount.text.toString().toDoubleOrNull()
+            if (amount == null) {
                 showMessageByToast("Введите стоимость")
                 return
             }
-            val unpaidAmount = etUnpaidAmount.text.toString().toLongOrNull() ?: run {
+
+            val unpaidAmount = etUnpaidAmount.text.toString().toDoubleOrNull()
+            if (unpaidAmount == null) {
                 showMessageByToast("Введите неоплаченную стоимость")
                 return
             }

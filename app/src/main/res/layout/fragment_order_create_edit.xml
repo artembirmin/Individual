@@ -178,8 +178,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="40dp"
-                    android:digits="0123456789"
-                    android:inputType="number"
+                    android:digits="0123456789.,"
+                    android:inputType="numberDecimal"
                     app:layout_constraintTop_toBottomOf="@id/etDeliveryTo" />
 
                 <TextView
@@ -213,8 +213,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="32dp"
-                    android:digits="0123456789"
-                    android:inputType="number"
+                    android:digits="0123456789.,"
+                    android:inputType="numberDecimal"
                     app:layout_constraintTop_toBottomOf="@+id/et_currency"
                     tools:layout_editor_absoluteX="16dp" />
 

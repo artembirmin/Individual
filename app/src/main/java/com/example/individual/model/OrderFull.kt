@@ -20,10 +20,10 @@ import org.joda.time.DateTime
 data class OrderFull(
     @PrimaryKey val id: Long,
     val clientId: Long,
-    val amount: Long,
+    val amount: Double,
     val orderDateTime: DateTime,
-    val unpaidAmount: Long,
-    val weight: Long,
+    val unpaidAmount: Double,
+    val weight: Double,
     val currency: String,
     val deliveryTimeInWorkDays: Long,
     val deliveryTo: String,
