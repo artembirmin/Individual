@@ -50,9 +50,12 @@ class OrderCreateEditFragment : BaseFragment() {
         }
 
         viewModel = ViewModelProvider(this).get(OrderCreateEditViewModel::class.java)
-        initParams.id?.let {
-            viewModel.getOrder(it)
+
+        val orderId = initParams.id
+        if (orderId != null) {
+            viewModel.getOrder(orderId)
         }
+
         viewModel.orderLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
@@ -113,7 +116,7 @@ class OrderCreateEditFragment : BaseFragment() {
     }
 
     private fun updateUI(order: OrderFull?) {
-        order?.let {
+        if (order != null) {
             with(binding) {
                 etAmount.setText(order.amount.toString())
                 etCurrency.setText(order.currency)
@@ -130,7 +133,7 @@ class OrderCreateEditFragment : BaseFragment() {
                 etDeliveryFrom.setText(order.deliveryFrom)
                 etWeight.setText(order.weight.toString())
             }
-        } ?: run {
+        } else {
             with(binding) {
                 val now = DateTime.now()
                 dpOrderDate.updateDate(

@@ -53,16 +53,19 @@ class ClientCreateEditFragment : BaseFragment() {
         }
 
         viewModel = ViewModelProvider(this).get(ClientCreateEditViewModel::class.java)
-        initParams.id?.let {
-            viewModel.getClient(it)
+
+        val clientId = initParams.id
+        if (clientId != null) {
+            viewModel.getClient(clientId)
         }
+
         viewModel.clientLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }
     }
 
     private fun updateUI(client: Client?) {
-        client?.let {
+        if (client != null) {
             binding.etName.setText(client.name)
         }
     }

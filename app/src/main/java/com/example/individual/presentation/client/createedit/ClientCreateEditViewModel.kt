@@ -20,14 +20,18 @@ class ClientCreateEditViewModel : ViewModel() {
 
     fun saveClient(newClient: Client) {
         viewModelScope.launch(defaultErrorHandler) {
-            clientLiveData.value?.let { oldClient ->
+            val oldClient = clientLiveData.value
+            if (oldClient != null) {
                 clientRepository.update(newClient.copy(id = oldClient.id))
-            } ?: clientRepository.add(newClient)
+            } else {
+                clientRepository.add(newClient)
+            }
         }
     }
 
     fun deleteClient() {
-        clientLiveData.value?.let { client ->
+        val client = clientLiveData.value
+        if (client != null) {
             viewModelScope.launch(defaultErrorHandler) {
                 clientRepository.delete(client)
             }

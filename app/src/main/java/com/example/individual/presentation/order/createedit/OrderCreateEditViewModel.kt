@@ -20,14 +20,18 @@ class OrderCreateEditViewModel : ViewModel() {
 
     fun saveOrder(newOrder: OrderFull) {
         viewModelScope.launch(defaultErrorHandler) {
-            orderLiveData.value?.let {
-                orderRepository.update(newOrder.copy(id = it.id))
-            } ?: orderRepository.add(newOrder)
+            val oldOrder = orderLiveData.value
+            if (oldOrder != null) {
+                orderRepository.update(newOrder.copy(id = oldOrder.id))
+            } else {
+                orderRepository.add(newOrder)
+            }
         }
     }
 
     fun deleteOrder() {
-        orderLiveData.value?.let { order ->
+        val order = orderLiveData.value
+        if (order != null) {
             viewModelScope.launch(defaultErrorHandler) {
                 orderRepository.delete(order)
             }
