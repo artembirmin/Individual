@@ -2,6 +2,7 @@ package com.example.individual.model
 
 import androidx.room.PrimaryKey
 import com.example.individual.utils.fromServerTimestamp
+import org.joda.time.DateTime
 
 data class CarServerModel(
     @PrimaryKey val id: Long,
@@ -23,6 +24,16 @@ data class CarServerModel(
         vehicleType = vehicleType,
         ownerName = ownerName,
         fuelingTime = fuelingTime.fromServerTimestamp(),
+        fuelingDate = run {
+            val dateTime = fuelingTime.fromServerTimestamp()
+            return@run DateTime(
+                dateTime.year,
+                dateTime.monthOfYear,
+                dateTime.dayOfMonth,
+                0,
+                0
+            )
+        },
         passengersCount = passengersCount,
         fuelType = fuelType,
         fuelVolume = fuelVolume

@@ -66,7 +66,7 @@ class CarListFragment : BaseFragment() {
         }
 
         viewModel = ViewModelProvider(this).get(CarListViewModel::class.java)
-        viewModel.getCars(initParams.gasStationId)
+        viewModel.getCars(initParams.gasStationId, initParams.date)
         viewModel.carsLiveData.observe(viewLifecycleOwner) {
             updateUI(it)
         }

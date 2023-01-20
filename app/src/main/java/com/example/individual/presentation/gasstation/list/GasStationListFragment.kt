@@ -1,5 +1,6 @@
 package com.example.individual.presentation.gasstation.list
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.example.individual.R
 import com.example.individual.databinding.FragmentGasStationsListBinding
 import com.example.individual.model.GasStation
 import com.example.individual.presentation.BaseFragment
+import org.joda.time.DateTime
 
 class GasStationListFragment : BaseFragment() {
     private lateinit var binding: FragmentGasStationsListBinding
@@ -18,7 +20,19 @@ class GasStationListFragment : BaseFragment() {
     private val adapter by lazy {
         GasStationsAdapter(
             onGasStationClick = { gasStation ->
-                navigator?.navigateToCars(gasStation)
+                val currentDate = DateTime.now()
+                DatePickerDialog(
+                    requireContext(),
+                    { view, year, month, dayOfMonth ->
+                        val dateTime = DateTime(year, month + 1, dayOfMonth, 0, 0)
+                        navigator?.navigateToCars(gasStation, dateTime)
+                    },
+                    currentDate.year,
+                    currentDate.monthOfYear - 1,
+                    currentDate.dayOfMonth
+                ).apply {
+                    datePicker.maxDate = currentDate.millis
+                }.show()
             },
             onFullInfoClick = { gasStation ->
                 navigator?.navigateToGasStationCreateEdit(gasStation.id)

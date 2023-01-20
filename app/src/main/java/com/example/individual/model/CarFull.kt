@@ -26,6 +26,7 @@ data class CarFull(
     val ownerName: String,
     val passengersCount: Int,
     val fuelingTime: DateTime,
+    val fuelingDate: DateTime = DateTime.now(),
     val fuelType: String,
     val fuelVolume: Int,
 ) {

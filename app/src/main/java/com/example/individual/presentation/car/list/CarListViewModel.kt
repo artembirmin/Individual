@@ -7,14 +7,15 @@ import com.example.individual.data.repository.CarRepository
 import com.example.individual.model.CarShort
 import com.example.individual.utils.defaultErrorHandler
 import kotlinx.coroutines.launch
+import org.joda.time.DateTime
 
 class CarListViewModel : ViewModel() {
     val carsLiveData = MutableLiveData<List<CarShort>>()
     private val carRepository = CarRepository.getInstance()
 
-    fun getCars(gasStationId: Long) {
+    fun getCars(gasStationId: Long, date: DateTime) {
         viewModelScope.launch(defaultErrorHandler) {
-            carRepository.observeCars(gasStationId).collect {
+            carRepository.observeCars(gasStationId, date).collect {
                 carsLiveData.postValue(it)
             }
         }

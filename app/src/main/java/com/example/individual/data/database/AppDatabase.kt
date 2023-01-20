@@ -12,7 +12,7 @@ import com.example.individual.model.GasStation
         GasStation::class,
         CarFull::class,
     ],
-    version = 5
+    version = 6
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

@@ -13,6 +13,7 @@ import com.example.individual.presentation.car.list.CarListFragmentInitParams
 import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragment
 import com.example.individual.presentation.gasstation.createedit.GasStationCreateEditFragmentInitParams
 import com.example.individual.presentation.gasstation.list.GasStationListFragment
+import org.joda.time.DateTime
 
 class MainActivity : AppCompatActivity(), Navigator {
 
@@ -54,12 +55,13 @@ class MainActivity : AppCompatActivity(), Navigator {
         }
     }
 
-    override fun navigateToCars(gasStation: GasStation) {
+    override fun navigateToCars(gasStation: GasStation, date: DateTime) {
         addFragment(
             CarListFragment.newInstance(
                 CarListFragmentInitParams(
-                    gasStation.id,
-                    gasStation.name
+                    gasStationId = gasStation.id,
+                    gasStationName = gasStation.name,
+                    date = date
                 )
             )
         )

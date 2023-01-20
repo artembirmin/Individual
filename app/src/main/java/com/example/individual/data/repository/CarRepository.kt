@@ -5,14 +5,15 @@ import com.example.individual.data.network.NetworkProvider
 import com.example.individual.model.CarFull
 import com.example.individual.model.CarShort
 import kotlinx.coroutines.flow.Flow
+import org.joda.time.DateTime
 
 class CarRepository {
 
     private val individualApi = NetworkProvider.get().individualApi
     private val carDao = DatabaseProvider.get().getCarDao()
 
-    fun observeCars(gasStationId: Long): Flow<List<CarShort>> {
-        return carDao.getCars(gasStationId)
+    fun observeCars(gasStationId: Long, date: DateTime): Flow<List<CarShort>> {
+        return carDao.getCars(gasStationId, date)
     }
 
     suspend fun refreshCars() {

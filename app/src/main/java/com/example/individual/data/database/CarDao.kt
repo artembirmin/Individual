@@ -4,12 +4,13 @@ import androidx.room.*
 import com.example.individual.model.CarFull
 import com.example.individual.model.CarShort
 import kotlinx.coroutines.flow.Flow
+import org.joda.time.DateTime
 
 @Dao
 interface CarDao {
 
-    @Query("SELECT * FROM $TABLE_NAME WHERE  gasStationId = (:gasStationId)")
-    fun getCars(gasStationId: Long): Flow<List<CarShort>>
+    @Query("SELECT * FROM $TABLE_NAME WHERE  gasStationId = (:gasStationId) AND fuelingDate = :date")
+    fun getCars(gasStationId: Long, date: DateTime): Flow<List<CarShort>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = (:id)")
     suspend fun getById(id: Long): CarFull
