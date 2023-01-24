@@ -117,26 +117,19 @@
                     android:layout_marginTop="32dp"
                     app:layout_constraintTop_toBottomOf="@+id/et_vehicle_type" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Дата заправки"
-                    android:textAppearance="@style/BaseText"
-                    app:layout_constraintBottom_toTopOf="@+id/dpFuelingDate"
-                    app:layout_constraintStart_toStartOf="@+id/dpFuelingDate" />
-
                 <DatePicker
                     android:id="@+id/dpFuelingDate"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="32dp"
                     android:calendarViewShown="false"
                     android:datePickerMode="spinner"
-                    app:layout_constraintTop_toBottomOf="@+id/et_owner_name"
-                    tools:layout_editor_absoluteX="0dp" />
+                    app:layout_constraintEnd_toStartOf="@+id/tpFuelingTime"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_owner_name" />
 
                 <TextView
+                    android:layout_marginHorizontal="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Время заправки"
@@ -147,13 +140,13 @@
 
                 <TimePicker
                     android:id="@+id/tpFuelingTime"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="32dp"
+
                     android:timePickerMode="spinner"
-                    app:layout_constraintTop_toBottomOf="@+id/dpFuelingDate"
-                    tools:layout_editor_absoluteX="0dp" />
+                    app:layout_constraintBottom_toBottomOf="@+id/dpFuelingDate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/dpFuelingDate" />
 
                 <TextView
                     android:layout_width="wrap_content"
